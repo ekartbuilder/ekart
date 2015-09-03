@@ -1,0 +1,78 @@
+<modification>
+    <name>Twig Template Engine - OCMOD</name>
+    <version>1.2</version>
+    <author>Vanderson Lopes</author>
+    <code>vanderson_twig_ocmod</code>
+
+    <file path="system/engine/loader.php">
+        <operation info="Twig Render">
+            <search index="0">
+                <![CDATA[public function view($template, $data = array()) {]]>
+            </search>
+            <add position="before">
+                <![CDATA[
+    public function view($template, $data = array()) {
+        if( ! $this->registry->get('twig')) {
+
+            $this->library('twig');
+
+            Twig_Autoloader::register();
+
+            if(is_dir(DIR_TEMPLATE . $this->registry->get('config')->get('config_template') . '/template')) {
+                $paths[] = DIR_TEMPLATE . $this->registry->get('config')->get('config_template') . '/template';
+            }
+
+            if(is_dir(DIR_TEMPLATE . 'default/template')) {
+                $paths[] = DIR_TEMPLATE . 'default/template';
+            }
+
+            $paths[] = DIR_TEMPLATE;
+
+            $loader = new Twig_Loader_Chain(array(new Twig_Loader_Filesystem($paths), new Twig_Loader_String()));
+
+            $cache = false;
+
+            if(defined('TWIG_CACHE')) {
+                $cache = TWIG_CACHE;
+            }
+
+            $twig = new Twig_Environment($loader,array(
+                'autoescape' => false,
+                'cache' => $cache,
+                'debug' => true
+            ));
+
+            $twig->addExtension(new Twig_Extension_Debug());
+            $twig->addExtension(new Twig_Extension_Opencart($this->registry));
+
+            $this->registry->set('twig', $twig);
+        }
+
+        extract($data);
+        ob_start();
+
+        // First Step - Render Twig Native Templates
+        $output = $this->registry->get('twig')->render($template, $data);
+
+        // Second Step - IF template has PHP Syntax, then execute
+        eval(' ?>' . $output);
+
+        $output = ob_get_contents();
+
+        ob_end_clean();
+
+        return $output;
+    }
+]]>
+            </add>
+        </operation>
+        <operation info="Rename Native View Function">
+            <search index="1">
+                <![CDATA[public function view($template, $data = array()) {]]>
+            </search>
+            <add position="replace">
+                <![CDATA[public function oldView($template, $data = array()) {]]>
+            </add>
+        </operation>
+    </file>
+</modification>
