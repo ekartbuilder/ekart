@@ -127,7 +127,10 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
      */
     public function getSource($name)
     {
-        return file_get_contents($this->findTemplate($name));
+    	####-fix for give support to vqmod-###
+    	return file_get_contents(VQMod::modCheck($this->findTemplate($name)));
+		
+		return file_get_contents($this->findTemplate($name));
     }
 
     /**
