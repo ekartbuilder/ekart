@@ -23,6 +23,10 @@ function getURLVar(key) {
 }
 
 $(document).ready(function() {
+	
+	//Hide Stores Element
+	$('label:contains("Stores")').parent('div.form-group').hide();
+	
 	//Form Submit for IE Browser
 	$('button[type=\'submit\']').on('click', function() {
 		$("form[id*='form-']").submit();

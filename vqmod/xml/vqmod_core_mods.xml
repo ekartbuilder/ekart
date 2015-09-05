@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>Core Modifications</name>
+    <version>1.0</version>
+    <author>Sunil Kumar</author>
+    <id>sunilkumar_core-mods_ocmod</id>
+    <file name="admin/controller/common/header.php">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[$results = $this->model_setting_store->getStores();]]>
+            </search>
+            <add>
+                <![CDATA[
+                $results = array();
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/controller/common/menu.php">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[$data['setting'] = $this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL');]]>
+            </search>
+            <add>
+                <![CDATA[
+                $data['setting'] = $this->url->link('setting/setting', 'token=' . $this->session->data['token'], 'SSL');
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/controller/setting/setting.php">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[$this->response->redirect($this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL'));]]>
+            </search>
+            <add>
+                <![CDATA[
+                $this->response->redirect($this->url->link('setting/setting', 'token=' . $this->session->data['token'], 'SSL'));
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/view/template/common/menu.tpl">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[<li><a href="<?php echo $installer; ?>"><?php echo $text_installer; ?></a></li>]]>
+            </search>
+            <add>
+                <![CDATA[]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/view/template/common/menu.tpl">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[<li><a href="<?php echo $modification; ?>"><?php echo $text_modification; ?></a></li>]]>
+            </search>
+            <add>
+                <![CDATA[]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/view/template/common/header.tpl">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-life-ring fa-lg"></i></a>]]>
+            </search>
+            <add>
+                <![CDATA[
+                <li><a href="<?php echo HTTPS_CATALOG; ?>" title="View Store" target="_blank"><i class="fa fa-life-ring fa-lg"></i></a>
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/view/template/common/footer.tpl">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[<footer id="footer"><?php echo $text_footer; ?><br /><?php echo $text_version; ?></footer>]]>
+            </search>
+            <add>
+                <![CDATA[
+                <footer id="footer">eKart</footer>
+                ]]>
+            </add>
+        </operation>
+    </file>
+</modification>

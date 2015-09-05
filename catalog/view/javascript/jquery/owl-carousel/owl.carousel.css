@@ -47,11 +47,11 @@
 }
 .owl-controls .owl-buttons .owl-prev {
 	left: 10px;
-	top: 50%;
+	top: 45%;
 }
 .owl-controls .owl-buttons .owl-next {
 	right: 10px;
-	top: 50%;
+	top: 45%;
 }
 .owl-controls {
 	-webkit-user-select: none;
