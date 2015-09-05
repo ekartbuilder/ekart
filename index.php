@@ -3,14 +3,10 @@
 define('VERSION', '2.0.3.1');
 
 // Configuration
-if (is_file('config.php')) {
+if ($_SERVER['SERVER_NAME'] == "localhost") {
+	require_once('config_local.php');
+} else {
 	require_once('config.php');
-}
-
-// Install
-if (!defined('DIR_APPLICATION')) {
-	header('Location: install/index.php');
-	exit;
 }
 
 // VirtualQMOD
