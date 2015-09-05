@@ -140,13 +140,13 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
 	font-weight: 400;
-	color: #FFF;
+	color: #6d6d6d;
 	margin-bottom: 0;
 }
 #column-left {
 	width: 50px;
 	height: 100%;
-	background-color: #515151;
+	background-color: transparent;
 	position: absolute;
 	top: 0px;
 	padding-top: 50px;
@@ -189,6 +189,9 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 #menu {
 	margin-bottom: 25px;
 }
+#menu ul {
+	border-right: 1px solid #c4c4c4;
+}
 #menu > li {
 	position: relative;
 }
@@ -197,18 +200,19 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	display: block;
 	padding: 10px;
 	cursor: pointer;
-	border-bottom: 1px solid #515151;
+	border-bottom: 1px solid #c4c4c4;
 }
 #menu li a i {
 	font-size: 16px;
 }
 #menu > li > a {
-	color: #C4C4C4;
+	color: #6d6d6d;
 	font-size: 14px;	
 	padding-left: 13px;
-	border-bottom: 1px solid #585858;
+	border-bottom: 1px solid #c4c4c4;
 }
 #menu > li > a:hover {
+	color: #ffffff;
 	background-color: #444444;
 }
 #menu > li > a > span {
@@ -216,10 +220,10 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	margin-left: 8px;
 }
 #menu li li a {
-	color: #9d9d9d;
+	color: #6d6d6d;
 }
 #menu li li a:hover {
-	color: #FFFFFF;
+	color: #FFFFFF !important;
 	background-color: #373737;
 }
 #menu li li a:before {
@@ -238,10 +242,10 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	background: #373737;
 }
 #menu li.active li a {
-	color: #C4C4C4;
+	color: #6d6d6d;
 }
 #menu li li.active > a:last-child {
-	color: #FFFFFF;
+	color: #6d6d6d;
 }
 #menu li li.active a:last-child:before {
 	margin-left: 20px;
@@ -253,7 +257,7 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	left: 50px;
 	top: 0px;
 	width: 210px;
-	background-color: #444444;
+	background-color: #FFFFFF;
 	visibility: hidden;
 }
 #menu li ul {
@@ -532,6 +536,23 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 	color: #FFFFFF;
 	transition: all 1s;
 }
+
+.tile-order, .tile-order > .tile-heading, .tile-order > .tile-footer {
+	background-color: #ED114C;
+}
+
+.tile-sale, .tile-sale > .tile-heading, .tile-sale > .tile-footer {
+	background-color: #FBBF16;
+}
+
+.tile-customer, .tile-customer > .tile-heading, .tile-customer > .tile-footer {
+	background-color: #47AE33;
+}
+
+.tile-online, .tile-online > .tile-heading, .tile-online > .tile-footer {
+	background-color: #279FE0;
+}
+
 .tile:hover {
 	opacity: 0.95;
 }

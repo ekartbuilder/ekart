@@ -1,4 +1,4 @@
-<div class="tile">
+<div class="tile tile-customer">
   <div class="tile-heading"><?php echo $heading_title; ?> <span class="pull-right">
     <?php if ($percentage > 0) { ?>
     <i class="fa fa-caret-up"></i>

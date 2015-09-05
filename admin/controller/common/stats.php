@@ -1,6 +1,7 @@
 <?php
 class ControllerCommonStats extends Controller {
 	public function index() {
+		return "";
 		$this->load->language('common/stats');
 
 		$data['text_complete_status'] = $this->language->get('text_complete_status');
