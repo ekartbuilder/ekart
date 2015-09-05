@@ -246,6 +246,7 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 }
 #menu li li.active > a:last-child {
 	color: #6d6d6d;
+	font-weight:bold;
 }
 #menu li li.active a:last-child:before {
 	margin-left: 20px;
@@ -297,7 +298,7 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 /* Desktop */
 @media (min-width: 768px) {
 #column-left.active {
-	overflow: auto;
+	/*overflow: auto;*/
 }
 #column-left.active + #content {
 	margin-left: 235px;
