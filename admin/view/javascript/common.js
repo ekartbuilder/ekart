@@ -22,8 +22,80 @@ function getURLVar(key) {
 	}
 }
 
+// function for the progress bar
+function doProgress(nanobar) {
+	
+	var lodedSize = 0;
+	var number_of_media = $("body img").length;
+
+	$('img').each(function () {
+	    var img = new Image();
+		var img_src = $(this).attr('src');
+
+	    img.onload = function () {
+	        lodedSize++;
+	        var newWidthPercentage = (lodedSize / number_of_media) * 100;
+			nanobar.go(newWidthPercentage);
+	    }
+
+		if(img_src == "") {
+			number_of_media -= 1;
+		} else {
+		    img.src = img_src;
+		}
+		
+	});
+}
+
 $(document).ready(function() {
 	
+	var nanobar = new Nanobar({bg: '#373737'});
+	nanobar.go(10);
+	doProgress(nanobar);
+	
+	$.expr[':'].textEquals = function(a, i, m) {
+    	return $(a).text().match("^" + m[3] + "$");
+	};
+
+	$('label:textEquals("Status")').each(function(index) {
+		var each_select = $(this).parent('div.form-group').find('select');
+		var each_select_val = $(each_select).find(":selected").val();
+		
+		if(each_select_val == "1") {
+			var toggle_template = '<div class="toggle toggle-light" data-toggle-on="true"></div>';
+		} else {
+			var toggle_template = '<div class="toggle toggle-light"></div>';
+		}
+		
+		$(each_select).before(toggle_template);
+		$(each_select).hide();
+	});
+	
+	$('.toggle').toggles();
+	$('.toggle').on('toggle', function (e, active) {
+	  if (active) {
+		$(this).next('select').val("1");
+	  } else {
+		$(this).next('select').val("0");
+	  }
+	});
+
+	$(document).ajaxStart(function(){  
+		$("#loader").show();
+	});
+	/*
+	$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+		if(options.url != 'index.php?route=module/cart')
+			$("#loader").show();
+	});
+	*/
+	$(document).ajaxError(function() {
+		$("#loader").hide();
+	});
+	$(document).ajaxStop(function() {
+		$("#loader").hide();
+	});
+
 	//Hide Stores Element
 	$('label:contains("Stores")').parent('div.form-group').hide();
 	

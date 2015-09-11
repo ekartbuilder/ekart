@@ -16,6 +16,34 @@
             </add>
         </operation>
     </file>
+    <file name="admin/view/template/common/footer.tpl">
+        <operation error="skip">
+            <search position="before">
+                <![CDATA[</body>]]>
+            </search>
+            <add>
+                <![CDATA[
+                <script type="text/javascript"><!--
+				
+				//--></script> 
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/controller/common/header.php">
+        <operation error="skip">
+            <search position="after">
+                <![CDATA[$data['title'] = $this->document->getTitle();]]>
+            </search>
+            <add>
+                <![CDATA[
+                	$this->document->addStyle('view/javascript/toggles/toggles.css');
+					$this->document->addScript('view/javascript/nanobar/nanobar.min.js');
+					$this->document->addScript('view/javascript/toggles/toggles.min.js');
+                ]]>
+            </add>
+        </operation>
+    </file>
     <file name="admin/controller/common/menu.php">
         <operation error="skip">
             <search position="replace">

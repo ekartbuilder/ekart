@@ -28,10 +28,10 @@
 <?php foreach ($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
-<script src="view/javascript/common.js" type="text/javascript"></script>
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
 <?php } ?>
+<script src="view/javascript/common.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="container">

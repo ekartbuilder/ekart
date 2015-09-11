@@ -2,5 +2,6 @@ ul#language.nav-tabs {
 	display: none;
 }
 #loader {
-	padding:13px;	
+	display:none;
+	padding:6px;	
 }
