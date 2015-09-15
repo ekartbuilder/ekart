@@ -183,9 +183,16 @@ $(document).ready(function() {
 		$('#modal-image').remove();
 		
 		$(this).parents('.note-editor').find('.note-editable').focus();
-				
+		
+		var custom_filemanager = 1;
+		var filemanager_url = 'index.php?route=common/filemanager&token=' + getURLVar('token');
+
+		if(custom_filemanager) {
+			filemanager_url = 'index.php?route=common/filemanager/custom&token=' + getURLVar('token');
+		}
+			
 		$.ajax({
-			url: 'index.php?route=common/filemanager&token=' + getURLVar('token'),
+			url: filemanager_url,
 			dataType: 'html',
 			beforeSend: function() {
 				$('#button-image i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
@@ -226,9 +233,16 @@ $(document).ready(function() {
 
 		$('#button-image').on('click', function() {
 			$('#modal-image').remove();
-		
+	
+			var custom_filemanager = 1;
+			var filemanager_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
+
+			if(custom_filemanager) {
+				filemanager_url = 'index.php?route=common/filemanager/custom&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
+			}
+			
 			$.ajax({
-				url: 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id'),
+				url: filemanager_url,
 				dataType: 'html',
 				beforeSend: function() {
 					$('#button-image i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
