@@ -21,6 +21,12 @@ define('DIR_LOGS', '/var/www/html/ekartbuilder/system/logs/');
 define('DIR_MODIFICATION', '/var/www/html/ekartbuilder/system/modification/');
 define('DIR_CATALOG', '/var/www/html/ekartbuilder/catalog/');
 
+// CACHE
+define('CACHE_HOSTNAME', 'localhost');
+define('CACHE_PORT', '6379');
+define('CACHE_EXPIRE', '3600');
+define('CACHE_PREFIX', 'testing');
+
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');

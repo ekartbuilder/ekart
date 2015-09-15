@@ -3,4 +3,5 @@ system/cache
 system/logs
 vqmod/vqcache
 vqmod/logs
+vqmod/mods.cache
 tmp
