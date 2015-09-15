@@ -16,8 +16,8 @@ class Cache {
 		return $this->cache->get($key);
 	}
 
-	public function set($key, $value) {
-		return $this->cache->set($key, $value);
+	public function set($key, $value, $expire = 3600) {
+		return $this->cache->set($key, $value, $expire);
 	}
 
 	public function delete($key) {
