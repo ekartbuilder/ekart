@@ -47,6 +47,8 @@ function doProgress(nanobar) {
 	});
 }
 
+var custom_filemanager = 1;
+
 $(document).ready(function() {
 	
 	var nanobar = new Nanobar({bg: '#373737'});
@@ -184,7 +186,6 @@ $(document).ready(function() {
 		
 		$(this).parents('.note-editor').find('.note-editable').focus();
 		
-		var custom_filemanager = 1;
 		var filemanager_url = 'index.php?route=common/filemanager&token=' + getURLVar('token');
 
 		if(custom_filemanager) {
@@ -234,7 +235,6 @@ $(document).ready(function() {
 		$('#button-image').on('click', function() {
 			$('#modal-image').remove();
 	
-			var custom_filemanager = 1;
 			var filemanager_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
 
 			if(custom_filemanager) {
