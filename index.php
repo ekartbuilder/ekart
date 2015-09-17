@@ -119,7 +119,7 @@ $response->setCompression($config->get('config_compression'));
 $registry->set('response', $response);
 
 // Cache
-$cache = new Cache('red');
+$cache = new Cache(CACHE_DRIVER);
 $registry->set('cache', $cache);
 
 // Session
