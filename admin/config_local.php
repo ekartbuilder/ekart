@@ -21,6 +21,13 @@ define('DIR_LOGS', 'D:/wamp/www/ekart/system/logs/');
 define('DIR_MODIFICATION', 'D:/wamp/www/ekart/system/modification/');
 define('DIR_CATALOG', 'D:/wamp/www/ekart/catalog/');
 
+// CACHE
+define('CACHE_DRIVER', 'file');
+define('CACHE_HOSTNAME', 'localhost');
+define('CACHE_PORT', '6379');
+define('CACHE_EXPIRE', '3600');
+define('CACHE_PREFIX', 'testing');
+
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');

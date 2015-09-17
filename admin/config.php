@@ -22,6 +22,7 @@ define('DIR_MODIFICATION', '/var/www/html/ekartbuilder/system/modification/');
 define('DIR_CATALOG', '/var/www/html/ekartbuilder/catalog/');
 
 // CACHE
+define('CACHE_DRIVER', 'red');
 define('CACHE_HOSTNAME', 'localhost');
 define('CACHE_PORT', '6379');
 define('CACHE_EXPIRE', '3600');
