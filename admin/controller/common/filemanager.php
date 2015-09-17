@@ -25,7 +25,7 @@ class ControllerCommonFileManager extends Controller {
 		$data['images'] = array();
 
 		$this->load->model('tool/image');
-
+		
 		// Get directories
 		$directories = glob($directory . '/' . $filter_name . '*', GLOB_ONLYDIR);
 
@@ -87,7 +87,7 @@ class ControllerCommonFileManager extends Controller {
 				);
 			}
 		}
-
+		
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_no_results'] = $this->language->get('text_no_results');
@@ -219,7 +219,7 @@ class ControllerCommonFileManager extends Controller {
 		} else {
 			$page = 1;
 		}
-
+		/*
 		$data['images'] = array();
 
 		$this->load->model('tool/image');
@@ -285,7 +285,7 @@ class ControllerCommonFileManager extends Controller {
 				);
 			}
 		}
-
+		*/
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_no_results'] = $this->language->get('text_no_results');
