@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<footer>
+		 <title>Footer Block</title>
+		 <description></description>
+		 <module>
+	 	 	<title>Twitter</title>
+	 	 	<field>
+	 	 		<name>widget_twitter_id</name>
+	 	 		<label>Twitter ID</label>
+	 	 		<type>text</type>
+	 	 		<lang>0</lang>
+	 	 		<default> <![CDATA[366766896986591232]]> </default>		
+	 		</field>
+	 		<field>
+	 	 		<name>widget_twitter_account</name>
+	 	 		<label>Twitter Account</label>
+	 	 		<type>text</type>
+	 	 		<lang>0</lang>
+	 	 		<default> <![CDATA[pavothemes]]> </default>		
+	 		</field>
+	 	</module>
+	 	<module>
+	 	 	<title>Contact Us</title>
+	 	 	<field>
+	 	 		<name>widget_contact_us</name>
+	 	 		<label>Contact Us</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default> <![CDATA[
+				<div class="box-heading"><img alt="" src="image/catalog/logo-about.png" /></div>
+				<div class="box-content">
+				<div class="description">Proin gravida nibh vel velit auctor aiquet enean lorm quis bibem auctor, nisi elit consequat ipsum, nec sagittis sem</div>
+
+				<ul class="list contact">
+					<li><span class="iconbox"><i class="fa fa-map-marker">&nbsp;</i></span><span>Proin gravida nibh vel velit auctor</span></li>
+					<li><span class="iconbox"><i class="fa fa-mobile-phone">&nbsp;</i></span><span>Phone: +01 888 (000) 1234</span></li>
+					<li><span class="iconbox"><i class="fa fa-envelope">&nbsp;</i>Email: lexussexytrend@gmail.com</span></li>
+					<li><span class="iconbox"><i class="fa fa-skype">&nbsp;</i></span><span>lexusthemes_support</span></li>
+				</ul>
+				</div>
+
+
+	 	 		 ]]> </default>		
+	 		</field>
+	 	 </module>
+	 	 <module>
+	 	 	<title>Follow Us</title>
+	 	 	<field>
+	 	 		<name>widget_follow_us</name>
+	 	 		<label>Follow Us</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default> <![CDATA[
+				<ul class="list folow">
+					<li><i class="fa fa-facebook">&nbsp;</i><a data-original-title="Facebook" data-placement="top" href="#" title=""><span>Facebook</span> </a></li>
+					<li><i class="fa fa-twitter">&nbsp;</i><a data-original-title="Twitter" data-placement="top" href="#" title=""><span>Twitter</span> </a></li>
+					<li><i class="fa fa-google-plus">&nbsp;</i><a data-original-title="Google +" data-placement="top" href="#" title=""><span>Google +</span> </a></li>
+					<li><i class="fa fa-youtube">&nbsp;</i><a data-original-title="Youtube" data-placement="top" href="#" title=""><span>Youtube</span> </a></li>
+				</ul>
+	 	 		]]> </default>		
+	 		</field>
+	 	 </module>
+	 	 <module>
+	 	 	<title>Paypal</title>
+	 	 	<field>
+	 	 		<name>widget_paypal</name>
+	 	 		<label>Paypal</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default> <![CDATA[
+					<p><img src="image/catalog/paypal.png" alt="" /></p>
+	 	 		 ]]> </default>		
+	 		</field>
+	 	 </module>
+
+
+	</footer>	
+	
+</theme>
+

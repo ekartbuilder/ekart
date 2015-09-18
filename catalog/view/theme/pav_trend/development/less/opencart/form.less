@@ -1,0 +1,51 @@
+form {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+input[type='text'],input[type='password'],
+input[type='date'],input[type='datetime'],
+input[type='email'],input[type='tel'],textarea{
+    border: 1px solid @input-border;
+    color: @input-color;
+    padding: @padding-small-vertical + 2;
+    margin-left: 0px;
+    margin-right: 0px;
+    appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    .rounded-corners( 0px);
+    .transition(all 0.6s ease 0s);
+    .rounded-corners( @input-border-radius );
+    &:hover,&:focus{
+        .form-control-focus();
+    }
+}
+select{
+    border: 1px solid @input-border;
+    padding: @padding-small-vertical;
+    .rounded-corners( 0px);
+    .rounded-corners( @input-border-radius );
+    margin-top: 2px;
+}
+label{
+    font-weight: normal;
+}
+.btn{
+    background: transparent;
+    border: none;
+    .rounded-corners(0px);
+    &:active{
+        box-shadow: none;
+    }
+}
+.btn-group.open{
+    .dropdown-toggle{
+        box-shadow: none;
+    }
+}
+.btn-danger{
+    background: @theme-color-threedary;
+}

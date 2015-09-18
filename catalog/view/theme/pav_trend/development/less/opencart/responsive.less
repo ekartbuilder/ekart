@@ -1,0 +1,381 @@
+/******************************************************
+ * @package Pav Opencart Theme Framework for Opencart 1.5.x
+ * @version 1.1
+ * @author http://www.pavothemes.com
+ * @copyright	Copyright (C) Augus 2013 PavoThemes.com <@emai:pavothemes@gmail.com>.All rights reserved.
+ * @license		GNU General Public License version 2
+*******************************************************/
+
+
+@media only screen and (max-width: 1200px) {
+    #header {
+        #cart {
+            .heading {
+                h4{
+                    display: none;
+                }
+            }
+        }
+    }
+    .pav-megamenu{
+        .mega-col{
+            .mega-col-inner{
+                > ul{
+                    > li{
+                        h3{
+                            font-size: @font-size-base - 1;
+                            font-weight: bold;
+                        }
+                        p{
+                            font-size: @font-size-base - 1;
+                        }
+                    }
+                }
+            }
+        }
+        .widget-inner{
+            p{
+                font-size: @font-size-base - 1;
+            }
+        }
+    }
+    .nav{
+        >li{
+            > a{
+                padding: @padding-large-vertical + 6 @padding-base-horizontal - 2;
+            }
+        }
+    }
+    .pav-custom{
+        .blog{
+            span{
+                font-size: @font-size-base + 5;
+            }
+        }
+    }
+    #header{
+        #logo{
+            padding: 0px 15px;
+        }
+    }
+    .producttabs{
+        .product-block{
+            .price{
+                font-size: @font-size-base + 2;
+            }
+            .price-old{
+                font-size: @font-size-base;
+            }
+        }
+    }
+    .pav-slideshow{
+        .large_text{
+            font-size: @font-size-base*2 - 4 !important;
+        }
+        .very_large_text{
+            font-size: @font-size-base*4 - 12 !important;
+        }
+        .small_text{
+            font-size: @font-size-base - 2 !important;
+        }
+    }
+}
+
+
+@media (min-width: 990px) and (max-width: 1200px){
+    .producttabs .product-block .rating{
+        width: auto;
+    }
+    .product-block{
+        .rating{
+            width: 100%;
+            padding-left: @padding-base-horizontal;
+        }
+    }
+  .productcarousel .product-block .name a{
+      padding: @padding-base-vertical @padding-base-horizontal*2;
+      line-height: 20px;
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 992px) {
+    #header{
+        #topbar{
+            padding-top: 3px;
+        }
+        #pav-mainnav{
+            left: 20px;
+            position: absolute;
+            top: -50px;
+        }
+        #logo{
+            padding-top: @padding-base-vertical + 2;
+            text-align: center;
+            margin: 0px;
+            margin-bottom: @margin-base-horizontal;
+            height: auto;
+            line-height: inherit;
+        }
+    }
+    #topbar{
+        border-bottom: none;
+        border-top: 1px solid @theme-color-border;
+    }
+    .producttabs .nav-tabs li a{
+        font-size: @font-size-base + 2;
+        padding-left: @padding-large-horizontal;
+        padding-right: @padding-large-horizontal;
+    }
+    .pav-custom{
+        .blog {
+            .description{
+                padding: @padding-large-vertical*2.5 @padding-large-vertical 0 0;
+            }
+        }
+    }
+    .producttabs{
+        .product-block{
+            .name a{
+                font-size: @font-size-base;
+            }
+            .rating{
+                width: 100%;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .price{
+                padding-bottom: 0;
+            }
+        }
+    }
+    .navbar-collapse{
+        padding: 0;
+    }
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img{
+        max-width: 65px !important;
+    }
+    .product-filter{
+        .sort,
+        .limit{
+            span{
+                display: none;
+            }
+        }
+    }
+    .product-block{
+        .compare, .wishlist{
+            width: 50%;
+            float: left;
+        }
+        .compare{
+            a{
+                border-right: none;
+            }
+        }
+        .product_quickview{
+            display: none;
+        }
+    }
+    #cboxOverlay,
+    #cboxWrapper{
+        display: none !important;
+    }
+    #cboxWrapper{
+        z-index: 0 !important;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 992px){
+    .producttabs .product-block .description{
+        min-height: 95px;
+    }
+    .pav-custom.green{
+        background-color: transparent;
+    }
+    .footer-center .box{
+        min-height: 300px;
+    }
+    #breadcrumb{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .valid{
+        left: 25%;
+    }
+    .page-home,
+    .page-common-home {
+        #header{
+            .container{
+                position: relative;
+                top: 0px;
+            }
+        }
+    }
+    .product-block {
+      .faceback,
+      .product-zoom{
+        display: none;
+      }
+    }
+    #breadcrumb{
+        top: -50px;
+    }
+    .navbar-toggle{
+        &:focus,
+        &:hover{
+            background-color: transparent !important;
+        }
+        .icon-bar{
+            background-color: @theme-color-secondary !important;
+            height: 5px;
+            width: 35px;
+            .rounded-corners(3px);
+        }
+    }
+    .navbar-inverse .navbar-toggle{
+        border: none;
+    }
+    .banner_home{
+        text-align: center;
+        .image{
+            margin-bottom: @margin-base-vertical;
+        }
+    }
+    .pavblog-latest{
+        .blog-item{
+            text-align: center;
+        }
+    }
+    .pav-custom{
+        .blog{
+            margin-bottom: @margin-base-vertical;
+        }
+    }
+    .wishlist-info td,
+    .wishlist-info th,
+    table.history-list td,
+    table.history-list th,
+    table.order-info td,
+    table.order-info th,
+    table.compare-info td,
+    table.compare-info th,
+    table.pav-checkout-product td,
+    table.pav-checkout-product th,
+    table.pav-shop-cart td,
+    table.pav-shop-cart th{
+        border-right: 0 none;
+        float: none !important;
+        width: auto !important;
+    }
+    .wishlist-info tr td:before,
+    table.history-list tr td:before,
+    table.order-info tr td:before,
+    table.pav-shop-cart tr td:before{
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-align: left;
+        white-space: nowrap;
+        width: 50%;
+    }
+    .wishlist-info tr td,
+    table.order-info tr td,
+    table.history-list tr td,
+    table.pav-shop-cart tr td {
+        text-align:right;
+        display: block;
+        min-height: 20px;
+        border-left: none;
+        background: none;
+    }
+    table.history-list thead,
+    table.order-info thead,
+    .wishlist-info thead,
+    table.pav-shop-cart thead {
+        display:  none;
+    }
+    .offcanvas-menu{
+        display: block;
+    }
+    .zoomContainer{
+        display: none;
+    }
+    .newsletter_block{
+        .title_block{
+            text-align: center;
+        }
+        .block_content{
+            .wrap-input{
+                width: 250px;
+                margin: 0 auto;
+                float: none;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 549px){
+    .newsletter_block input.inputNew{
+        min-width: 200px;
+    }    
+}
+
+
+@media only screen and (max-width: 480px){
+    .valid{
+        left: 12%;
+    }
+    .product-xs{
+        width: 100%;
+    }
+    .carousel-controls{
+        top: -30px;
+        height: 30px;
+        .carousel-control{
+            line-height: 22px;
+        }
+    }
+   .bloglatest .box-heading > div {
+        width: 300px;
+        span{
+            font-size: 20px;
+        }
+   }
+    .pav-custom .blog span{
+        font-size: @font-size-base + 1;
+    }
+    .newsletter_block input.inputNew{
+        min-width: 265px;
+    }
+    .product-filter{
+        .display{
+            display: none;
+        }
+        .limit{
+            margin: 0;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 320px){
+    .newsletter_block input.inputNew{
+      min-width: 160px;
+    }
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .zoomContainer{
+    -webkit-transform: none !important;
+  }
+
+}

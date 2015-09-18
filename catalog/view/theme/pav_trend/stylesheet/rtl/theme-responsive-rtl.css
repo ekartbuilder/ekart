@@ -1,0 +1,128 @@
+/*
+ *  topbar
+ */
+ul.links li {
+  float: right;
+}
+.menu-mini:hover .dropdown-menu {
+  left: auto;
+  right: -8px;
+}
+.menu-mini:hover .dropdown-menu li .fa {
+  margin-right: 0;
+  margin-left: 5px;
+}
+.navbar-nav {
+  padding: 0;
+}
+.menu-mini:hover .dropdown-menu li img {
+  margin-left: 5px;
+  margin-right: 0px;
+}
+.search_header #search input {
+  padding-left: 50px;
+  padding-right: 10px;
+}
+.search_header #search .button-search {
+  left: 0;
+  right: auto;
+}
+#topbar .show-mobile .inner-toggle {
+  left: 0;
+  right: auto;
+}
+#topbar .show-mobile .quick-access .inner-toggle {
+  left: -45px;
+  right: auto;
+}
+#topbar .show-mobile #search_mobile_topbar .inner-toggle {
+  left: -90px;
+  right: auto;
+}
+#topbar .show-mobile .support .inner-toggle {
+  left: -135px;
+  right: auto;
+}
+#topbar .show-mobile #search-m .button-search {
+  left: 10%;
+  right: auto;
+}
+#topbar .show-mobile .language .dropdown-menu {
+  left: -15px;
+  right: auto;
+}
+#topbar .show-mobile .currency .dropdown-menu {
+  left: -125px;
+  right: auto;
+}
+.menu-mini:hover .dropdown-menu li:hover {
+  padding-right: 10px;
+  padding-left: 0;
+}
+#header #pav-mainnav {
+  right: 20px;
+  left: auto;
+}
+.navbar-header {
+  float: right;
+}
+.navbar-nav > li {
+  float: right;
+}
+#topbar,
+#header #cart .heading,
+.search_header,
+#header-main {
+  border-left: none;
+  border-right: 1px solid #EDEDED;
+}
+#header #cart {
+  padding-left: 7px;
+  padding-right: 0;
+}
+.producttabs .compare a,
+.producttabs .wishlist a,
+.producttabs .product_quickview a {
+  border-left: 1px solid #5A617B;
+  border-right: none;
+}
+.newsletter_block input.inputNew {
+  margin-right: 15px;
+  margin-left: 0px !important;
+}
+.newsletter_block input.button_mini {
+  left: 0;
+  right: -5px;
+}
+.sidebar ul > li a.subcart {
+  left: 8px;
+  right: auto;
+}
+ul.list > li .fa {
+  margin-left: 8px;
+  margin-right: 0;
+  padding-right: 3px;
+}
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.category-list ul {
+  list-style: none;
+  float: inherit;
+  padding: 0;
+}
+/*
+  *  Module
+  */
+/*
+ *  Page
+ */
+.contact-address ul li span {
+  padding-right: 15px;
+  padding-left: auto;
+}
+.zoomContainer .zoomWindow {
+  left: 0 !important;
+  right: 352px;
+}

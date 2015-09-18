@@ -1,0 +1,58 @@
+.pav-megamenu {
+    position: relative;
+}
+
+.widget-product-list .product-block {
+    width: 143px;
+    float: left;
+    text-align: center;
+    margin-right: 15px;
+    margin-bottom: 0;
+    background-color: transparent;
+}
+
+.widget-product-list .product-block .image {
+    margin-bottom: 5px;
+}
+
+.widget-product-list .product-block .name a {
+    clear: both;
+    padding: 0;
+    font-weight: normal;
+    color: #fff;
+}
+
+.pav-megamenu .widget-inner p {
+    color: #fff;
+
+}
+
+.widget-product-list .widget-inner > div:last-child {
+    margin-right: 0;
+}
+
+.widget-product-list .price {
+    color: #fff;
+}
+
+.widget-product-list .product-block .dropdown-menu a:hover {
+    padding: 0;
+}
+
+.widget-product-list .name {
+    border-bottom: none;
+}
+.widget-product-list .product-block .name a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+.widget-banner .w-banner {
+    margin: 6px 10px;
+    float: left;
+} 
+.button-close-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+      cursor: pointer;
+}
