@@ -1,0 +1,248 @@
+$gotham-font-path: "../fonts/gotham";
+$museosans-font-path: "../fonts/museosan";
+$proxima-nova-font-path: "../fonts/proxima-nova";
+
+//---------Font proxima nova -----------------------
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('#{$proxima-nova-font-path}/proximanova-black-webfont.eot');
+    src: url('#{$proxima-nova-font-path}/proximanova-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$proxima-nova-font-path}/proximanova-black-webfont.woff') format('woff'),
+         url('#{$proxima-nova-font-path}/proximanova-black-webfont.ttf') format('truetype'),
+         url('#{$proxima-nova-font-path}/proximanova-black-webfont.svg#proxima_novablack') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('#{$proxima-nova-font-path}/proximanova-bold-webfont.eot');
+    src: url('#{$proxima-nova-font-path}/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$proxima-nova-font-path}/proximanova-bold-webfont.woff') format('woff'),
+         url('#{$proxima-nova-font-path}/proximanova-bold-webfont.ttf') format('truetype'),
+         url('#{$proxima-nova-font-path}/proximanova-bold-webfont.svg#proxima_novabold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('#{$proxima-nova-font-path}/proximanova-regular-webfont.eot');
+    src: url('#{$proxima-nova-font-path}/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$proxima-nova-font-path}/proximanova-regular-webfont.woff') format('woff'),
+         url('#{$proxima-nova-font-path}/proximanova-regular-webfont.ttf') format('truetype'),
+         url('#{$proxima-nova-font-path}/proximanova-regular-webfont.svg#proxima_novaregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('#{$proxima-nova-font-path}/proximanova-light-webfont.eot');
+    src: url('#{$proxima-nova-font-path}/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$proxima-nova-font-path}/proximanova-light-webfont.woff') format('woff'),
+         url('#{$proxima-nova-font-path}/proximanova-light-webfont.ttf') format('truetype'),
+         url('#{$proxima-nova-font-path}/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+//---------Font gotham -----------------------
+@font-face {
+    font-family: 'gotham';
+    src: url('#{$gotham-font-path}/gotham-book-webfont.eot');
+    src: url('#{$gotham-font-path}/gotham-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$gotham-font-path}/gotham-book-webfont.woff') format('woff'),
+         url('#{$gotham-font-path}/gotham-book-webfont.ttf') format('truetype'),
+         url('#{$gotham-font-path}/gotham-book-webfont.svg#gotham_book') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham';
+    src: url('#{$gotham-font-path}/gotham-bold-webfont.eot');
+    src: url('#{$gotham-font-path}/gotham-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$gotham-font-path}/gotham-bold-webfont.woff') format('woff'),
+         url('#{$gotham-font-path}/gotham-bold-webfont.ttf') format('truetype'),
+         url('#{$gotham-font-path}/gotham-bold-webfont.svg#gotham_bold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham';
+    src: url('#{$gotham-font-path}/gotham-light-webfont.eot');
+    src: url('#{$gotham-font-path}/gotham-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$gotham-font-path}/gotham-light-webfont.woff') format('woff'),
+         url('#{$gotham-font-path}/gotham-light-webfont.ttf') format('truetype'),
+         url('#{$gotham-font-path}/gotham-light-webfont.svg#gotham_light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham';
+    src: url('#{$gotham-font-path}/gotham-ultra-webfont.eot');
+    src: url('#{$gotham-font-path}/gotham-ultra-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$gotham-font-path}/gotham-ultra-webfont.woff') format('woff'),
+         url('#{$gotham-font-path}/gotham-ultra-webfont.ttf') format('truetype'),
+         url('#{$gotham-font-path}/gotham-ultra-webfont.svg#gotham_black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+//----------- Font museosans ---------------------
+@font-face {
+    font-family: 'museo_sans';
+    src: url('#{$museosans-font-path}/museosans_700-webfont.eot');
+    src: url('#{$museosans-font-path}/museosans_700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$museosans-font-path}/museosans_700-webfont.woff') format('woff'),
+         url('#{$museosans-font-path}/museosans_700-webfont.ttf') format('truetype'),
+         url('#{$museosans-font-path}/museosans_700-webfont.svg#museo_sans700') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo_sans';
+    src: url('#{$museosans-font-path}/museosans_500-webfont.eot');
+    src: url('#{$museosans-font-path}/museosans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$museosans-font-path}/museosans_500-webfont.woff') format('woff'),
+         url('#{$museosans-font-path}/museosans_500-webfont.ttf') format('truetype'),
+         url('#{$museosans-font-path}/museosans_500-webfont.svg#museo_sans500') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo_sans';
+    src: url('#{$museosans-font-path}/museosans-300-webfont.eot');
+    src: url('#{$museosans-font-path}/museosans-300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$museosans-font-path}/museosans-300-webfont.woff') format('woff'),
+         url('#{$museosans-font-path}/museosans-300-webfont.ttf') format('truetype'),
+         url('#{$museosans-font-path}/museosans-300-webfont.svg#museo_sans300') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'museo_sans';
+    src: url('#{$museosans-font-path}/museosans-100italic-webfont.eot');
+    src: url('#{$museosans-font-path}/museosans-100italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$museosans-font-path}/museosans-100italic-webfont.woff') format('woff'),
+         url('#{$museosans-font-path}/museosans-100italic-webfont.ttf') format('truetype'),
+         url('#{$museosans-font-path}/museosans-100italic-webfont.svg#museo_sans100_italic') format('svg');
+    font-weight: 100;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'museo_sans';
+    src: url('#{$museosans-font-path}/museosans-100-webfont.eot');
+    src: url('#{$museosans-font-path}/museosans-100-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$museosans-font-path}/museosans-100-webfont.woff') format('woff'),
+         url('#{$museosans-font-path}/museosans-100-webfont.ttf') format('truetype'),
+         url('#{$museosans-font-path}/museosans-100-webfont.svg#museo_sans100_italic') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+//Google font
+@font-face {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Abril Fatface'), local('AbrilFatface-Regular'), url(http://themes.googleusercontent.com/static/fonts/abrilfatface/v6/X1g_KwGeBV3ajZIXQ9VnDvn8qdNnd5eCmWXua5W-n7c.woff) format('woff');
+}
+//
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/boeCNmOCCh-EWFLSfVffDg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Lato Black'), local('Lato-Black'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/BVtM30trf7q_jfqYeHfjtA.woff) format('woff');
+}
+//
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url(http://themes.googleusercontent.com/static/fonts/oswald/v8/HqHm7BVC_nzzTui2lzQTDT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(http://themes.googleusercontent.com/static/fonts/oswald/v8/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'), local('Oswald-Bold'), url(http://themes.googleusercontent.com/static/fonts/oswald/v8/bH7276GfdCjMjApa_dkG6T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+//
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/-_Ctzj9b56b8RgXW8FAriRsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/IczWvq5y_Cwwv_rBjOtT0w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Raleway Medium'), local('Raleway-Medium'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/CcKI4k9un7TZVWzRVT-T8xsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/JbtMzqLaYbbbCL9X6EvaIxsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Raleway Heavy'), local('Raleway-Heavy'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/PKCRbVvRfd5n7BTjtGiFZBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+//
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url(http://themes.googleusercontent.com/static/fonts/robotoslab/v3/dazS1PrQQuCxC3iOAJFEJR_xHqYgAV9Bl_ZQbYUxnQU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(http://themes.googleusercontent.com/static/fonts/robotoslab/v3/y7lebkjgREBJK96VQi37ZobN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(http://themes.googleusercontent.com/static/fonts/robotoslab/v3/dazS1PrQQuCxC3iOAJFEJTqR_3kx9_hJXbbyU8S6IN0.woff) format('woff');
+}

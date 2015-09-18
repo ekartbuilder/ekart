@@ -1,0 +1,35 @@
+.buttons{
+  @include clearfix();
+  padding: 20px 0; 
+  .left{
+       float:left;
+  }
+  .right{
+      float:right;
+  }
+}
+.btn-outline-inverse{
+  @include button-variant-outline($white, $theme-color-default, $theme-color-default, $theme-color-secondary, $white , $theme-color-primary );
+} 
+.btn-outline{
+  @include button-variant-outline($theme-color-primary, $nocolor , $theme-color-primary , $white, $theme-color-default, $theme-color-default );
+  font-size: 11px;
+}
+.btn-outline-small{
+  @include button-variant-outline($theme-color-primary, $white , $theme-color-primary , $white, $theme-color-default, $theme-color-default );
+  padding: 5px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.btn-outline-default{
+  @include button-variant-outline($theme-color-primary, $white , $theme-color-primary , $white, $theme-color-default, $theme-color-default );
+  padding: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.btn-highlighted{
+   @include button-variant-highlighted($theme-color-primary, $black, $black, $white, $theme-color-default, $theme-color-default);
+} 
+.btn-special{
+  @include button-variant-special($theme-color-primary, $theme-color-tertiary, $theme-color-primary, $white, $theme-color, $theme-color);
+} 

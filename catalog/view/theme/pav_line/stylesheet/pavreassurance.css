@@ -1,0 +1,123 @@
+/**
+ * Web Application Prefix Apply For Making Owner Styles
+ */
+/**
+ *   Blocks Layout Selectors 
+ */
+/**
+ * Product Item Selectors
+ */
+/***********************************************************************/
+/*  
+ * LAYOUT VARIABLES 
+ */
+/**
+* Transition-timing-function property@mixin 
+*/
+/* TEXT SHADOW */
+/*background RGBA
+============================================*/
+/****/
+/* RIGHT TO LEFT */
+.box-module-pavreassurances {
+  padding: 0 15px;
+  overflow: hidden;
+}
+.box-module-pavreassurances .column {
+  position: inherit;
+}
+.box-module-pavreassurances .column .popover {
+  min-height: 110px;
+  max-width: 255px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  color: #777777;
+  border: none;
+}
+.box-module-pavreassurances .column .popover .arrow {
+  border: none;
+}
+.box-module-pavreassurances .column .popover .popover-content {
+  overflow: hidden;
+  width: 100%;
+  min-height: 110px;
+  position: relative;
+  padding: 20px;
+}
+.box-module-pavreassurances .column .popover .popover-content .heading {
+  color: #EA3A3C;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.box-module-pavreassurances .column .popover .popover-content .summary {
+  font-size: 13px;
+  padding-top: 10px;
+}
+.box-module-pavreassurances .column .popover .bg-icon {
+  width: 100%;
+  height: auto;
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: right;
+  color: #E5E5E5;
+  z-index: -1;
+  line-height: 75px;
+}
+.rtl .box-module-pavreassurances .column .popover .bg-icon {
+  right: 0;
+  left: auto;
+}
+.rtl .box-module-pavreassurances .column .popover .bg-icon {
+  text-align: left;
+}
+.box-module-pavreassurances .icon-name {
+  font-size: 20px;
+  color: white;
+  margin-right: 10px;
+  display: inline-block;
+}
+.rtl .box-module-pavreassurances .icon-name {
+  margin-left: 10px;
+  margin-right: inherit;
+}
+.box-module-pavreassurances .open {
+  float: right;
+  display: none;
+  padding: 5px 10px;
+  font-weight: normal;
+}
+.rtl .box-module-pavreassurances .open {
+  float: left;
+}
+.box-module-pavreassurances .reassurances-center {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 7px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "proxima_nova";
+  font-weight: 700;
+  font-size: 11px;
+}
+.box-module-pavreassurances .reassurances-center:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  cursor: pointer;
+}
+.box-module-pavreassurances .reassurances-center:hover .icon-name {
+  color: #000000;
+}
+.box-module-pavreassurances .reassurances-center:hover .open {
+  display: block;
+}
+.box-module-pavreassurances .modal-content {
+  color: #8C8C8C;
+  font-size: 15px;
+}
+.box-module-pavreassurances .modal-content .icon-name {
+  color: #8C8C8C;
+}

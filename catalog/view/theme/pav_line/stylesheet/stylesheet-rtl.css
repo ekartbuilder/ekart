@@ -1,0 +1,37 @@
+/**
+ * Web Application Prefix Apply For Making Owner Styles
+ */
+/**
+ *   Blocks Layout Selectors 
+ */
+/**
+ * Product Item Selectors
+ */
+/***********************************************************************/
+/*  
+ * LAYOUT VARIABLES 
+ */
+#header-main.has-search .input-group-addon {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.share a {
+  float: right !important;
+}
+
+.tree-menu > ul > li ul > li > a {
+  background-position: right center;
+}
+
+#pav-paneltool form > * {
+  float: right;
+}
+
+.accordion-group label {
+  float: right;
+  margin-left: 10px;
+}
+
+.clear-bg {
+  margin-right: 5px;
+}

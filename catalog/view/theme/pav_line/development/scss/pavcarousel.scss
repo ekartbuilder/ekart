@@ -1,0 +1,48 @@
+@import "vars/bootstrap";
+@import "vars/opencart";
+
+@import "mixins/bootstrap";
+@import "mixins/app";
+
+.pavcarousel {
+    position: relative;
+    .item {
+         padding-top: 15px;
+    }
+    .item-inner{
+        text-align: center;
+        border: 1px solid transparent;
+        &:hover{
+             border: 1px solid #ccc;
+        }
+    }
+    .carousel-controls{
+        top: 50%;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        margin-top:-5px; 
+        display: none;
+        .carousel-control{           
+            left: auto;
+            bottom:auto;
+            z-index: 10;
+            background: #fff;
+            color: #DADADA;
+            border: 1px solid #DADADA;
+            text-shadow: none;
+            width: 30px;
+            height: 30px;  
+            &.left{
+                left: 30px;
+            }
+            &.right{
+                right: 30px;
+            }
+        }
+    }
+    &:hover .carousel-controls{
+        display: block;
+    }
+}    
+ 

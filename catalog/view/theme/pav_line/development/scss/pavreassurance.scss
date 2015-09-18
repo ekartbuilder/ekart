@@ -1,0 +1,90 @@
+@import "vars/bootstrap";
+@import "vars/opencart";
+@import "mixins/bootstrap";
+@import "mixins/app";
+
+.box-module-pavreassurances{
+    padding: 0 15px;
+    .column{
+        position: inherit;
+        .popover{
+            min-height: 110px;
+            max-width: 255px;
+            @include rounded-corners(0);
+            color: #777777;
+           // top: 48px!important;
+            border: none;
+            .arrow{
+                border: none;
+            }
+            .popover-content{
+                overflow: hidden;
+                width: 100%;
+                min-height: 110px;
+                position: relative;
+                padding: 20px;
+                .heading{
+                    color: $theme-color;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                }
+                .summary{
+                    font-size: 13px;
+                    padding-top: 10px;
+                }
+            }
+            .bg-icon{
+                width: 100%;
+                height: auto;
+                font-size: 100px;
+                position: absolute;
+                @include rtl-left(0);
+                bottom: 0;
+                @include rtl-text-align-right();
+                color: #E5E5E5;
+                z-index: -1;
+                line-height: 75px;
+            } 
+        }
+    }
+    overflow: hidden;
+    .icon-name{
+        font-size: 20px;
+        color: white;
+        @include rtl-margin-right(10px);
+        display: inline-block;
+    }
+    .open{
+        @include rtl-float-right();
+        display: none;
+        padding: 5px 10px;
+        font-weight: normal;
+    }
+    .reassurances-center{
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 7px 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: $font-family-secondary;
+        font-weight: 700;
+        font-size: 11px;
+        &:hover{
+            background-color: $white;
+            color: $black;
+            cursor: pointer;
+            .icon-name{
+                color: $black;
+            }
+            .open{
+                display: block;
+            }
+        }
+    }
+    .modal-content {
+        color: #8C8C8C;
+        font-size: 15px;
+        .icon-name {
+            color: #8C8C8C;
+        }
+    }
+}

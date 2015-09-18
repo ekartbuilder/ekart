@@ -1,0 +1,119 @@
+
+
+/*  PAGINATION STYLE */
+.paging {
+  margin: $line-height-computed 0;
+}
+.pagination{    
+    .links {
+            @include rtl-float-left();        
+            a,b{ 
+             display: inline-block;        
+             @include rounded-corners(0px);
+             @include size(30px,30px);
+             @include transition(background-color 350ms ease-in);
+            padding: 0;       
+            line-height: 30px;
+            text-decoration: none;  
+            @include rtl-margin(0,3px,0,0);                 
+            text-align: center;   
+            font-weight: normal;
+            background-color: $pagination-bg;
+            border: $pagination-border;
+            &:active{
+                background-color: $pagination-active-bg;
+                color: $pagination-active-color;        
+                border: $pagination-border;            
+            }            
+        }
+        b{
+            background-color: $pagination-active-bg;
+            color: $pagination-active-color;        
+            border: $pagination-border;    
+        }
+    }
+    .results {
+        @include rtl-float-right();    
+        color: $theme-color-tertiary;
+    }
+}
+
+/* tab style */
+.htabs{  
+    ul{
+      border: none;
+        > li{
+            @include rtl-margin-right(5px);
+            @include rtl-float-left();
+            display: block;
+            &.active a {
+                color: $htab-nav-selected-color;
+                background-color: $htab-bg-selected;
+                border-color: $htab-bg-selected;
+                display: block;
+            }
+            a {
+                border: 1px solid $border-color;
+                font-family: $font-family-secondary;
+                font-size: $htab-nav-font-size;
+                text-transform: uppercase;
+                padding: 8px 15px;
+                margin-right: 0;                
+                &:hover{   
+                  border-color: $htab-bg-selected;  
+                  color: $htab-nav-selected-color;               
+                  background-color: $htab-bg-selected;
+                }
+            }
+        }
+    }      
+}
+
+ul.nav-theme{
+  display: inline-block;
+  width: auto;
+  position: relative;
+  &:before, &:after{
+      content: "";
+      position: absolute;
+      top: 13px;
+      width: 10px;
+      background: $black;
+      height: 3px;
+  }
+  &:after{
+    @include rtl-left(-10px);
+  }
+ &:before{
+      @include rtl-right(-10px);
+  }
+  li{
+    @include rtl-float-left();
+    width: auto;
+    a{
+      font-weight: 700;
+      color: $theme-color-primary;
+      font-family: $font-family-secondary;
+      font-size: $font-size-base;
+      padding: 6px 12px;
+      &:hover{
+        background: none;
+        color: $black;
+      }
+    }
+    &.active{
+      a{
+        background: none;
+        color: $black;
+      }
+    }
+  }
+}
+
+.no-padding { padding: 0; }
+
+div.required .control-label:before {
+    color: #f00;
+    content: "* ";
+    font-weight: bold;
+}

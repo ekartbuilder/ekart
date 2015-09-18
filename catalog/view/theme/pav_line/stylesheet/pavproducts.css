@@ -1,0 +1,11 @@
+
+.box.pav-categoryproducts {
+}
+.box.pav-categoryproducts .tab-nav{
+    width: 100%;
+    text-align: center;
+}
+.box.pav-categoryproducts .nav{
+    display: inline-block;
+    width: auto;
+}   

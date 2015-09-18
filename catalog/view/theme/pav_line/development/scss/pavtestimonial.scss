@@ -1,0 +1,102 @@
+@import "vars/bootstrap";
+@import "vars/opencart";
+@import "mixins/bootstrap";
+@import "mixins/app";
+.pavtestimonial {
+	background: #fff;
+	.carousel-inner{
+		position:relative;
+		padding: 0 15px;
+	}
+	.carousel-control {
+	    border: 2px solid #ccc;
+	    @include rounded-corners(50%);
+	    height: 10px;
+	    @include rtl-left(50%);
+	    top: auto;
+	    width: 10px;
+	    bottom: 15px;
+	    &:hover {
+	    	border-color: $theme-color;
+	    }
+	    &.left {
+	    	margin: 0 -12px;
+	    }
+	}
+	.t-avatar img{
+		 border: 2px solid $theme-color;
+	}
+	.banner-info{
+		position:absolute;
+		bottom:25%;
+		@include rtl-left(10%);
+		z-index:4;
+		background:#ccc;
+		width:300px;
+		padding:12px;
+		min-height:40px;
+		opacity:0.7;
+	  	filter: alpha(opacity=70);
+	}
+	.carousel-indicators{
+		position:absolute;
+		bottom:10px;
+		@include rtl-left(20px);
+		li{ 
+			display:block;
+			@include rtl-float-left();	
+			z-index:20;
+			padding:10px; 
+			margin:3px;
+			background:red; 
+			&.active{
+  				background:#000 
+			}	
+		}
+	}	
+
+  	.thumb-indicators li {
+	  	text-indent:0; 
+		display: block;
+	    @include rtl-float-left();
+	    height: 97px;
+	    margin: 3px;
+	    padding: 3px;
+	    width: 23%;
+	    z-index: 20;
+	}
+	.testimonial-item .testimonial{
+		font-weight: 300;
+		font-size: 16px;
+		clear: both;
+		font-style: italic;
+		text-align: center;
+		margin-bottom: 30px;
+		line-height: 26px;
+	}
+	.t-avatar{
+		clear: both;
+		width: 100%;
+		text-align: center; 
+	}
+
+	.profile{
+		width: 100%;
+		text-align: center;
+		padding: 15px 0;
+		overflow: hidden;
+		.name{
+			font-family: $font-family-secondary;
+			font-size: 11px;
+			font-weight: 700; 	
+			color: #000;
+			text-transform: uppercase;
+		}
+		.job{
+			font-size: 10px;
+			font-weight: 300;
+			color: #777777;
+			text-transform: uppercase;
+		}
+	}
+}	

@@ -1,0 +1,45 @@
+/**
+ * Web Application Prefix Apply For Making Owner Styles
+ */
+/**
+ *   Blocks Layout Selectors 
+ */
+/**
+ * Product Item Selectors
+ */
+/***********************************************************************/
+/*  
+ * LAYOUT VARIABLES 
+ */
+/**
+* Transition-timing-function property@mixin 
+*/
+/* TEXT SHADOW */
+/*background RGBA
+============================================*/
+/****/
+/* RIGHT TO LEFT */
+.pav-newsletter .valid {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 999;
+}
+.pav-newsletter .description {
+  padding: 10px 0 20px;
+}
+.pav-newsletter .input-group {
+  width: 100%;
+}
+.pav-newsletter .form-control {
+  width: 100%;
+  background: #000000;
+  border-color: #000000;
+}
+.pav-newsletter .btn-submit {
+  margin-top: 10px;
+  width: 100%;
+}
+.pav-newsletter .btn-submit button {
+  width: 100%;
+}

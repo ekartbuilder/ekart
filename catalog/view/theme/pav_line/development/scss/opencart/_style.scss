@@ -1,0 +1,17 @@
+.bg-white {
+	background: #fff;
+}
+.review-form-width {
+    margin: 10% auto;
+    max-width: 600px;
+    position: relative;
+}
+.alert {
+	position: relative;
+}
+.zoomWindowContainer .zoomWindow{
+    @include rtl_left(390px);
+}
+.mfp-figure {
+    max-width: 600px;
+}

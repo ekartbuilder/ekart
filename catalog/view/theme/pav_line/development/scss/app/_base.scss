@@ -1,0 +1,171 @@
+/**
+ * BASE CSS STYLES
+ */
+html {
+    margin: 0;
+    padding: 0;
+}
+body {
+  background-color: $body-bg;
+  color: $text-color;
+  font-size: $font-size-base;
+  margin: 0px;
+  padding: 0px;        
+  overflow-x:hidden;
+  font-weight: $font-weight-base;
+
+}
+
+ul{
+    margin: 0;
+    padding:0;
+    li{
+        list-style: none
+    }
+}
+
+///******
+ul.bullet {
+    li {
+           padding:  $block-module-padding - 15px 0;
+           position:relative;
+          a {
+            @include rtl-padding-left($block-module-padding);
+            &:before {
+                  display: block;
+                  content: "\f064";
+                  font-family: $font-icon-family;
+                  font-size:  $footer-font-size;
+                  position: absolute;
+                  @include rtl-left(0);
+                  top: 6px;
+            }
+            &:hover {
+                      &:before {
+                        color: $link-hover-color;
+                      }
+                }
+          }
+    }
+}
+/* links style */
+ul{
+    &.links {    
+        margin: 0;
+        padding: 0;  
+        width: 100%;  
+        li{
+            display: inline;        
+            line-height: normal;     
+            a{
+                margin:0 $padding-base-vertical;  
+                &:hover{
+                    color: $theme-color-default;    
+                }      
+            } 
+            .fa,.icon{
+                margin-right:10px;
+            }       
+        }               
+    }
+    &.list{
+        li{
+            list-style: none;
+           padding: 6px 0;
+        }    
+    }
+    &.my-account{
+        li{
+            padding:6px 0;
+            list-style: disc;
+            margin-left: 14px;
+        }
+    }
+    &.inline{
+        li {
+             float: left
+        }
+    }
+}
+
+.tree-menu {
+    .head {
+        position: absolute;
+        top: 15px;
+        @include rtl-right(10px);
+    }
+        ul {
+            list-style: none;
+            box-shadow: none;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+        > ul > li {
+            @include size(100%,auto);
+            position: relative;
+            .badge {
+                position: absolute;
+                @include rtl-right(10px);
+                top: 15px;
+                cursor: pointer;
+            }
+            &:last-child > a{
+                border:none;
+            }  
+            > a {
+                display: block;
+                color: $vertical-menu-color;
+                font-size: $vertical-menu-font-size;                
+                padding: 15px 0;
+                border-bottom: 1px solid $border-color;  
+                text-transform: inherit;
+                font-weight: 300; 
+                @include transition(all 0.35s);
+                &:hover,&:focus{                    
+                   color: $theme-color;
+                   @include rtl-padding-left(10px);
+                }
+               
+            }
+
+        ul {
+           // display: none;
+        }
+            a.active {
+                font-weight: bold;
+                color: $theme-color;
+            + ul {
+                display: block;
+                padding: 0 0 10px 10px;
+            }
+        }
+        ul > li {
+            > a {
+                    border-bottom: 1px solid $border-color; 
+                    text-decoration: none;
+                    display: block;
+                    @include rtl-padding(15px,0px,15px,30px);
+                    color: #777;
+                    font-weight: $font-weight-base;  
+                    background: url('#{$image-theme-path}category-arrow.png') 0 center no-repeat;
+                    &:hover{
+                        color: $theme-color;
+                    }
+                &.active {
+                    font-weight: bold;
+                    color:$megamenu-sub-link-hover-color;  
+                }
+            }
+
+        }
+    }
+}
+
+a:hover{
+    color: $theme-color;
+    text-decoration: none;
+}
+a:focus{
+    outline: none;
+}

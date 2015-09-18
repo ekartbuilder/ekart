@@ -1,0 +1,13 @@
+/*Banner builder*/
+.banner-style {
+    background: transparent;
+    .banner-wrapper {
+        background: #fff;
+        padding: 30px;
+    }
+    &2 {
+    	.banner-wrapper {
+    		margin-top: 15px;
+	    }
+    }
+}

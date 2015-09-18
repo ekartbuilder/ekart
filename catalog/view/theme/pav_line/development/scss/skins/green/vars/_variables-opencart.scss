@@ -1,0 +1,33 @@
+// Iconography
+// -------------------------
+$icon-font-path:          "../../fonts/";
+$theme-font-path:          "../../fonts/";
+// Image
+// -------------------------
+$image-theme-path:'../../image/';
+$image-theme-base-path:  '../../image/green/'!default;
+
+$green:                 #AAD166;
+
+$theme-color           : $green; 
+$theme-color-default   : $green;
+
+//Font
+$font-family:			 			 "Lato" !default;
+$font-family-secondary :             "Oswald" !default;
+$font-family-tertiary  :             "Lato" !default;
+$font-family-senary    : 		 	 "Oswald" !default;
+$font-family-septenary : 			 "Oswald" !default; 
+$font-weight-base	   : 			 400;
+//topbar
+$topbar-font-weight : 400;
+ $topbar-font-size: 12px;
+//Block   
+$block-module-heading-line-height:      normal !default;
+$block-module-heading-font-size:	$font-size-base !default;
+
+//Product
+$product-name-font-size: 			$font-size-base - 1 !default;
+
+//Mega menu
+$megamenu-font-weight: 				400;

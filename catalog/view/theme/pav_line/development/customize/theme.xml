@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<footer>
+		 <title>Footer Block</title>
+		 <description></description>
+ 
+	 	 <module>
+	 	 	<title>Paypal</title>
+	 	 	<field>
+	 	 		<name>widget_paypal</name>
+	 	 		<label>Paypal</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default> <![CDATA[ <img alt="img" src="image/catalog/paypal.png" /> ]]> </default>
+	 		</field>
+	 	 </module>	
+	 	 <module>
+	 	 	<title>Paypal</title>
+	 	 	<field>
+	 	 		<name>widget_aboutus</name>
+	 	 		<label>Aboutus</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default> <![CDATA[ 
+	 	 			<div class="footer-intro">
+		 	 			<div class="img-logo"><img alt="Lexus" height="auto" src="image/catalog/logo.png" title="Lexus" width="85px"></div>
+						<div class="address">
+							<h4>ADDRESS</h4>
+							<p>No 1104 Super Sky Tower, Los Angeles, USA</p>
+						</div>
+						<ul>
+							<li class="phone"><span class="fa fa-phone">&nbsp;</span><span>Phone: +01 888 (000) 1234</span></li>
+							<li class="email"><span class="fa fa-envelope">&nbsp;</span><span>Email: demo@gmail.com</span></li>
+							<li class="social">
+								<a data-original-title="Google-plus" data-placement="top" data-toggle="tooltip" href="#" title=""><i class="fa fa-google-plus"></i> </a>
+								<a data-original-title="Facebook" data-placement="top" data-toggle="tooltip" href="#" title=""> <i class="fa fa-facebook"></i> </a>
+								<a data-original-title="Twitter" data-placement="top" data-toggle="tooltip" href="#" title=""> <i class="fa fa-twitter"></i> </a>
+								<a data-original-title="Rss" data-placement="top" data-toggle="tooltip" href="#" title=""> <i class="fa fa-rss"></i> </a>
+								<a data-original-title="Pinterest" data-placement="top" data-toggle="tooltip" href="#" title=""> <i class="fa fa-pinterest"></i> </a>
+						  	</li>  
+						</ul>
+					</div>
+	 	 		]]> </default>
+	 		</field>
+	 	 </module>
+	</footer>	
+	
+</theme>
+

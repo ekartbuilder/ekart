@@ -1,0 +1,92 @@
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+
+.canvas-menu {
+	color: #fff;
+  background: transparent;
+	border: none;
+	font-size: 15px;
+	padding: 8px;
+  position: relative;
+  &:hover,&:active, &:focus {
+    color: $theme-color;
+    background: transparent;
+  }
+}
+@media screen and (max-width: $screen-md) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+/*offcanvas-menu*/
+#offcanvasmenu {
+  .navbar-nav {
+    float: none;
+    > li {
+      float: none;
+      >a {
+        font-size: 15px;
+      }
+    }
+  }
+  .dropdown-menu {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    float: none;
+    margin: 0;
+    padding: 0 20px;
+    position: static;
+    visibility: visible;
+    width: auto!important;
+    @include opacity (1);
+    a {
+      font-size: 13px;
+      padding: 5px 0;
+      display: block;
+    }
+  }
+  .product-block .image {
+    float: none;
+  }
+}

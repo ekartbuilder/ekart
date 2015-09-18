@@ -1,0 +1,31 @@
+@import "vars/bootstrap";
+@import "vars/opencart";
+@import "mixins/bootstrap";
+@import "mixins/app";
+ 
+ .pav-newsletter {
+ 	.valid{
+	 	position: absolute;
+	 	top: 100%;
+	 	width: 100%;
+	 	z-index: 999;
+ 	}
+ 	.description{ 
+ 		padding: 10px 0 20px;
+ 	}
+ 	.input-group{
+ 		width: 100%;
+ 	}
+ 	.form-control {
+ 		width: 100%;
+ 		background: $black;
+ 		border-color: $black;
+ 	}
+ 	.btn-submit{
+ 		margin-top: 10px;
+ 		width: 100%;
+ 		button{
+ 			width: 100%;
+ 		}
+ 	}
+ }

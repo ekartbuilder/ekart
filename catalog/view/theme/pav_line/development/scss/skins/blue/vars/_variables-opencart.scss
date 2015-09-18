@@ -1,0 +1,34 @@
+// Iconography
+// -------------------------
+$icon-font-path:          "../../fonts/";
+$theme-font-path:          "../../fonts/";
+// Image
+// -------------------------
+$image-theme-base-path:  '../../image/blue/'!default;
+$image-theme-path:'../../image/';
+
+$blue:                 #6697D2;
+
+$theme-color           : $blue; 
+$theme-color-default   : $blue;
+
+//Font
+$font-family:			 			 'Raleway', sans-serif !default;
+$font-family-secondary :             'Roboto Slab', serif !default;
+$font-family-tertiary  :             'Raleway', sans-serif !default;
+$font-family-senary    : 		 	 'Roboto Slab', serif !default;
+$font-family-septenary : 			 'Roboto Slab', serif !default; 
+$font-weight-base	   : 			 400;
+//topbar
+$topbar-font-weight : 400;
+$topbar-font-size: 12px;
+//Block   
+$block-module-heading-line-height:      normal !default;
+$block-module-heading-font-size:	$font-size-base + 1 !default;
+
+//Product
+$product-name-font-size: 			$font-size-base !default;
+$product-price-font-size:			$font-size-base + 1;
+//Mega menu
+$megamenu-font-weight: 				700;
+$megamenu-link-font-size: 			12px;

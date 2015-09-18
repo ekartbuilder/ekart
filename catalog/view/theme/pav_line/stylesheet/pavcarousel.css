@@ -1,0 +1,62 @@
+/**
+ * Web Application Prefix Apply For Making Owner Styles
+ */
+/**
+ *   Blocks Layout Selectors 
+ */
+/**
+ * Product Item Selectors
+ */
+/***********************************************************************/
+/*  
+ * LAYOUT VARIABLES 
+ */
+/**
+* Transition-timing-function property@mixin 
+*/
+/* TEXT SHADOW */
+/*background RGBA
+============================================*/
+/****/
+/* RIGHT TO LEFT */
+.pavcarousel {
+  position: relative;
+}
+.pavcarousel .item {
+  padding-top: 15px;
+}
+.pavcarousel .item-inner {
+  text-align: center;
+  border: 1px solid transparent;
+}
+.pavcarousel .item-inner:hover {
+  border: 1px solid #ccc;
+}
+.pavcarousel .carousel-controls {
+  top: 50%;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  margin-top: -5px;
+  display: none;
+}
+.pavcarousel .carousel-controls .carousel-control {
+  left: auto;
+  bottom: auto;
+  z-index: 10;
+  background: #fff;
+  color: #DADADA;
+  border: 1px solid #DADADA;
+  text-shadow: none;
+  width: 30px;
+  height: 30px;
+}
+.pavcarousel .carousel-controls .carousel-control.left {
+  left: 30px;
+}
+.pavcarousel .carousel-controls .carousel-control.right {
+  right: 30px;
+}
+.pavcarousel:hover .carousel-controls {
+  display: block;
+}
