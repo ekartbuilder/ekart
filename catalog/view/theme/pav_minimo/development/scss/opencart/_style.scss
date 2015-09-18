@@ -1,0 +1,65 @@
+@media (min-width: $screen-md) {
+	.same-height-column {
+		.row.inner {
+			display: table;
+			width: 100%;
+			> [class*="col-"] {
+				float: none;
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+.col-nopadding{
+	.row{
+		margin-left: 0;
+		margin-right: 0;
+		[class*="col-"]{
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+.comment-warning {
+	color: red;
+}
+.list-arrow {
+	> li > a{
+		padding: 0 20px!important;
+	}
+}
+//wiget social
+.social {
+	
+}
+//wiget about
+.about {
+	span {
+		color: $theme-color-tertiary;
+	}
+	.fa {
+		margin: 0 5px;
+	}
+}
+
+/* back top top */
+.scrollup {
+    background: $theme-color;
+    bottom: 82px;
+    display: none;
+    position: fixed;
+    @include rtl-right(10px);
+    @include rounded-corners(100%);   
+    @include size(40px,40px);
+	text-align: center;
+	font-size: 13px;
+	color: #fff!important;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: $font-family-secondary;
+	padding: 2px;
+	z-index: 9999;
+	.fa { display: block;}
+}

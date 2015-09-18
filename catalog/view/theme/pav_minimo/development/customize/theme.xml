@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<header>
+		<title>Topbar Block</title>
+		<description></description>
+		<module>
+	 	 	<title>About</title>
+	 	 	<field>
+	 	 		<name>widget_about</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="about pull-right">
+		 	 			<span><i class="fa fa-envelope"></i>Email: </span>info@minimo.com
+		 	 			<span><i class="fa fa-phone"></i>Phone: </span>0123 456 789
+		 	 		</div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+	</header>
+	<footer>
+		<title>Footer Bottom Block</title>
+		<description></description>
+	 	<module>
+	 	 	<title>Logo</title>
+	 	 	<field>
+	 	 		<name>widget_logo</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<img alt="logo" src="image/catalog/logo-footer.png">
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+	 	<module>
+	 	 	<title>Address</title>
+	 	 	<field>
+	 	 		<name>widget_address</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="panel">
+			            <div class="panel-heading"><h6 class="panel-title font-size-10">Address</h6></div>
+			            <div class="panel-body">
+				            <p>PO Box 16122 Collins Street West</p>
+							<p>Victoria 8007 Australia</p>
+			            </div>
+		          	</div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+	 	<module>
+	 	 	<title>Contact</title>
+	 	 	<field>
+	 	 		<name>widget_contact</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="panel">
+			            <div class="panel-heading"><h6 class="panel-title font-size-10">Phone / Name</h6></div>
+			            <div class="panel-body">
+				            <p>+844 123 456 78 / +844 123 456 79</p>
+							<p>contac@yourcompany.com</p>
+			            </div>
+		          	</div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+	 	<module>
+	 	 	<title>Social</title>
+	 	 	<field>
+	 	 		<name>widget_social</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="social">
+			            <h6 class="font-size-10 letter-spacing-2"><a class="text-white" href="#">facebook</a></h6>
+						<h6 class="font-size-10 letter-spacing-2"><a class="text-white" href="#">twitter</a></h6>
+						<h6 class="font-size-10 letter-spacing-2"><a class="text-white" href="#">google +</a></h6>
+		            </div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>	
+	</footer>	
+</theme>

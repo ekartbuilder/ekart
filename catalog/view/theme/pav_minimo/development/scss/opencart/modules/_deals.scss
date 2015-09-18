@@ -1,0 +1,85 @@
+.productdeals {
+	.product-block {
+		.action {
+		    width: 46%;
+		    position: static;
+		    display: none;
+		    background: transparent;
+		    border: none;
+		    padding: 0;
+		}
+		&:hover {
+			.footer-deals {				
+				padding: 10px 0;
+				> div {
+				    @include rtl-float-left();
+				}
+			}
+			.action {
+				display: block;
+			}			
+			.item-countdown {
+			    width: 54%;
+			    ul,li {
+			    	border: none;
+			    }
+			    li {
+			    	padding: 10px 0;
+			    }
+			    .countdown_num {
+				    font-size: 12px;
+				}
+			}			
+		}
+	}
+	.image {
+		a {
+			display: inline-block;
+			position: relative;
+		}
+	}
+	.price {
+		font-size: 24px;
+	}
+	.rating {
+		margin-top: 15px;
+	}
+	.header-deals {
+		text-align: center;
+		width: 70%;
+		margin: 0 auto;
+	}
+	.footer-deals {
+		margin-top: 20px;
+		height: 65px;
+		border-top: 1px solid $border-color;
+		border-bottom: 1px solid $border-color;
+	}
+	.item-countdown {
+		.countdown_num {
+			font-size: 18px;
+			font-weight: 700;
+			color: #000;
+			display: inline-block;
+		}
+		ul {
+			
+			margin: 0;
+		}
+		li {
+			text-transform: uppercase;
+			color: $theme-color-tertiary;
+			font-family: $font-family-secondary;
+			letter-spacing: 2px;
+			border-right: 1px solid $border-color;
+			padding: 15px 0;
+			width: 25%;
+			text-align: center;
+			font-weight: 700;
+			font-size: 12px;
+			&:last-child {
+				border: none;
+			}
+		}
+	}
+}

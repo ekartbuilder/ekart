@@ -1,0 +1,118 @@
+.latest_blog {
+	.latest-posts-body {
+		&:hover {
+			.latest-posts-image a {
+				/* outline: 1px solid #fff;
+				outline-offset: -30px; */
+				.fa {
+					visibility: visible;
+					@include opacity(1);
+				}
+				img {
+					@include opacity(0.7);
+					-webkit-transform: translate3d(0,0,0);
+					transform: translate3d(0,0,0);
+				}
+				.overflow{
+					@include opacity(1);
+					-webkit-transform: translate3d(0,0,0);
+					transform: translate3d(0,0,0);					
+				}
+			}
+		}
+	}
+	.latest-posts-image a {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		//@include transition (all 0.4s ease 0s);
+		.fa {
+			font-size: 25px;
+		    color: #fff;			    
+		    margin: 0 auto;
+		    position: absolute;
+		    top: 50%;
+		    visibility: hidden;
+		    @include rtl-left(50%);
+		    @include opacity(0);
+		}
+		img {
+			width: -webkit-calc(350px + 60px);
+			width: -moz-calc(350px + 60px);
+			width: calc(350px + 60px);
+			-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+			transition: opacity 0.35s, transform 0.35s;
+			-webkit-transform: translate3d(-1px,0,0);
+			transform: translate3d(-1px,0,0);
+			//@include opacity(0.8);
+		}
+		.overflow {
+			position: absolute;
+			top: 30px;
+			right: 30px;
+			bottom: 30px;
+			left: 30px;
+			border: 1px solid #fff;
+			content: '';
+			@include opacity(0);
+			-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+			transition: opacity 0.35s, transform 0.35s;
+			-webkit-transform: translate3d(-20px,0,0);
+			transform: translate3d(-20px,0,0);
+		}		
+	}
+	&.blog-v2 {
+		@media (min-width: $screen-sm-max) {
+			.left {
+				.latest-posts-image {
+					@include rtl-float-left();
+					width: 50%;
+				}
+			}
+			.right {
+				.latest-posts-image {
+					@include rtl-float-right();
+					width: 50%;
+				}
+			}		
+			.panel-body {
+				padding: 0;
+			}
+			.latest-posts-body {
+				position: relative;
+				overflow: hidden;
+				&:before {
+					position: absolute;
+					content: "";
+					background: $theme-color;
+					left: 0;
+					right: 0;
+					z-index: 10;
+					margin: 0 auto;
+					top: 50%;
+					@include size(30px,2px);
+				}
+			}
+			.latest-posts-meta {
+			    overflow: hidden;
+			    width: 50%;
+			    position: relative;
+			    display: table;
+			    height: 340px;
+			    .posts-meta {
+			    	position: relative;
+			    	display: table-cell;
+			    	vertical-align: middle;
+			    }
+			}
+			.description {
+				margin: 30px 0!important; 
+			}
+		}
+	}
+}
+.pav-blogs {
+	.blog-meta {
+		font-size: 12px;
+	}
+}

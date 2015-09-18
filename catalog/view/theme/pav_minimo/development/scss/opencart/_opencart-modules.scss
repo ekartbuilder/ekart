@@ -1,0 +1,76 @@
+// owl-carousel default opencart
+body .owl-carousel {
+    box-shadow: none;
+    background: transparent;
+    @include rounded-corners(0);
+    border: none;
+}
+
+
+
+
+// Module fitter
+.filter {
+    .filter-title {
+        color: #000;
+        font-weight: bold;
+    }
+    .filter-content {
+        padding-left: 30px;
+        padding-right: 30px;
+        label {
+            font-weight: 300;
+        }
+    }
+
+    .radio, .checkbox {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+.cart {
+    .dropdown-menu {
+        padding: 20px;
+        min-width: 400px;
+    }
+}
+.paging {
+    text-align: center;
+}
+// module cart
+#cart {
+    .icon-cart {
+        background: url("#{$image-theme-path-base}cart-dark.png") no-repeat right bottom;
+        @include size(35px,15px);
+        display: inline-block;
+    }
+    .text-cart {
+        font-size: $cart-font-size;
+        text-transform: uppercase;
+        font-family: $font-family-secondary;
+        font-weight: $cart-font-weight;
+        color: $cart-color;
+        margin: 0 10px;
+    }
+    .cart-total {
+        background: $theme-color;
+        display: inline-block;
+        font-size: $cart-number-product-font-size;
+        font-family: $font-family-secondary;
+        font-weight: $cart-font-weight;
+        line-height: $cart-number-product-height;
+        position: relative;
+        text-align: center;
+        color: #fff;
+        @include size($cart-number-product-width, $cart-number-product-height);
+        &:after {
+            border-bottom: 4px solid transparent;
+            @include rtl-border-right(4px solid $theme-color);
+            border-top: 4px solid transparent;
+            content: "";            
+            position: absolute;
+            top: 5px;
+            @include rtl-left(-4px);
+        }
+    }
+}

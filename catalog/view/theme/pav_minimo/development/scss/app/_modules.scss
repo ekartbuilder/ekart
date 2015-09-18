@@ -1,0 +1,140 @@
+// banner builder
+.banner-wrapper-margin {
+    .banner-wrapper {
+        margin-bottom: 20px;
+    }
+}
+.image-item-margin {
+    .image-item {
+        margin-bottom: 20px;
+    }
+}
+.nomargin .box {
+    margin-bottom: 0;
+}
+
+
+
+.featured-v1 {
+    padding: 50px 0;
+    ul li {
+        @include rtl-float-left();
+        width: 16.6667%;
+        cursor: pointer;
+        @include transition(all 0.4s ease 0s);
+        .caption {
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            @include rtl-border-right(1px solid $border-color);            
+        }
+        &:last-child {
+            .caption {
+                @include rtl-border-right(none);
+            }
+        }
+        &:hover {            
+            img {
+                @extend .grayscale-color;
+            }
+        }
+    }
+    img {
+        @extend .grayscale-gray;        
+    }    
+}
+.featured-v2 {
+    ul li {
+        @include rtl-float-left();
+        width: 33.3333%;
+        padding: 0 8px 18px;
+        img {
+            width: 60%;
+            @include rtl-float-left();
+            @include rtl-padding-right(20px);
+            @extend .grayscale-gray;
+        } 
+        &:hover {            
+            img {
+                @extend .grayscale-color;
+            }
+        }
+    }
+    .caption {
+        margin: 25px 0;
+        h6 {
+            margin-bottom: 0;
+        }
+    }
+}
+/*pav-infobox*/
+.pav-infobox {
+    .t-body {
+        padding: 50px!important;
+    }
+    .description {
+        padding: 40px 0;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 1px solid $border-color;
+    }
+    .htabs{
+        background: #e5e5e5;
+        color: #666;
+    }
+    .t-avatar {
+        img {
+            background: #dbdbdb;
+        }
+    }
+    .nav > li {
+        &.active {
+            position: relative;
+            &:before {
+                position: absolute;
+                content: "";
+                background: $theme-color;                
+                top: 50%;
+                @include rtl-left(-15px);
+                @include size(30px,2px);
+            }
+            .t-avatar {
+                img {
+                    background: #fff;
+                }
+            }
+        }
+        > a {
+            padding: 20px 0;
+            color: #666;
+            &:hover, &:focus {
+                color: #666;
+            }
+        }
+    }
+}
+/*pavproducts*/
+.pavproducts {
+    .carousel-controls {
+      top: -88px;
+    }
+    .tab-content {
+        padding-top: 0;
+    }
+}
+/*introduce*/
+.introduce {
+    .media-introduce {
+        height: 425px;
+    }
+    .content-introduce {
+        height: 425px;
+        position: relative;
+        display: table;
+    }
+    .content {
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
