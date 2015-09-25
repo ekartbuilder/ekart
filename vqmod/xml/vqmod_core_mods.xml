@@ -40,6 +40,9 @@
                 	$this->document->addStyle('view/javascript/toggles/toggles.css');
 					$this->document->addScript('view/javascript/nanobar/nanobar.min.js');
 					$this->document->addScript('view/javascript/toggles/toggles.min.js');
+					
+					$this->document->addStyle('view/javascript/combo-select/combo.select.css');
+					$this->document->addScript('view/javascript/combo-select/jquery.combo.select.js');
                 ]]>
             </add>
         </operation>
