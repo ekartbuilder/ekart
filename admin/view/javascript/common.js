@@ -82,6 +82,9 @@ $(document).ready(function() {
 	  }
 	});
 
+	// Make Select Searchable
+	$('select:not(".select-normal")').comboSelect();
+
 	$(document).ajaxStart(function(){  
 		$("#loader").show();
 	});
