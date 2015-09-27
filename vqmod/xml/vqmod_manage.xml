@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>Core Modifications</name>
+    <version>1.0</version>
+    <author>Sunil Kumar</author>
+    <id>sunilkumar_core-mods_ocmod</id>
+    <file name="admin/model/manage/sites.php">
+        <operation error="skip">
+            <search position="replace" index="1,2,3,4,5,6,7,8,9">
+                <![CDATA[`" . DB_PREFIX . "site_master`]]>
+            </search>
+            <add>
+                <![CDATA[ekart_master.site_master]]>
+            </add>
+        </operation>
+    </file>
+	<file name="admin/model/manage/apps.php">
+        <operation error="skip">
+            <search position="replace" index="1,2,3,4,5,6,7,8,9">
+                <![CDATA[`" . DB_PREFIX . "app_store`]]>
+            </search>
+            <add>
+                <![CDATA[ekart_master.app_store]]>
+            </add>
+        </operation>
+    </file>
+	<file name="admin/model/manage/plans.php">
+        <operation error="skip">
+            <search position="replace" index="1,2,3,4,5,6,7,8,9">
+                <![CDATA[`" . DB_PREFIX . "plan_master`]]>
+            </search>
+            <add>
+                <![CDATA[ekart_master.plan_master]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/themes.php">
+        <operation error="skip">
+            <search position="replace" index="1,2,3,4,5,6,7,8,9">
+                <![CDATA[`" . DB_PREFIX . "theme_master`]]>
+            </search>
+            <add>
+                <![CDATA[ekart_master.theme_master]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/owners.php">
+        <operation error="skip">
+            <search position="replace" index="1,2,3,4,5,6,7,8,9">
+                <![CDATA[`" . DB_PREFIX . "site_owners`]]>
+            </search>
+            <add>
+                <![CDATA[ekart_master.site_owners]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/view/template/common/menu.tpl">
+        <operation error="skip">
+            <search position="before">
+                <![CDATA[<li id="tools">]]>
+            </search>
+            <add>
+                <![CDATA[
+                <li id="manage"><a class="parent"><i class="fa fa-cog fa-fw"></i> <span>Manage</span></a>
+				    <ul>
+				      <li><a href="{{ link('manage/sites', '', 'SSL') }}">Sites</a></li>
+				      <li><a href="{{ link('manage/owners', '', 'SSL') }}">Owners</a></li>				      
+				      <li><a href="{{ link('manage/apps', '', 'SSL') }}">Apps</a></li>
+				      <li><a href="{{ link('manage/plans', '', 'SSL') }}">Plans</a></li>
+				      <li><a href="{{ link('manage/themes', '', 'SSL') }}">Themes</a></li>
+				    </ul>
+				</li>
+  			]]>
+            </add>
+        </operation>
+    </file>
+</modification>
