@@ -60,7 +60,7 @@ class ControllerErrorPermission extends Controller {
 				'dashboard/recent'
 			);
 
-			if (!in_array($route, $ignore) && !$this->user->hasPermission('access', $route)) {
+			if (!in_array($route, $ignore) && 0) { // && !$this->user->hasPermission('access', $route)
 				return new Action('error/permission');
 			}
 		}
