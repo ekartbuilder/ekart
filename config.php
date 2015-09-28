@@ -25,6 +25,10 @@ define('CACHE_PORT', '6379');
 define('CACHE_EXPIRE', '3600');
 define('CACHE_PREFIX', 'testing');
 
+define('PAGECACHE_DEF_LANG', 'en');
+define('PAGECACHE_DEF_CUR', 'inr');
+define('PAGECACHE_DEF_DEVICE', 'W');
+
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');

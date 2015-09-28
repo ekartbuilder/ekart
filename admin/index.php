@@ -9,6 +9,29 @@ if ($_SERVER['SERVER_NAME'] == "localhost") {
 	require_once('config.php');
 }
 
+// Autoloader
+function autoload($class) {
+	$file = DIR_SYSTEM . 'library/' . str_replace('\\', '/', strtolower($class)) . '.php';
+	
+	if (is_file($file)) {
+		include_once($file);
+		return true;
+	}
+	
+	return false;
+}
+
+spl_autoload_register('autoload');
+spl_autoload_extensions('.php');
+
+// Get the device name
+if(empty($_COOKIE['device']) || !is_string($_COOKIE['device'])) {
+	$detect = new Mobile_Detect;
+	$device = ($detect->isMobile() ? ($detect->isTablet() ? 'T' : 'M') : 'W');
+	setcookie('device', $device, time() + 60 * 60 * 24 * 30, '/', $_SERVER['HTTP_HOST']);	
+}
+
+
 // VirtualQMOD
 require_once('../vqmod/vqmod.php');
 VQMod::bootup();
@@ -100,6 +123,7 @@ $response->addHeader('Content-Type: text/html; charset=utf-8');
 $registry->set('response', $response);
 
 // Cache
+global $cache;
 $cache = new Cache(CACHE_DRIVER);
 $registry->set('cache', $cache);
 

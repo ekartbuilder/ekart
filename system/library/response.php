@@ -18,6 +18,17 @@ class Response {
 	}
 
 	public function setOutput($output) {
+			
+		if (defined('PAGECACHE_FILENAME')) {
+        	global $cache;
+        	
+        	$cache->timer['stop'] = microtime(true); 
+			$time_spend = $cache->timer['stop'] - $cache->timer['start'];
+			$output .= "\n<!-- WITHOUT CACHE: $time_spend -->";
+			
+        	$cache->set(PAGECACHE_FILENAME, $output);
+        }
+		
 		$this->output = $output;
 	}
 

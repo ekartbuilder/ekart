@@ -5,3 +5,5 @@ vqmod/vqcache
 vqmod/logs
 vqmod/mods.cache
 tmp
+.settings
+.project
