@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>Pagecache</name>
+    <version>1.0</version>
+    <author>Sunil Kumar</author>
+    <id>sunilkumar_pagecache</id>
+    <file name="catalog/controller/checkout/cart.php">
+        <operation>
+            <search position="after">
+                <![CDATA[if (!$json) {]]>
+            </search>
+            <add>
+                <![CDATA[
+                if($this->request->cookie['pagecache'] == 1) {
+                	setcookie('pagecache', 0, time() + 60 * 60 * 24 * 30, '/', $_SERVER['HTTP_HOST']);
+                }
+                ]]>
+            </add>
+        </operation>
+        <operation>
+            <search position="before">
+                <![CDATA[$json['total'] =]]>
+            </search>
+            <add>
+                <![CDATA[
+                if($this->cart->countProducts() == 0) {
+                	setcookie('pagecache', 1, time() + 60 * 60 * 24 * 30, '/', $_SERVER['HTTP_HOST']);
+                }
+                ]]>
+            </add>
+        </operation>
+    </file>
+</modification>
