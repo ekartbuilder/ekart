@@ -29,11 +29,12 @@
 	     
 <div class="form-group">
 				<label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
-				<div class="col-sm-10"><input type="text" name="image" placeholder="<?php echo $entry_image; ?>" id="input-image"  value="<?php echo $image; ?>" class="form-control" />
+				<div class="col-sm-10"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title=""  /></a>
+     <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
 				<?php if ($error_image) { ?>
-				<div class="text-danger"><?php echo $error_image; ?></div>
+				<span class="error"><?php echo $error_image; ?></span>
 				<?php } ?></div>
-			 </div>
+			  </div>
 
 <div class="form-group required">
 				<label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
@@ -87,20 +88,11 @@
 
 <div class="form-group required">
 				<label class="col-sm-2 control-label" for="input-route"><?php echo $entry_route; ?></label>
-			    <div class="col-sm-10"><select name="route" class="form-control"  id="input-route">
-				<option value=""></option>
-				<?php foreach ($routes as $each_route) { ?>
-				<?php if ($each_route['route_id'] == $route) { ?>
-					<option value="<?php echo $each_route['route_id']; ?>" selected="selected"><?php echo $each_route['name']; ?></option>
-				<?php } else { ?>
-					<option value="<?php echo $each_route['route_id']; ?>"><?php echo $each_route['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select>
+				<div class="col-sm-10"><input type="text" name="auto_route" placeholder="<?php echo $entry_route; ?>" id="input-route"  value="<?php echo $auto_route; ?>" class="form-control" />
 				<?php if ($error_route) { ?>
 				<div class="text-danger"><?php echo $error_route; ?></div>
 				<?php } ?></div>
-				</div>
+			 </div>
 
 <div class="form-group">
 				<label class="col-sm-2 control-label" for="input-link"><?php echo $entry_link; ?></label>
@@ -148,6 +140,28 @@
 
 <script type="text/javascript"><!--
 		$('#editor_description').summernote({height: 300});
+//--></script>
+
+<script type="text/javascript"><!--
+		$('input[name=\'auto_route\']').autocomplete({
+	'source': function(request, response) {
+ $.ajax({
+ url: 'index.php?route=manage/apps/autocomplete&token=<?php echo $token; ?>&filter_route= ' +  encodeURIComponent(request),
+ dataType: 'json',
+success: function(json) {
+response($.map(json, function(item) {
+return {
+label: item['name'],
+value: item['manufacturer_id']
+}
+	}));
+}
+});
+},
+'select': function(item) {
+$('input[name=\'auto_route\']').val(item['label']);
+},
+});
 //--></script>
 
 <?php echo $footer; ?>

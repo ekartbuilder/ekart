@@ -1,8 +1,9 @@
 <?php
 class ModelManageSites extends Model {
+	
+	var $config_safe_delete = 0;
+	
 	public function addSites($data) {
-		$this->event->trigger('pre.admin.add.sites', $data);
-
       	$this->db->query("INSERT INTO `" . DB_PREFIX . "site_master` SET " .
       			
 				" owner_id = '" . $this->db->escape($data['owner_id']) .
@@ -18,17 +19,12 @@ class ModelManageSites extends Model {
 				"'");
 
       	$site_id = $this->db->getLastId();
-
-		$this->event->trigger('post.admin.add.sites',$site_id);
       	
       	return $site_id;
 	}
 	
 	public function editSites($site_id, $data) {
-		
-		 $this->event->trigger('pre.admin.edit.sites', $data);
-		 
-		 $this->db->query("UPDATE `" . DB_PREFIX . "site_master` SET " .
+		$this->db->query("UPDATE `" . DB_PREFIX . "site_master` SET " .
 				
 				" owner_id = '" . $this->db->escape($data['owner_id']) .
 				"', plan_id = '" . $this->db->escape($data['plan_id']) .
@@ -40,16 +36,13 @@ class ModelManageSites extends Model {
 				"', status = '" . $this->db->escape($data['status']) .
 				"', date_modified = '" . date("Y-m-d H:i:s") .				 
 				"' WHERE `site_id` = '" . (int)$site_id . "'");		
-				
-	     $this->event->trigger('post.admin.edit.sites', $site_id);
 	}
 	
 	public function deleteSites($site_id) {
-		
-		$this->event->trigger('pre.admin.delete.sites', $site_id);
-      	$this->db->query("DELETE FROM `" . DB_PREFIX . "site_master` WHERE `site_id` = '" . (int)$site_id . "'");
-		
-		$this->event->trigger('post.admin.delete.sites', $site_id);
+		if($this->config_safe_delete)
+			$this->db->query("UPDATE `" . DB_PREFIX . "site_master` SET  WHERE `site_id` = '" . (int)$site_id . "'");
+		else
+      		$this->db->query("DELETE FROM `" . DB_PREFIX . "site_master` WHERE `site_id` = '" . (int)$site_id . "'");
 	}
 	
 	public function getSites($site_id) {
@@ -60,7 +53,10 @@ class ModelManageSites extends Model {
 	}
 	
 	public function getSitess($data = array()) {
-		$sql = "SELECT `site_id`, `owner_id`,`plan_id`,`sub_domain`,`domain`,`site_type`,`live_date`,`active_status`,`date_added`,`status` FROM `" . DB_PREFIX . "site_master` WHERE 1=1 ";
+		if($this->config_safe_delete)
+			$sql = "SELECT `site_id`, `owner_id`,`plan_id`,`sub_domain`,`domain`,`site_type`,`live_date`,`active_status`,`date_added`,`status` FROM `" . DB_PREFIX . "site_master` WHERE 1=1  ";
+		else
+			$sql = "SELECT `site_id`, `owner_id`,`plan_id`,`sub_domain`,`domain`,`site_type`,`live_date`,`active_status`,`date_added`,`status` FROM `" . DB_PREFIX . "site_master` WHERE 1=1 ";
 		
 		
 		if (isset($data['filter_owner_id']) && !is_null($data['filter_owner_id'])) {
@@ -146,8 +142,11 @@ class ModelManageSites extends Model {
 		return $query->rows;
 	}
 	
-	public function getTotalSitess($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "site_master` WHERE 1=1 ";
+	public function getTotalSitess() {
+		if($this->config_safe_delete)
+			$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "site_master` WHERE 1=1  ";
+		else
+			$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "site_master` WHERE 1=1 ";
 		
 		
 		if (isset($data['filter_owner_id']) && !is_null($data['filter_owner_id'])) {

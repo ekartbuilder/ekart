@@ -222,51 +222,6 @@ class ModelManageApps extends Model {
 		return $categorys;
 	}
 
-	public function getRoutes($data = array()) {
-		$routes = array();
-
-//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "route_table`");
-//		
-//		if($query->num_rows) {
-//			foreach($query->rows as $each_row) {
-//				if (isset($data['display']) && !is_null($data['display'])) {
-//					$routes[$each_row['id']] = $each_row['title'];
-//				} else {
-//					$routes[] = array(
-//						'route_id' => $each_row['id'],
-//						'name' => $each_row['title'],
-//					);	
-//				}								
-//			}
-//		}
-
-		$routes[] = array(
-			'route_id' => '1',
-			'name' => 'Option 1',
-		);
-
-		$routes[] = array(
-			'route_id' => '2',
-			'name' => 'Option 2',
-		);
-
-		$routes[] = array(
-			'route_id' => '3',
-			'name' => 'Option 3',
-		);
-
-		if (isset($data['display']) && !is_null($data['display'])) {
-			$new_routes = array();
-			foreach($routes as $key => $value) {
-				$new_routes[$value['route_id']] = $value['name'];
-			}
-			$routes = $new_routes;
-		};
-
-
-		return $routes;
-	}
-
 	public function getTypes($data = array()) {
 		$types = array();
 

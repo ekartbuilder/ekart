@@ -172,15 +172,15 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $sites['site_id']; ?>" />
                 <?php } ?></td>
               
-			  <td class="text-left"><?php echo $sites['sub_domain']; ?></td>
-			  <td class="text-left"><?php echo $sites['plan_id']; ?></td>
-			  <td class="text-left"><?php echo $sites['owner_id']; ?></td>
-			  <td class="text-left"><?php echo $sites['domain']; ?></td>
-			  <td class="text-left"><?php echo $sites['site_type']; ?></td>
-			  <td class="text-left"><?php echo $sites['live_date']; ?></td>
-			  <td class="text-left"><?php echo $sites['active_status']; ?></td>
-			  <td class="text-left"><?php echo $sites['date_added']; ?></td>
-			  <td class="text-left"><?php echo $sites['status']; ?></td>
+	 <td class="text-left"><?php echo $sites['sub_domain']; ?></td>
+	 <td class="text-left"><?php echo $sites['plan_id']; ?></td>
+	 <td class="text-left"><?php echo $sites['owner_id']; ?></td>
+	 <td class="text-left"><?php echo $sites['domain']; ?></td>
+	 <td class="text-left"><?php echo $sites['site_type']; ?></td>
+	 <td class="text-left"><?php echo $sites['live_date']; ?></td>
+	 <td class="text-left"><?php echo $sites['active_status']; ?></td>
+	 <td class="text-left"><?php echo $sites['date_added']; ?></td>
+	 <td class="text-left"><?php echo $sites['status']; ?></td>
               <td class="text-right"><a href="<?php echo $sites['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <?php } ?>
@@ -261,6 +261,9 @@ function filter() {
 			filter();
 		}
 	});
+//--></script>
+
+<script type="text/javascript"><!--
 //--></script>
 
 <?php echo $footer; ?>
