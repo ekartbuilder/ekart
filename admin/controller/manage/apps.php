@@ -331,14 +331,12 @@ class ControllerManageApps extends Controller {
    		);
 		
 		
+		$data['entry_app_id'] = $this->language->get('entry_app_id');
 		$data['entry_name'] = $this->language->get('entry_name');
-		$data['entry_short_info'] = $this->language->get('entry_short_info');
-		$data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_category'] = $this->language->get('entry_category');
 		$data['entry_image'] = $this->language->get('entry_image');
-		$data['entry_route'] = $this->language->get('entry_route');
-		$data['entry_link'] = $this->language->get('entry_link');
 		$data['entry_type'] = $this->language->get('entry_type');
+		$data['entry_date_added'] = $this->language->get('entry_date_added');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['button_edit'] = $this->language->get('button_edit');	
 		$data['button_add'] = $this->language->get('button_add');			
@@ -365,7 +363,6 @@ class ControllerManageApps extends Controller {
 		
 		$display_data = array('display' => '1');
 		$display_categorys = $this->model_manage_apps->getCategorys($display_data);
-		$display_routes = $this->model_manage_apps->getRoutes($display_data);
 		$display_types = $this->model_manage_apps->getTypes($display_data);
 		$display_statuss = $this->model_manage_apps->getStatuss($display_data);
 		
@@ -397,7 +394,6 @@ class ControllerManageApps extends Controller {
 
 		
 		$data['text_category'] = $this->language->get('text_category');
-		$data['text_route'] = $this->language->get('text_route');
 		$data['text_type'] = $this->language->get('text_type');
 		$data['text_status'] = $this->language->get('text_status');
 		$data['column_app_id'] = $this->language->get('column_app_id');
@@ -549,7 +545,6 @@ class ControllerManageApps extends Controller {
 		
 		
 		$data['categorys'] = $this->model_manage_apps->getCategorys();
-		$data['routes'] = $this->model_manage_apps->getRoutes();
 		$data['types'] = $this->model_manage_apps->getTypes();
 		$data['statuss'] = $this->model_manage_apps->getStatuss();
 		
@@ -743,20 +738,21 @@ class ControllerManageApps extends Controller {
 			$data['category'] = '';
 		}
 
-		if (isset($this->request->post['image'])) {
-			$data['image'] = $this->request->post['image'];
-		} elseif (isset($apps_info)) {
-			$data['image'] = $apps_info['image'];
+$this->load->model('tool/image');	
+		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
+			$data['thumb']= $this->model_tool_image->resize($this->request->post['image'], 100, 100);
+		} elseif (!empty($apps_info) && is_file(DIR_IMAGE . $apps_info['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($apps_info['image'], 100, 100);
 		} else {
-			$data['image'] = '';
-		}
+			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+	}
 
-		if (isset($this->request->post['route'])) {
-			$data['route'] = $this->request->post['route'];
+		if (isset($this->request->post['auto_route'])) {
+			$data['auto_route']= $this->request->post['auto_route'];
 		} elseif (isset($apps_info)) {
-			$data['route'] = $apps_info['route'];
+			$data['auto_route'] = $apps_info['auto_route'];
 		} else {
-			$data['route'] = '';
+			$data['auto_route'] = '';
 		}
 
 		if (isset($this->request->post['link'])) {
@@ -784,8 +780,6 @@ class ControllerManageApps extends Controller {
 		}
 
 		$data['categorys'] = $this->model_manage_apps->getCategorys();
-
-		$data['routes'] = $this->model_manage_apps->getRoutes();
 
 		$data['types'] = $this->model_manage_apps->getTypes();
 
@@ -823,6 +817,36 @@ class ControllerManageApps extends Controller {
     	}
 	  	
 		return !$this->error;
-  	}		
+  	}
+
+
+public function autocomplete() {
+ $json = array();
+
+$this->load->model('catalog/manufacturer');	
+
+$filter_data = array(
+
+		'start'        => 0,
+		'limit'        => 5
+		);
+
+
+$results = $this->model_catalog_manufacturer->getManufacturers($filter_data);
+foreach ($results as $result) {
+$json[] = array(
+	'manufacturer_id' => $result['manufacturer_id'],
+	'name'            => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
+);
+}
+$sort_order = array();
+foreach ($json as $key => $value) {
+ $sort_order[$key] = $value['name'];
+}
+array_multisort($sort_order, SORT_ASC, $json);
+$this->response->addHeader('Content-Type: application/json');
+$this->response->setOutput(json_encode($json));
+ }
+	
 }
 ?>

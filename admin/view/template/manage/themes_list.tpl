@@ -126,12 +126,16 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $themes['theme_id']; ?>" />
                 <?php } ?></td>
               
-			  <td class="text-left"><?php echo $themes['theme_id']; ?></td>
-			  <td class="text-left"><?php echo $themes['image']; ?></td>
-			  <td class="text-left"><?php echo $themes['name']; ?></td>
-			  <td class="text-left"><?php echo $themes['category']; ?></td>
-			  <td class="text-left"><?php echo $themes['date_added']; ?></td>
-			  <td class="text-left"><?php echo $themes['status']; ?></td>
+	 <td class="text-left"><?php echo $themes['theme_id']; ?></td>
+<?php if($themes['image']) { ?>
+<td class="text-left"><img src="<?php echo $themes['image']; ?>"  class="img-thumbnail" />
+<?php } else { ?>
+<span class="img-thumbnail list"><i class="fa fa-camera fa-2x"></i></span>
+<?php } ?></td>
+	 <td class="text-left"><?php echo $themes['name']; ?></td>
+	 <td class="text-left"><?php echo $themes['category']; ?></td>
+	 <td class="text-left"><?php echo $themes['date_added']; ?></td>
+	 <td class="text-left"><?php echo $themes['status']; ?></td>
               <td class="text-right"><a href="<?php echo $themes['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <?php } ?>
@@ -197,6 +201,9 @@ function filter() {
 			filter();
 		}
 	});
+//--></script>
+
+<script type="text/javascript"><!--
 //--></script>
 
 <?php echo $footer; ?>

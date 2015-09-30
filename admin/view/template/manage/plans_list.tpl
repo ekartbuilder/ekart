@@ -101,10 +101,10 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $plans['plan_id']; ?>" />
                 <?php } ?></td>
               
-			  <td class="text-left"><?php echo $plans['plan_id']; ?></td>
-			  <td class="text-left"><?php echo $plans['name']; ?></td>
-			  <td class="text-left"><?php echo $plans['date_added']; ?></td>
-			  <td class="text-left"><?php echo $plans['status']; ?></td>
+	 <td class="text-left"><?php echo $plans['plan_id']; ?></td>
+	 <td class="text-left"><?php echo $plans['name']; ?></td>
+	 <td class="text-left"><?php echo $plans['date_added']; ?></td>
+	 <td class="text-left"><?php echo $plans['status']; ?></td>
               <td class="text-right"><a href="<?php echo $plans['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <?php } ?>
@@ -160,6 +160,9 @@ function filter() {
 			filter();
 		}
 	});
+//--></script>
+
+<script type="text/javascript"><!--
 //--></script>
 
 <?php echo $footer; ?>

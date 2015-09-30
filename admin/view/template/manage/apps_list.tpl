@@ -143,13 +143,17 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $apps['app_id']; ?>" />
                 <?php } ?></td>
               
-			  <td class="text-left"><?php echo $apps['app_id']; ?></td>
-			  <td class="text-left"><?php echo $apps['image']; ?></td>
-			  <td class="text-left"><?php echo $apps['name']; ?></td>
-			  <td class="text-left"><?php echo $apps['type']; ?></td>
-			  <td class="text-left"><?php echo $apps['category']; ?></td>
-			  <td class="text-left"><?php echo $apps['date_added']; ?></td>
-			  <td class="text-left"><?php echo $apps['status']; ?></td>
+	 <td class="text-left"><?php echo $apps['app_id']; ?></td>
+<?php if($apps['image']) { ?>
+<td class="text-left"><img src="<?php echo $apps['image']; ?>"  class="img-thumbnail" />
+<?php } else { ?>
+<span class="img-thumbnail list"><i class="fa fa-camera fa-2x"></i></span>
+<?php } ?></td>
+	 <td class="text-left"><?php echo $apps['name']; ?></td>
+	 <td class="text-left"><?php echo $apps['type']; ?></td>
+	 <td class="text-left"><?php echo $apps['category']; ?></td>
+	 <td class="text-left"><?php echo $apps['date_added']; ?></td>
+	 <td class="text-left"><?php echo $apps['status']; ?></td>
               <td class="text-right"><a href="<?php echo $apps['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <?php } ?>
@@ -220,6 +224,9 @@ function filter() {
 			filter();
 		}
 	});
+//--></script>
+
+<script type="text/javascript"><!--
 //--></script>
 
 <?php echo $footer; ?>

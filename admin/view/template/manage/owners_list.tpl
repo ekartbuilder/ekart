@@ -125,13 +125,13 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $owners['owner_id']; ?>" />
                 <?php } ?></td>
               
-			  <td class="text-left"><?php echo $owners['owner_id']; ?></td>
-			  <td class="text-left"><?php echo $owners['firstname']; ?></td>
-			  <td class="text-left"><?php echo $owners['lastname']; ?></td>
-			  <td class="text-left"><?php echo $owners['email']; ?></td>
-			  <td class="text-left"><?php echo $owners['mobile']; ?></td>
-			  <td class="text-left"><?php echo $owners['date_added']; ?></td>
-			  <td class="text-left"><?php echo $owners['status']; ?></td>
+	 <td class="text-left"><?php echo $owners['owner_id']; ?></td>
+	 <td class="text-left"><?php echo $owners['firstname']; ?></td>
+	 <td class="text-left"><?php echo $owners['lastname']; ?></td>
+	 <td class="text-left"><?php echo $owners['email']; ?></td>
+	 <td class="text-left"><?php echo $owners['mobile']; ?></td>
+	 <td class="text-left"><?php echo $owners['date_added']; ?></td>
+	 <td class="text-left"><?php echo $owners['status']; ?></td>
               <td class="text-right"><a href="<?php echo $owners['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <?php } ?>
@@ -202,6 +202,9 @@ function filter() {
 			filter();
 		}
 	});
+//--></script>
+
+<script type="text/javascript"><!--
 //--></script>
 
 <?php echo $footer; ?>
