@@ -51,7 +51,7 @@ var custom_filemanager = 1;
 
 $(document).ready(function() {
 	
-	var nanobar = new Nanobar({bg: '#373737'});
+	var nanobar = new Nanobar({bg: '#00A3D9'});
 	nanobar.go(10);
 	doProgress(nanobar);
 	
@@ -76,9 +76,9 @@ $(document).ready(function() {
 	$('.toggle').toggles();
 	$('.toggle').on('toggle', function (e, active) {
 	  if (active) {
-		$(this).next('select').val("1");
+		$(this).next('.combo-select').find('select').val("1");
 	  } else {
-		$(this).next('select').val("0");
+		$(this).next('.combo-select').find('select').val("0");
 	  }
 	});
 
