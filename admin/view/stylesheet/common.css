@@ -5,3 +5,13 @@ ul#language.nav-tabs {
 	display:none;
 	padding:6px;	
 }
+.has-error label {
+    color: #f56b6b !important;
+}
+.has-success label {
+    color: #8fbb6c;
+}
+
+.validation-icon-fix {
+    margin-top: 12px;
+}
