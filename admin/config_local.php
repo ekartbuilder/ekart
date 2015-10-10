@@ -28,6 +28,10 @@ define('CACHE_PORT', '6379');
 define('CACHE_EXPIRE', '3600');
 define('CACHE_PREFIX', 'testing');
 
+// TEMPLATE
+define('TWIG_PHP', true);
+//define('TWIG_CACHE', DIR_CACHE . 'twig');
+
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
