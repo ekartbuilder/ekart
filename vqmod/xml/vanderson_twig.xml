@@ -55,8 +55,12 @@
         $output = $this->registry->get('twig')->render($template, $data);
 
         // Second Step - IF template has PHP Syntax, then execute
-        eval(' ?>' . $output);
-
+        if(TWIG_PHP) {
+        	eval(' ?>' . $output);
+        } else {
+        	echo $output; 
+        }
+        
         $output = ob_get_contents();
 
         ob_end_clean();
