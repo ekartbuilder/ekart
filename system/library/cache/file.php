@@ -20,6 +20,10 @@ class File {
 			}
 		}
 	}
+	
+	public function getGlobal($key) {
+		return $this->get($key);
+	}
 
 	public function get($key) {
 		$files = glob(DIR_CACHE . 'cache.' . preg_replace('/[^A-Z0-9\._-]/i', '', $key) . '.*');
@@ -40,6 +44,10 @@ class File {
 
 		return false;
 	}
+	
+	public function setGlobal($key,$value,$expire) {
+		$this->set($key, $value);
+	}
 
 	public function set($key, $value) {
 		$this->delete($key);
@@ -57,6 +65,10 @@ class File {
 		flock($handle, LOCK_UN);
 
 		fclose($handle);
+	}
+	
+	public function deleteGlobal($key) {
+		$this->delete($key);
 	}
 
 	public function delete($key) {

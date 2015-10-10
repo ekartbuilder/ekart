@@ -62,12 +62,24 @@ class Cache {
 		}
 	}
 
+	public function getGlobal($key) {
+		return $this->cache->getGlobal($key);
+	}
+
 	public function get($key) {
 		return $this->cache->get($key);
+	}
+	
+	public function setGlobal($key, $value, $expire = 3600) {
+		return $this->cache->setGlobal($key, $value, $expire);
 	}
 
 	public function set($key, $value, $expire = 3600) {
 		return $this->cache->set($key, $value, $expire);
+	}
+	
+	public function deleteGlobal($key) {
+		return $this->cache->deleteGlobal($key);
 	}
 
 	public function delete($key) {
