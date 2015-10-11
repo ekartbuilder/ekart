@@ -94,6 +94,35 @@ class ControllerCommonLogin extends Controller {
 		$this->response->setOutput($this->load->view('common/login.tpl', $data));
 	}
 
+	public function save() {
+		$this->load->language('common/login');
+		
+		$json = array();
+		
+		if ($this->user->isLogged() && isset($this->request->get['token']) && ($this->request->get['token'] == $this->session->data['token'])) {
+			$json['redirect'] = str_replace('&amp;', '&', $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'));
+		}
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			$this->session->data['token'] = md5(mt_rand());
+
+			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], HTTP_SERVER) === 0 || strpos($this->request->post['redirect'], HTTPS_SERVER) === 0 )) {
+				$json['redirect'] = str_replace('&amp;', '&', $this->request->post['redirect'] . '&token=' . $this->session->data['token']);
+			} else {
+				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'));
+			}
+		}
+		
+		if (isset($this->error['warning'])) {
+			$json['error']['warning'] = $this->error['warning'];
+		} else {
+			$data['error_warning'] = '';
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
 	protected function validate() {
 		if (!isset($this->request->post['username']) || !isset($this->request->post['password']) || !$this->user->login($this->request->post['username'], $this->request->post['password'])) {
 			$this->error['warning'] = $this->language->get('error_login');
@@ -106,6 +135,7 @@ class ControllerCommonLogin extends Controller {
 		$route = isset($this->request->get['route']) ? $this->request->get['route'] : '';
 
 		$ignore = array(
+			'common/login/save',
 			'common/login',
 			'common/forgotten',
 			'common/reset'
@@ -118,6 +148,7 @@ class ControllerCommonLogin extends Controller {
 		if (isset($this->request->get['route'])) {
 			$ignore = array(
 				'common/login',
+				'common/login/save',
 				'common/logout',
 				'common/forgotten',
 				'common/reset',
