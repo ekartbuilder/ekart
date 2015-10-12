@@ -178,6 +178,9 @@ foreach ($query->rows as $result) {
 // Front Controller
 $controller = new Front($registry);
 
+// SEO URL's
+$controller->addPreAction(new Action('common/seo_url'));
+
 // Login
 $controller->addPreAction(new Action('common/login/check'));
 
