@@ -3,6 +3,7 @@
 $_['heading_title']       = 'Owners';
 
 // Text
+$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
 $_['text_success']        = 'Success: You have modified owners!';
 $_['text_list']        = ' Owners List';
 $_['text_form']        = ' Owners Form';

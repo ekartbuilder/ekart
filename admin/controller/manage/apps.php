@@ -356,8 +356,8 @@ class ControllerManageApps extends Controller {
 			'filter_status' => $filter_status,			
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'           => $this->config->get('config_limit_admin')
 		);
 		
 		
@@ -524,7 +524,7 @@ class ControllerManageApps extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $apps_total;
 		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_admin_limit');
+		$pagination->limit = $this->config->get('config_limit_admin');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('manage/apps', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
@@ -747,6 +747,14 @@ $this->load->model('tool/image');
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 	}
 
+		if (isset($this->request->post['image'])) {
+			$data['image']= $this->request->post['image'];
+		} elseif (!empty($apps_info)) {
+			$data['image'] = $apps_info['image'];
+		} else {
+			$data['image'] = '';
+		}
+
 		if (isset($this->request->post['auto_route'])) {
 			$data['auto_route']= $this->request->post['auto_route'];
 		} elseif (isset($apps_info)) {
@@ -807,6 +815,10 @@ $this->load->model('tool/image');
 			$this->error['route'] = $this->language->get('error_route');
 		}
 
+		
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
 		
     	return !$this->error;
   	}

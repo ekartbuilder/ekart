@@ -32,7 +32,43 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
-	
+	  <div class="well">
+          <div class="row">
+          					 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-image"><?php echo $entry_image; ?></label>
+<input type="text" id="input-image" name="filter_image" value="<?php echo $filter_image; ?>" size="12" class="form-control" /></div></div>
+				 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
+<input type="text" id="input-name" name="filter_name" value="<?php echo $filter_name; ?>" size="12" class="form-control" /></div></div>
+				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-category"><?php echo $entry_category; ?></label>
+<select name="filter_category" id = "input-category" class="form-control">
+				<option value="*"></option>
+				<?php foreach ($categorys as $each_category) { ?>
+				<?php if ($each_category['category_id'] == $filter_category) { ?>
+				<option value="<?php echo $each_category['category_id']; ?>" selected="selected"><?php echo $each_category['name']; ?></option>
+				<?php } else { ?>
+				<option value="<?php echo $each_category['category_id']; ?>"><?php echo $each_category['name']; ?></option>
+				<?php } ?>
+				<?php } ?>
+				</select></div></div>
+				<div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-date_added"><?php echo $entry_date_added; ?></label>
+<div class="input-group date">
+<input type="text" name="filter_date_added" id="input-date_added" value="<?php echo $filter_date_added; ?>" size="12" data-date-format="YYYY-MM-DD" class="form-control"/>
+<span class="input-group-btn">
+<button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+</span></div></div></div>
+				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
+<select name="filter_status" id = "input-status" class="form-control">
+				<option value="*"></option>
+				<?php foreach ($statuss as $each_status) { ?>
+				<?php if ($each_status['status_id'] == $filter_status) { ?>
+				<option value="<?php echo $each_status['status_id']; ?>" selected="selected"><?php echo $each_status['name']; ?></option>
+				<?php } else { ?>
+				<option value="<?php echo $each_status['status_id']; ?>"><?php echo $each_status['name']; ?></option>
+				<?php } ?>
+				<?php } ?>
+				</select></div></div>
+	<div class="col-sm-12"><div class="form-group"><a onclick="filter();" class="btn btn-primary pull-right"><i class="fa fa-search"></i><?php echo $button_filter; ?></a></div></div>
+ 
+        </div></div>
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
          <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -80,43 +116,7 @@
             </tr>
           </thead>
           <tbody>
-		  <div class="well">
-          <div class="row">
-          					 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-image"><?php echo $entry_image; ?></label>
-<input type="text" id="input-image" name="filter_image" value="<?php echo $filter_image; ?>" size="12" class="form-control" /></div></div>
-				 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-<input type="text" id="input-name" name="filter_name" value="<?php echo $filter_name; ?>" size="12" class="form-control" /></div></div>
-				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-category"><?php echo $entry_category; ?></label>
-<select name="filter_category" id = "input-category" class="form-control">
-				<option value="*"></option>
-				<?php foreach ($categorys as $each_category) { ?>
-				<?php if ($each_category['category_id'] == $filter_category) { ?>
-				<option value="<?php echo $each_category['category_id']; ?>" selected="selected"><?php echo $each_category['name']; ?></option>
-				<?php } else { ?>
-				<option value="<?php echo $each_category['category_id']; ?>"><?php echo $each_category['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select></div></div>
-				<div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-date_added"><?php echo $entry_date_added; ?></label>
-<div class="input-group date">
-<input type="text" name="filter_date_added" id="input-date_added" value="<?php echo $filter_date_added; ?>" size="12" data-date-format="YYYY-MM-DD" class="form-control"/>
-<span class="input-group-btn">
-<button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-</span></div></div></div>
-				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
-<select name="filter_status" id = "input-status" class="form-control">
-				<option value="*"></option>
-				<?php foreach ($statuss as $each_status) { ?>
-				<?php if ($each_status['status_id'] == $filter_status) { ?>
-				<option value="<?php echo $each_status['status_id']; ?>" selected="selected"><?php echo $each_status['name']; ?></option>
-				<?php } else { ?>
-				<option value="<?php echo $each_status['status_id']; ?>"><?php echo $each_status['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select></div></div>
-	<div class="col-sm-12"><div class="form-group"><a onclick="filter();" class="btn btn-primary pull-right"><i class="fa fa-search"></i><?php echo $button_filter; ?></a></div></div>
- 
-</div></div>			
+					
             <?php if ($themess) { ?>
             <?php foreach ($themess as $themes) { ?>
             <tr>
@@ -146,12 +146,14 @@
             <?php } ?>
           </tbody>
         </table>
+		
       </form>
+	   </div>
      <div class="row">
           <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
           <div class="col-sm-6 text-right"><?php echo $results; ?></div>
      </div>
-    </div>
+   
   </div>
 </div>
 </div>

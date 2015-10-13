@@ -3,6 +3,7 @@
 $_['heading_title']       = 'Plans';
 
 // Text
+$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
 $_['text_success']        = 'Success: You have modified plans!';
 $_['text_list']        = ' Plans List';
 $_['text_form']        = ' Plans Form';
@@ -83,7 +84,7 @@ $_['button_apply']                  = 'Apply';
 
 // Column
 
-$_['column_plan_id']	= 'Plan Id';
+$_['column_plan_id']	= 'Plan ID';
 $_['column_name']	= 'Name';
 $_['column_date_added']	= 'Date Added';
 $_['column_date_modified']	= 'Date Modified';
@@ -94,7 +95,7 @@ $_['column_action']       = 'Action';
 
 // Entry
 
-$_['entry_plan_id']	= 'Plan Id';
+$_['entry_plan_id']	= 'Plan ID';
 $_['entry_name']	= 'Name';
 $_['entry_date_added']	= 'Date Added';
 $_['entry_date_modified']	= 'Date Modified';
@@ -104,7 +105,7 @@ $_['entry_settings']	= 'Settings';
 // Error
 $_['error_permission']    = 'Warning: You do not have permission to modify plans!';
 
-$_['error_plan_id']	= 'Plan Id can\'t be empty!';
+$_['error_plan_id']	= 'Plan ID can\'t be empty!';
 $_['error_name']	= 'Name can\'t be empty!';
 $_['error_date_added']	= 'Date Added can\'t be empty!';
 $_['error_date_modified']	= 'Date Modified can\'t be empty!';

@@ -3,6 +3,7 @@
 $_['heading_title']       = 'Apps';
 
 // Text
+$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
 $_['text_success']        = 'Success: You have modified apps!';
 $_['text_list']        = ' Apps List';
 $_['text_form']        = ' Apps Form';

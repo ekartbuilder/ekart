@@ -414,8 +414,8 @@ class ControllerManageSites extends Controller {
 			'filter_status' => $filter_status,			
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'           => $this->config->get('config_limit_admin')
 		);
 		
 		
@@ -610,7 +610,7 @@ class ControllerManageSites extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $sites_total;
 		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_admin_limit');
+		$pagination->limit = $this->config->get('config_limit_admin');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('manage/sites', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
@@ -881,6 +881,10 @@ class ControllerManageSites extends Controller {
 			$this->error['sub_domain'] = $this->language->get('error_sub_domain');
 		}
 
+		
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
 		
     	return !$this->error;
   	}

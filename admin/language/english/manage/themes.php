@@ -3,6 +3,7 @@
 $_['heading_title']       = 'Themes';
 
 // Text
+$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
 $_['text_success']        = 'Success: You have modified themes!';
 $_['text_list']        = ' Themes List';
 $_['text_form']        = ' Themes Form';

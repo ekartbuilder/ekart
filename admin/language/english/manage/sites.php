@@ -3,6 +3,7 @@
 $_['heading_title']       = 'Sites';
 
 // Text
+$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
 $_['text_success']        = 'Success: You have modified sites!';
 $_['text_list']        = ' Sites List';
 $_['text_form']        = ' Sites Form';

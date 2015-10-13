@@ -356,8 +356,8 @@ class ControllerManageOwners extends Controller {
 			'filter_status' => $filter_status,			
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'           => $this->config->get('config_limit_admin')
 		);
 		
 		
@@ -520,7 +520,7 @@ class ControllerManageOwners extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $owners_total;
 		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_admin_limit');
+		$pagination->limit = $this->config->get('config_limit_admin');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('manage/owners', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
@@ -760,6 +760,10 @@ class ControllerManageOwners extends Controller {
 			$this->error['mobile'] = $this->language->get('error_mobile');
 		}
 
+		
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
 		
     	return !$this->error;
   	}
