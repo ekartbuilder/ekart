@@ -30,6 +30,20 @@ class ControllerCommonLogin extends Controller {
 		$data['entry_password'] = $this->language->get('entry_password');
 
 		$data['button_login'] = $this->language->get('button_login');
+		
+		if(isset($this->request->get['token'])) {
+			$this->load->model('manage/owners');
+			
+			$owner_id = base64_decode(urldecode($this->request->get['token']));
+			$owners_info = $this->model_manage_owners->getOwners($owner_id);
+			
+			if(count($owners_info) > 0) {
+				if ($this->user->loginByEmail($owners_info['email'])) {
+					$this->session->data['token'] = md5(mt_rand());
+					$this->response->redirect($this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'));
+				}
+			}
+		}
 
 		/*
 		if ((isset($this->session->data['token']) && !isset($this->request->get['token'])) || ((isset($this->request->get['token']) && (isset($this->session->data['token']) && ($this->request->get['token'] != $this->session->data['token']))))) {
@@ -156,11 +170,11 @@ class ControllerCommonLogin extends Controller {
 				'error/permission'
 			);
 
-			if (!in_array($route, $ignore) && (!isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token']))) {
+			if (!in_array($route, $ignore) && (!isset($this->session->data['token']))) {
 				return new Action('common/login');
 			}
 		} else {
-			if (!isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
+			if (!isset($this->session->data['token'])) {
 				return new Action('common/login');
 			}
 		}
