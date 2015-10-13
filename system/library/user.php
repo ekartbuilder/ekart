@@ -64,6 +64,22 @@ class User {
 		}
 	}
 
+	public function loginByEmail($email) {
+		$user_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE email = '" . $this->db->escape($email) . "' AND status = '1'");
+
+		if ($user_query->num_rows) {
+			$this->session->data['user_id'] = $user_query->row['user_id'];
+
+			$this->user_id = $user_query->row['user_id'];
+			$this->username = $user_query->row['username'];
+			$this->user_group_id = $user_query->row['user_group_id'];
+			
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function logout() {
 		unset($this->session->data['user_id']);
 
