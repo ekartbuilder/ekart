@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>Form Validations</name>
+    <version>1.0</version>
+    <author>Sunil Kumar</author>
+    <id>sunilkumar_form_validations</id>
+		<file name="admin/controller/common/login.php">
+	        <operation error="skip">
+	            <search position="after">
+	                <![CDATA[$this->load->language('common/login');]]>
+	            </search>
+	            <add>
+	                <![CDATA[
+						$this->document->addScript('view/javascript/validations/formValidation.min.js');
+						$this->document->addScript('view/javascript/validations/bootstrap.min.js');
+	                ]]>
+	            </add>
+	        </operation>
+	    </file>
+        <file name="admin/view/template/common/login.tpl">
+        <operation error="skip">
+            <search position="before">
+                <![CDATA[<?php echo $footer; ?>]]>
+            </search>
+            <add>
+                <![CDATA[
+					<script>
+					$(document).ready(function() {
+						$('#login_form').formValidation({
+							framework: 'bootstrap',
+							icon: {
+								valid: 'validation-icon-fix fa fa-check',
+								invalid: 'validation-icon-fix fa fa-times',
+								validating: 'validation-icon-fix fa fa-refresh'
+							},
+							err: {
+								container: ''
+							},
+							fields: {
+
+								username: {
+									validators: {
+										notEmpty: {
+											message: 'Usename cannot be empty'
+										}
+									}
+								},
+
+								password: {
+									validators: {
+										notEmpty: {
+											message: 'Password cannot be empty'
+										},
+										different: {
+											field: 'username',
+											message: 'The Password cannot be the same as Username'
+										}
+									}
+								}
+							}
+						}).on('success.form.fv', function(e, data) {
+							   
+							    e.preventDefault();
+							   
+							    $.ajax({
+							        url: 'index.php?route=common/login/save',
+							        type: 'post',
+							        data: $('#login_form :input'),
+							        dataType: 'json',
+							        beforeSend: function() {
+							        	$('.alert, .text-danger').remove();
+							            $('.form-group').removeClass('has-error');
+							        	$("#icon-submit").removeClass('fa-key').addClass('fa-circle-o-notch fa-spin');
+									},
+							        complete: function() {
+							            $("#icon-submit").removeClass('fa-circle-o-notch fa-spin').addClass('fa-key');
+							        },
+							        success: function(json) {
+							            $('.alert, .text-danger').remove();
+							            $('.form-group').removeClass('has-error');
+							
+							            if (json['redirect']) {
+							                location = json['redirect'];
+							            } else if (json['error']) {
+							                $('#login_form').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+							                
+											// Highlight any found errors
+											$('input[name=\'username\']').parent().parent('.form-group').removeClass('has-success').addClass('has-error');
+											$('input[name=\'password\']').parent().parent('.form-group').removeClass('has-success').addClass('has-error');
+									   }
+							        },
+							        error: function(xhr, ajaxOptions, thrownError) {
+							            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+							        }
+							    });
+						});
+					});
+					</script>
+                ]]>
+            </add>
+        </operation>
+    </file>
+</modification>

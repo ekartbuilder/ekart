@@ -327,8 +327,8 @@ class ControllerManageThemes extends Controller {
 			'filter_status' => $filter_status,			
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'           => $this->config->get('config_limit_admin')
 		);
 		
 		
@@ -480,7 +480,7 @@ class ControllerManageThemes extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $themes_total;
 		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_admin_limit');
+		$pagination->limit = $this->config->get('config_limit_admin');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('manage/themes', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
@@ -685,6 +685,14 @@ $this->load->model('tool/image');
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 	}
 
+		if (isset($this->request->post['image'])) {
+			$data['image']= $this->request->post['image'];
+		} elseif (!empty($themes_info)) {
+			$data['image'] = $themes_info['image'];
+		} else {
+			$data['image'] = '';
+		}
+
 		if (isset($this->request->post['demo_link'])) {
 			$data['demo_link'] = $this->request->post['demo_link'];
 		} elseif (isset($themes_info)) {
@@ -723,6 +731,10 @@ $this->load->model('tool/image');
 			$this->error['name'] = $this->language->get('error_name');
 		}
 
+		
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
 		
     	return !$this->error;
   	}

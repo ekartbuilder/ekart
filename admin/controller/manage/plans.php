@@ -269,8 +269,8 @@ class ControllerManagePlans extends Controller {
 			'filter_status' => $filter_status,			
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'           => $this->config->get('config_limit_admin')
 		);
 		
 		
@@ -394,7 +394,7 @@ class ControllerManagePlans extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $plans_total;
 		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_admin_limit');
+		$pagination->limit = $this->config->get('config_limit_admin');
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('manage/plans', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
@@ -555,6 +555,10 @@ class ControllerManagePlans extends Controller {
 			$this->error['status'] = $this->language->get('error_status');
 		}
 
+		
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
 		
     	return !$this->error;
   	}

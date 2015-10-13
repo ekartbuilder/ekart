@@ -32,7 +32,71 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
-	
+	  <div class="well">
+          <div class="row">
+          					 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-sub_domain"><?php echo $entry_sub_domain; ?></label>
+<input type="text" id="input-sub_domain" name="filter_sub_domain" value="<?php echo $filter_sub_domain; ?>" size="12" class="form-control" /></div></div>
+				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-plan_id"><?php echo $entry_plan_id; ?></label>
+<select name="filter_plan_id" id = "input-plan_id" class="form-control">
+				<option value="*"></option>
+				<?php foreach ($plans as $each_plan) { ?>
+				<?php if ($each_plan['plan_id'] == $filter_plan_id) { ?>
+				<option value="<?php echo $each_plan['plan_id']; ?>" selected="selected"><?php echo $each_plan['name']; ?></option>
+				<?php } else { ?>
+				<option value="<?php echo $each_plan['plan_id']; ?>"><?php echo $each_plan['name']; ?></option>
+				<?php } ?>
+				<?php } ?>
+				</select></div></div>
+				 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-owner_id"><?php echo $entry_owner_id; ?></label>
+<input type="text" id="input-owner_id" name="filter_owner_id" value="<?php echo $filter_owner_id; ?>" size="12" class="form-control" /></div></div>
+				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-site_type"><?php echo $entry_site_type; ?></label>
+<select name="filter_site_type" id = "input-site_type" class="form-control">
+				<option value="*"></option>
+				<?php foreach ($site_types as $each_site_type) { ?>
+				<?php if ($each_site_type['site_type_id'] == $filter_site_type) { ?>
+				<option value="<?php echo $each_site_type['site_type_id']; ?>" selected="selected"><?php echo $each_site_type['name']; ?></option>
+				<?php } else { ?>
+				<option value="<?php echo $each_site_type['site_type_id']; ?>"><?php echo $each_site_type['name']; ?></option>
+				<?php } ?>
+				<?php } ?>
+				</select></div></div>
+				<div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-live_date"><?php echo $entry_live_date; ?></label>
+<div class="input-group datetime">
+<input type="text" name="filter_live_date" id="input-live_date" value="<?php echo $filter_live_date; ?>" size="12" data-date-format="YYYY-MM-DD HH:mm" class="form-control"/>
+<span class="input-group-btn">
+<button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+</span></div></div></div>
+				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-active_status"><?php echo $entry_active_status; ?></label>
+<select name="filter_active_status" id = "input-active_status" class="form-control">
+				<option value="*"></option>
+				<?php foreach ($active_statuss as $each_active_status) { ?>
+				<?php if ($each_active_status['active_status_id'] == $filter_active_status) { ?>
+				<option value="<?php echo $each_active_status['active_status_id']; ?>" selected="selected"><?php echo $each_active_status['name']; ?></option>
+				<?php } else { ?>
+				<option value="<?php echo $each_active_status['active_status_id']; ?>"><?php echo $each_active_status['name']; ?></option>
+				<?php } ?>
+				<?php } ?>
+				</select></div></div>
+				<div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-date_added"><?php echo $entry_date_added; ?></label>
+<div class="input-group date">
+<input type="text" name="filter_date_added" id="input-date_added" value="<?php echo $filter_date_added; ?>" size="12" data-date-format="YYYY-MM-DD" class="form-control"/>
+<span class="input-group-btn">
+<button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+</span></div></div></div>
+				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
+<select name="filter_status" id = "input-status" class="form-control">
+				<option value="*"></option>
+				<?php foreach ($statuss as $each_status) { ?>
+				<?php if ($each_status['status_id'] == $filter_status) { ?>
+				<option value="<?php echo $each_status['status_id']; ?>" selected="selected"><?php echo $each_status['name']; ?></option>
+				<?php } else { ?>
+				<option value="<?php echo $each_status['status_id']; ?>"><?php echo $each_status['name']; ?></option>
+				<?php } ?>
+				<?php } ?>
+				</select></div></div>
+	<div class="col-sm-12"><div class="form-group"><a onclick="filter();" class="btn btn-primary pull-right"><i class="fa fa-search"></i><?php echo $button_filter; ?></a></div></div>
+ 
+        </div></div>
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
          <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -98,71 +162,7 @@
             </tr>
           </thead>
           <tbody>
-		  <div class="well">
-          <div class="row">
-          					 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-sub_domain"><?php echo $entry_sub_domain; ?></label>
-<input type="text" id="input-sub_domain" name="filter_sub_domain" value="<?php echo $filter_sub_domain; ?>" size="12" class="form-control" /></div></div>
-				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-plan_id"><?php echo $entry_plan_id; ?></label>
-<select name="filter_plan_id" id = "input-plan_id" class="form-control">
-				<option value="*"></option>
-				<?php foreach ($plans as $each_plan) { ?>
-				<?php if ($each_plan['plan_id'] == $filter_plan_id) { ?>
-				<option value="<?php echo $each_plan['plan_id']; ?>" selected="selected"><?php echo $each_plan['name']; ?></option>
-				<?php } else { ?>
-				<option value="<?php echo $each_plan['plan_id']; ?>"><?php echo $each_plan['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select></div></div>
-				 <div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-owner_id"><?php echo $entry_owner_id; ?></label>
-<input type="text" id="input-owner_id" name="filter_owner_id" value="<?php echo $filter_owner_id; ?>" size="12" class="form-control" /></div></div>
-				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-site_type"><?php echo $entry_site_type; ?></label>
-<select name="filter_site_type" id = "input-site_type" class="form-control">
-				<option value="*"></option>
-				<?php foreach ($site_types as $each_site_type) { ?>
-				<?php if ($each_site_type['site_type_id'] == $filter_site_type) { ?>
-				<option value="<?php echo $each_site_type['site_type_id']; ?>" selected="selected"><?php echo $each_site_type['name']; ?></option>
-				<?php } else { ?>
-				<option value="<?php echo $each_site_type['site_type_id']; ?>"><?php echo $each_site_type['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select></div></div>
-				<div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-live_date"><?php echo $entry_live_date; ?></label>
-<div class="input-group datetime">
-<input type="text" name="filter_live_date" id="input-live_date" value="<?php echo $filter_live_date; ?>" size="12" data-date-format="YYYY-MM-DD HH:mm" class="form-control"/>
-<span class="input-group-btn">
-<button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-</span></div></div></div>
-				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-active_status"><?php echo $entry_active_status; ?></label>
-<select name="filter_active_status" id = "input-active_status" class="form-control">
-				<option value="*"></option>
-				<?php foreach ($active_statuss as $each_active_status) { ?>
-				<?php if ($each_active_status['active_status_id'] == $filter_active_status) { ?>
-				<option value="<?php echo $each_active_status['active_status_id']; ?>" selected="selected"><?php echo $each_active_status['name']; ?></option>
-				<?php } else { ?>
-				<option value="<?php echo $each_active_status['active_status_id']; ?>"><?php echo $each_active_status['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select></div></div>
-				<div class="col-sm-4"><div class="form-group"><label class="control-label" for="input-date_added"><?php echo $entry_date_added; ?></label>
-<div class="input-group date">
-<input type="text" name="filter_date_added" id="input-date_added" value="<?php echo $filter_date_added; ?>" size="12" data-date-format="YYYY-MM-DD" class="form-control"/>
-<span class="input-group-btn">
-<button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-</span></div></div></div>
-				<div class="col-sm-4"><div class="form-group"> <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
-<select name="filter_status" id = "input-status" class="form-control">
-				<option value="*"></option>
-				<?php foreach ($statuss as $each_status) { ?>
-				<?php if ($each_status['status_id'] == $filter_status) { ?>
-				<option value="<?php echo $each_status['status_id']; ?>" selected="selected"><?php echo $each_status['name']; ?></option>
-				<?php } else { ?>
-				<option value="<?php echo $each_status['status_id']; ?>"><?php echo $each_status['name']; ?></option>
-				<?php } ?>
-				<?php } ?>
-				</select></div></div>
-	<div class="col-sm-12"><div class="form-group"><a onclick="filter();" class="btn btn-primary pull-right"><i class="fa fa-search"></i><?php echo $button_filter; ?></a></div></div>
- 
-</div></div>			
+					
             <?php if ($sitess) { ?>
             <?php foreach ($sitess as $sites) { ?>
             <tr>
@@ -191,12 +191,14 @@
             <?php } ?>
           </tbody>
         </table>
+		
       </form>
+	   </div>
      <div class="row">
           <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
           <div class="col-sm-6 text-right"><?php echo $results; ?></div>
      </div>
-    </div>
+   
   </div>
 </div>
 </div>

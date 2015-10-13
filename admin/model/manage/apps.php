@@ -1,8 +1,9 @@
 <?php
 class ModelManageApps extends Model {
+	
+	var $config_safe_delete = 0;
+	
 	public function addApps($data) {
-		$this->event->trigger('pre.admin.add.apps', $data);
-
       	$this->db->query("INSERT INTO `" . DB_PREFIX . "app_store` SET " .
       			
 				" name = '" . $this->db->escape($data['name']) .
@@ -19,17 +20,12 @@ class ModelManageApps extends Model {
 				"'");
 
       	$app_id = $this->db->getLastId();
-
-		$this->event->trigger('post.admin.add.apps',$app_id);
       	
       	return $app_id;
 	}
 	
 	public function editApps($app_id, $data) {
-		
-		 $this->event->trigger('pre.admin.edit.apps', $data);
-		 
-		 $this->db->query("UPDATE `" . DB_PREFIX . "app_store` SET " .
+		$this->db->query("UPDATE `" . DB_PREFIX . "app_store` SET " .
 				
 				" name = '" . $this->db->escape($data['name']) .
 				"', short_info = '" . $this->db->escape($data['short_info']) .
@@ -42,16 +38,13 @@ class ModelManageApps extends Model {
 				"', status = '" . $this->db->escape($data['status']) .
 				"', date_modified = '" . date("Y-m-d H:i:s") .				 
 				"' WHERE `app_id` = '" . (int)$app_id . "'");		
-				
-	     $this->event->trigger('post.admin.edit.apps', $app_id);
 	}
 	
 	public function deleteApps($app_id) {
-		
-		$this->event->trigger('pre.admin.delete.apps', $app_id);
-      	$this->db->query("DELETE FROM `" . DB_PREFIX . "app_store` WHERE `app_id` = '" . (int)$app_id . "'");
-		
-		$this->event->trigger('post.admin.delete.apps', $app_id);
+		if($this->config_safe_delete)
+			$this->db->query("UPDATE `" . DB_PREFIX . "app_store` SET  WHERE `app_id` = '" . (int)$app_id . "'");
+		else
+      		$this->db->query("DELETE FROM `" . DB_PREFIX . "app_store` WHERE `app_id` = '" . (int)$app_id . "'");
 	}
 	
 	public function getApps($app_id) {
@@ -62,7 +55,10 @@ class ModelManageApps extends Model {
 	}
 	
 	public function getAppss($data = array()) {
-		$sql = "SELECT `app_id`, `app_id`,`name`,`category`,`image`,`type`,`date_added`,`status` FROM `" . DB_PREFIX . "app_store` WHERE 1=1 ";
+		if($this->config_safe_delete)
+			$sql = "SELECT `app_id`, `app_id`,`name`,`category`,`image`,`type`,`date_added`,`status` FROM `" . DB_PREFIX . "app_store` WHERE 1=1  ";
+		else
+			$sql = "SELECT `app_id`, `app_id`,`name`,`category`,`image`,`type`,`date_added`,`status` FROM `" . DB_PREFIX . "app_store` WHERE 1=1 ";
 		
 		
 		if (isset($data['filter_app_id']) && !is_null($data['filter_app_id'])) {
@@ -136,8 +132,11 @@ class ModelManageApps extends Model {
 		return $query->rows;
 	}
 	
-	public function getTotalAppss($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "app_store` WHERE 1=1 ";
+	public function getTotalAppss() {
+		if($this->config_safe_delete)
+			$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "app_store` WHERE 1=1  ";
+		else
+			$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "app_store` WHERE 1=1 ";
 		
 		
 		if (isset($data['filter_app_id']) && !is_null($data['filter_app_id'])) {
