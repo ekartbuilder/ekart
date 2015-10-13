@@ -63,7 +63,7 @@ $(document).ready(function() {
 		var each_select = $(this).parent('div.form-group').find('select');
 		var each_select_val = $(each_select).find(":selected").val();
 		
-		if(each_select_val == "1") {
+		if(each_select_val == "1" || each_select_val == "Y") {
 			var toggle_template = '<div class="toggle toggle-light" data-toggle-on="true"></div>';
 		} else {
 			var toggle_template = '<div class="toggle toggle-light"></div>';
@@ -77,8 +77,10 @@ $(document).ready(function() {
 	$('.toggle').on('toggle', function (e, active) {
 	  if (active) {
 		$(this).next('.combo-select').find('select').val("1");
+		$(this).next('.combo-select').find('select').val("Y");
 	  } else {
 		$(this).next('.combo-select').find('select').val("0");
+		$(this).next('.combo-select').find('select').val("N");
 	  }
 	});
 
