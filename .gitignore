@@ -4,6 +4,8 @@ system/logs
 vqmod/vqcache
 vqmod/logs
 vqmod/mods.cache
+config_local.php
+admin/config_local.php
 tmp
 .project
 .settings
