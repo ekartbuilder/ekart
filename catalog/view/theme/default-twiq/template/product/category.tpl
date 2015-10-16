@@ -29,7 +29,7 @@
       {% endif %}
       {% if categories %}
       <h3>{{ text_refine }}</h3>
-      <?php //if (count($categories) <= 5) { ?>
+     
 	  {% if categories|length <=5 %}
       <div class="row">
         <div class="col-sm-3">
