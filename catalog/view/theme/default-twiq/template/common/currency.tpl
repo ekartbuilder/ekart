@@ -1,16 +1,14 @@
-<?php //if (count($currencies) > 1) { ?>
-
 {% if currencies|length > 1 %}
 <div class="pull-left">
 <form action="{{ action }}" method="post" enctype="multipart/form-data" id="currency">
   <div class="btn-group">
     <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
     {% for currency in currencies %}
-    <?php //if ($currency['symbol_left'] && $currency['code'] == $code) { ?>
+  
 	{% if currency.symbol_left and currency.code==code %}
 	
     <strong>{{ currency.symbol_left }}</strong>
-    <?php //} elseif ($currency['symbol_right'] && $currency['code'] == $code) { ?>
+   
 	{% elseif currency.symbol_left and currency.code==code %}
 	
     <strong>{{ currency.symbol_right }}</strong>
