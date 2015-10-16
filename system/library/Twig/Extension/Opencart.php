@@ -35,6 +35,9 @@ class Twig_Extension_Opencart extends Twig_Extension
             new \Twig_SimpleFunction('load', array($this, 'loadFunction')),
             new \Twig_SimpleFunction('can_access', array($this, 'canAccessFunction')),
             new \Twig_SimpleFunction('can_modify', array($this, 'canModifyFunction')),
+			new \Twig_SimpleFunction('chunk', array($this,'chunkFunction')),
+		
+			
         );
     }
 
@@ -85,6 +88,17 @@ class Twig_Extension_Opencart extends Twig_Extension
         return $language->get($key);
     }
 
+		public function chunkFunction($data_array=array(), $chunk = 0)
+		{
+	
+		if (!empty($chunk)) {
+				return array_chunk($data_array, ceil(count($data_array) / $chunk));
+			} else {
+		return $data_array;
+			}
+		}
+	
+	
     /**
      * @param      $key
      * @param null $file
@@ -268,6 +282,8 @@ class Twig_Extension_Opencart extends Twig_Extension
             new \Twig_SimpleFilter('truncate', array($this, 'truncateFilter')),
             new \Twig_SimpleFilter('encrypt', array($this, 'encryptFilter')),
             new \Twig_SimpleFilter('decrypt', array($this, 'decryptFilter')),
+			 new \Twig_SimpleFilter('decrypt', array($this, 'decryptFilter')),
+			
         );
     }
 
@@ -285,6 +301,8 @@ class Twig_Extension_Opencart extends Twig_Extension
 
         return $lib->format($number, $currency, $value, $format);
     }
+
+	
 
     /**
      * @param      $value
