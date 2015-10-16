@@ -26,7 +26,7 @@
 		  {% if thumb or images %}		  
           <ul class="thumbnails">           
 			 {% if thumb %}
-            <li><a class="thumbnail" href=" {{popup }}" title="{{heading_title }}"><img src="{{thumb }}<?php //echo $thumb; ?>" title="{{heading_title }}" alt="{{heading_title }}" /></a></li>
+            <li><a class="thumbnail" href=" {{popup }}" title="{{heading_title }}"><img src="{{thumb }}" title="{{heading_title }}" alt="{{heading_title }}" /></a></li>
 			{% endif %} 	
             
 			{% if images %} 
@@ -106,13 +106,15 @@
                     <input type="radio" name="rating" value="5" />
                     &nbsp;{{entry_good}}</div>
                 </div>
-                <?php if ($site_key) { ?>
+               
+				{% if site_key %}
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
+                      <div class="g-recaptcha" data-sitekey="{{site_key}}"></div>
                     </div>
                   </div>
-                <?php } ?>
+               
+					{% endif %}
                 <div class="buttons clearfix">
                   <div class="pull-right">
                     <button type="button" id="button-review" data-loading-text="{{text_loading}}" class="btn btn-primary">{{button_continue}}</button>
@@ -140,13 +142,13 @@
 		
         <div class="{{class}}">
           <div class="btn-group">
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title=" {{button_wishlist}}<?php //echo $button_wishlist; ?>" onclick="wishlist.add('{{product_id}}<?php //echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{button_compare}}<?php //echo $button_compare; ?>" onclick="compare.add('{{product_id}}<?php //echo $product_id; ?>');"><i class="fa fa-exchange"></i></button>
+            <button type="button" data-toggle="tooltip" class="btn btn-default" title=" {{button_wishlist}}" onclick="wishlist.add('{{product_id}}');"><i class="fa fa-heart"></i></button>
+            <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{button_compare}}" onclick="compare.add('{{product_id}}');"><i class="fa fa-exchange"></i></button>
           </div>
           <h1>{{heading_title}}</h1>
           <ul class="list-unstyled">
             {% if manufacturer %}
-            <li>{{text_manufacturer}}<?php //echo $text_manufacturer; ?> <a href="{{manufacturers}}<?php //echo $manufacturers; ?>">{{manufacturer}}</a></li>
+            <li>{{text_manufacturer}} <a href="{{manufacturers}}">{{manufacturer}}</a></li>
            {% endif %}
           <li>{{text_model}}{{model}} </li>     
            {% if reward %}
@@ -169,11 +171,11 @@
 			{% endif %}           
 			{% if tax %}
             <li>{{text_tax}}{{tax}}</li>
-            <?php //} ?>
+            
 			{% endif %}            
 			{% if points %}
             <li>{{text_points}}{{points}}</li>
-            <?php //} ?>
+           
 			{% endif %}            
 			{% if discounts %}
             <li>
@@ -188,17 +190,17 @@
 		  {% endif %}
 		  
           <div id="product">
-            <?php //if ($options) { ?>
+          
 			{% if options %}
             <hr>
-            <h3>{{text_option}}<?php //echo $text_option; ?></h3>
-            <?php //foreach ($options as $option) { ?>
+            <h3>{{text_option}}</h3>
+            
 			
 			{% for option in options %}
 			
             
 			{% if option.type== 'select' %}			
-            <div class="form-group  {{ (option.required in option.type) ? 'required' : '' }}">
+            <div class="form-group  {{ (option.required) ? 'required' : '' }}">
               <label class="control-label" for="input-option {{option.product_option_id }}">{{option.name }}</label>
               <select name="option[{{option.product_option_id }}]" id="input-option{{option.product_option_id }}" class="form-control">
                 <option value="">{{text_select}}</option>
@@ -220,78 +222,78 @@
 			
 			{% if option.type == 'radio' %}
 			
-            <div class="form-group  {{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label">{{option.name}}<?php //echo $option['name']; ?></label>
+            <div class="form-group  {{ (option.required) ? 'required' : '' }}">
+              <label class="control-label">{{option.name}}</label>
               <div id="input-option {{option.product_option_id }}">
-                <?php //foreach ($option['product_option_value'] as $option_value) { ?>
+                
 				{% for option_value in option['product_option_value'] %}
 				
                 <div class="radio">
                   <label>
-                    <input type="radio" name="option[{{option.product_option_id }}<?php //echo $option['product_option_id']; ?>]" value="{{option.product_option_value_id }}<?php //echo $option_value['product_option_value_id']; ?>" />
-                    {{option_value.name}}<?php //echo $option_value['name']; ?>
-                    <?php //if ($option_value['price']) { ?>
+                    <input type="radio" name="option[{{option.product_option_id }}]" value="{{option.product_option_value_id }}" />
+                    {{option_value.name}}
+                 
 					{% if option_value.price %}
-                    ({{option_value.price_prefix}}{{option_value.price}}<?php //echo $option_value['price_prefix']; ?><?php //echo $option_value['price']; ?>)
-                    <?php //} ?>
+                    ({{option_value.price_prefix}}{{option_value.price}})
+                    
 					{% endif %}
                   </label>
                 </div>
-                <?php //} ?>
+              
 				{% endfor %}
 				
               </div>
             </div>
-            <?php //} ?>
+           
 			{% endif %}
 			
-            <?php //if ($option['type'] == '3') { ?>
+         
 			{% if option.type == 'checkbox' %}
-            <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label">{{option.name}}<?php //echo $option['name']; ?></label>
-              <div id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>">
-                <?php //foreach ($option['product_option_value'] as $option_value) { ?>
+            <div class="form-group{{ (option.required) ? 'required' : '' }}">
+              <label class="control-label">{{option.name}}</label>
+              <div id="input-option{{option.product_option_id}}">
+           
 				{% for option_value in option['product_option_value'] %}
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="option[{{option.product_option_id }}<?php //echo $option['product_option_id']; ?>][]" value="{{option_value.product_option_value_id }}<?php //echo $option_value['product_option_value_id']; ?>" />
-                    {{option_value.name}}<?php echo $option_value['name']; ?>
-                    <?php //if ($option_value['price']) { ?>
+                    <input type="checkbox" name="option[{{option.product_option_id }}][]" value="{{option_value.product_option_value_id }}" />
+                    {{option_value.name}}
+                
 					{% if option_value.price %}
                     (({{option_value.price_prefix}}{{option_value.price}})
                    {% endif %}
                   </label>
                 </div>
-                <?php //} ?>
+             
 				{% endfor %} 
               </div>
             </div>
-            <?php //} ?>
+        
 			{% endif %}
 			
           
 			{% if option.type == 'text' %}
-            <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}<?php //echo $option['name']; ?></label>
-              <input type="text" name="option[{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>]" value="{{option.value}}<?php //echo $option['value']; ?>" placeholder="{{option.name}}<?php //echo $option['name']; ?>" id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" class="form-control" />
+            <div class="form-group{{ (option.required) ? 'required' : '' }}">
+              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}</label>
+              <input type="text" name="option[{{option.product_option_id}}]" value="{{option.value}}" placeholder="{{option.name}}" id="input-option{{option.product_option_id}}" class="form-control" />
             </div>
            
 			{% endif %}
            
 			{% if option.type == 'textarea' %}
              <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}<?php //echo $option['name']; ?></label>
-              <textarea name="option[{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>]" rows="5" placeholder="{{option.name}}<?php //echo $option['name']; ?>" id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" class="form-control">{{option.value}}<?php //echo $option['value']; ?></textarea>
+              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}</label>
+              <textarea name="option[{{option.product_option_id}}]" rows="5" placeholder="{{option.name}}" id="input-option{{option.product_option_id}}" class="form-control">{{option.value}}</textarea>
             </div>
            
 			{% endif %}
 			
            
 			{% if option.type == 'file' %}
-            <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label">{{option.name}}<?php //echo $option['name']; ?></label>
-              <button type="button" id="button-upload{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" data-loading-text="{{text-loading}}<?php //echo $text_loading; ?>" class="btn btn-default btn-block"><i class="fa fa-upload"></i> {{button_upload}}<?php //echo $button_upload; ?></button>
-              <input type="hidden" name="option[{{option.product_option_id}}]" value="" id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" />
+            <div class="form-group{{ (option.required) ? 'required' : '' }}">
+              <label class="control-label">{{option.name}}</label>
+              <button type="button" id="button-upload{{option.product_option_id}}" data-loading-text="{{text-loading}}" class="btn btn-default btn-block"><i class="fa fa-upload"></i> {{button_upload}}</button>
+              <input type="hidden" name="option[{{option.product_option_id}}]" value="" id="input-option{{option.product_option_id}}" />
             </div>
            
 			
@@ -299,10 +301,10 @@
 			
            
 			{% if option.type == 'date' %}
-             <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label" for="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>">{{option.name}}<?php //echo $option['name']; ?></label>
+             <div class="form-group{{ (option.required) ? 'required' : '' }}">
+              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}</label>
               <div class="input-group date">
-                <input type="text" name="option[{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>]" value="{{option.value}}<?php //echo $option['value']; ?>" data-date-format="YYYY-MM-DD" id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" class="form-control" />
+                <input type="text" name="option[{{option.product_option_id}}]" value="{{option.value}}" data-date-format="YYYY-MM-DD" id="input-option{{option.product_option_id}}" class="form-control" />
                 <span class="input-group-btn">
                 <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
                 </span></div>
@@ -311,10 +313,10 @@
 			{% endif %}
            
 				{% if option.type == 'datetime' %}
-              <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label" for="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>">{{option.name}}<?php //echo $option['name']; ?></label>
+              <div class="form-group{{ (option.required) ? 'required' : '' }}">
+              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}</label>
               <div class="input-group datetime">
-                <input type="text" name="option[{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>]" value="{{option.value}}<?php //echo $option['value']; ?>" data-date-format="YYYY-MM-DD HH:mm" id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" class="form-control" />
+                <input type="text" name="option[{{option.product_option_id}}]" value="{{option.value}}" data-date-format="YYYY-MM-DD HH:mm" id="input-option{{option.product_option_id}}" class="form-control" />
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                 </span></div>
@@ -323,47 +325,47 @@
 			{% endif %}
            
 			{% if option.type == 'time' %}
-            <div class="form-group{{ (option.required in option.type) ? 'required' : '' }}">
-              <label class="control-label" for="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>">{{option.name}}<?php //echo $option['name']; ?></label>
+            <div class="form-group{{ (option.required) ? 'required' : '' }}">
+              <label class="control-label" for="input-option{{option.product_option_id}}">{{option.name}}</label>
               <div class="input-group time">    
 				
-				<input type="text" name="option[{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>]" value="{{option.value}}<?php //echo $option['value']; ?>" data-date-format="HH:mm" id="input-option{{option.product_option_id}}<?php //echo $option['product_option_id']; ?>" class="form-control" />
+				<input type="text" name="option[{{option.product_option_id}}]" value="{{option.value}}" data-date-format="HH:mm" id="input-option{{option.product_option_id}}" class="form-control" />
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                 </span></div>
             </div>
-            <?php //} ?>
+           
 			{% endif %}
-            <?php //} ?>
+          
 			{% endfor %}
-            <?php //} ?>
+          
           {% endif %}
 		  
 		  
             <div class="form-group">
-              <label class="control-label" for="input-quantity">{{entry_qty}}<?php //echo $entry_qty; ?></label>
-              <input type="text" name="quantity" value="{{minimum}}<?php //echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
-              <input type="hidden" name="product_id" value="{{product_id}}<?php //echo $product_id; ?>" />
+              <label class="control-label" for="input-quantity">{{entry_qty}}</label>
+              <input type="text" name="quantity" value="{{minimum}}" size="2" id="input-quantity" class="form-control" />
+              <input type="hidden" name="product_id" value="{{product_id}}" />
               <br />
-              <button type="button" id="button-cart" data-loading-text="{{text_loading}}<?php //echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block">{{button_cart}}<?php //echo $button_cart; ?></button>
+              <button type="button" id="button-cart" data-loading-text="{{text_loading}}" class="btn btn-primary btn-lg btn-block">{{button_cart}}</button>
             </div>
-            <?php //if ($minimum > 1) { ?>
+            
 			{% if minimum >1 %}
-            <div class="alert alert-info"><i class="fa fa-info-circle"></i>{{text_minimum}} <?php //echo $text_minimum; ?></div>
-            <?php //} ?>
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i>{{text_minimum}} </div>
+           
 			{% endif %}
           </div>
-          <?php //if ($review_status) { ?>
+         
 		  {% if review_status  %}
           <div class="rating">
             <p>
-              <?php for ($i = 1; $i <= 5; $i++) { ?>
-              <?php if ($rating < $i) { ?>
+              {% for i in  1..5 %}	
+				{% if product.rating < i %}
               <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-              <?php } else { ?>
+            {% else %}
               <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-              <?php } ?>
-              <?php } ?>
+             {% endif %}
+                  {% endfor %}
               <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a></p>
             <hr>
             <!-- AddThis Button BEGIN -->
@@ -371,88 +373,77 @@
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
             <!-- AddThis Button END -->
           </div>
-          <?php //} ?>
+          
 		  {% endif %}
         </div>
       </div>
-      <?php if ($products) { ?>
-      <h3><?php echo $text_related; ?></h3>
-      <div class="row">
-        <?php $i = 0; ?>
-        <?php foreach ($products as $product) { ?>
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-lg-6 col-md-6 col-sm-12 col-xs-12'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
+      
+	  {% if products %}
+      <h3>{{text_related}}</h3>
+      <div class="row">        
+		
+
+	{% for product in products %}
+	{% if column_left and column_right %}
+    {% set class = 'col-lg-6 col-md-6 col-sm-12 col-xs-12' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12' %}
+    {% else %}
+    {% set class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12' %}
+    {% endif %}	
+        <div class="{{ class }}">
           <div class="product-thumb transition">
-            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
+           <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
             <div class="caption">
-              <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-              <p><?php echo $product['description']; ?></p>
-              <?php if ($product['rating']) { ?>
-              <div class="rating">
-                <?php for ($i = 1; $i <= 5; $i++) { ?>
-                <?php if ($product['rating'] < $i) { ?>
-                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } else { ?>
-                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } ?>
-                <?php } ?>
+              <h4><a href="{{ product.href }}">{{ product.name }}</a></a></h4>
+              <p>{{ product.description }}</p>
+              {% if product.rating %}
+                <div class="rating">
+                {% for i in  1..5 %}	
+				{% if product.rating < i %}
+                  <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                  {% else %}
+                  <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+                {% if product.price %}
+                <p class="price">
+                   {% if not product.special %}
+                  {{ product.price }}
+                  {% else %}
+                  <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+                  {% endif %}
+                  {% if product.tax %}
+                  <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+                  {% endif %}
+                </p>
+                {% endif %}
               </div>
-              <?php } ?>
-              <?php if ($product['price']) { ?>
-              <p class="price">
-                <?php if (!$product['special']) { ?>
-                <?php echo $product['price']; ?>
-                <?php } else { ?>
-                <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                <?php } ?>
-                <?php if ($product['tax']) { ?>
-                <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                <?php } ?>
-              </p>
-              <?php } ?>
-            </div>
             <div class="button-group">
-              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
-            </div>
+                <button type="button" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+                <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+                <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+              </div>
           </div>
         </div>
-        <?php if (($column_left && $column_right) && ($i % 2 == 0)) { ?>
-        <div class="clearfix visible-md visible-sm"></div>
-        <?php } elseif (($column_left || $column_right) && ($i % 3 == 0)) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } elseif ($i % 4 == 0) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } ?>
-        <?php $i++; ?>
-        <?php } ?>
-      </div>
-      <?php } ?>
-      <?php //if ($tags) { ?>
-	  {% if tags  %}
-      <p>{{text_tags}}<?php //echo $text_tags; ?>
-	  
-        <?php for ($i = 0; $i < count($tags); $i++) { ?>
-        <?php if ($i < (count($tags) - 1)) { ?>
-        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
-        <?php } else { ?>
-        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
-        <?php } ?>
-        <?php } ?>
-      </p>
-      <?php //} ?>
-	  {% endif %}
+		
+	{% if (column_left and column_right) and (i % 2 == 0) %}
+   <div class="clearfix visible-md visible-sm"></div>
+    {% elseif (column_left or column_right) and (i % 3 == 0 ) %}
+    <div class="clearfix visible-md"></div>
+	 {% elseif i % 4 == 0 %}
+	  <div class="clearfix visible-md"></div>  
+    {% endif %}	
+	
+    {% endfor %}
+      </div>    
+	 {% endif %}  
 	  {{content_bottom}}
 	  {{column_right}}
-      <?php //echo $content_bottom; ?></div>
-    <?php //echo $column_right; ?></div>
+      </div>
+    </div>
 </div>
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
