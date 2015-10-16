@@ -29,8 +29,8 @@
             <div class="panel-body"></div>
           </div>
         </div>
-        <?php //if (!$logged && $account != 'guest') { ?>
-		{% if not logged  %}
+       
+		{% if not logged and account != guest %}
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">{{ text_checkout_account }}</h4>
@@ -104,7 +104,7 @@ $(document).on('change', 'input[name=\'account\']', function() {
 	}
 });
 
-<?php //if (!$logged) { ?>
+
 {% if not logged  %}
 $(document).ready(function() {
     $.ajax({
