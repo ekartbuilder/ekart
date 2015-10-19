@@ -18,6 +18,7 @@
     {% else %}
     {% set class = 'col-sm-12' %}
     {% endif %}
+	
     <div id="content" class="{{ class }}">{{ content_top }}
       <h1>{{ heading_title }}</h1>
       {% if products %}
@@ -49,9 +50,9 @@
             <td>
 			{% if products.product.product_id.price %}
 			{% if not products.product.product_id.special %}             
-              {{ {% if products.product.product_id.price %} }}
+               {{products.product.product_id.price }} 
               {% else %}
-              <strike>{{ {% if products.product.product_id.price %} }}</strike> {{ {% if products.product.product_id.special %} }}
+              <strike> {{products.product.product_id.price}} </strike> {{ products.product.product_id.special }}
               {% endif %}
               {% endif %}</td>
             {% endfor %}
@@ -117,10 +118,10 @@
           </tr>
         </thead>
      
-		{% for  key => attribute in attribute_group.attribute %}
+		{% for  key in attribute in attribute_group.attribute %}
         <tbody>
           <tr>
-            <td>{{ attribute['name'] }}</td>
+            <td>{{ attribute.name }}</td>
             {% for product in products %}
          
 			
