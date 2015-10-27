@@ -33,7 +33,7 @@
         {% endif %}
         <li><a href="{{ return }}">{{ text_return }}</a></li>
         <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
-        <li><a href="{{ recurring }}">{{ text_recurring }}</a></li>
+        <!--<li><a href="{{ recurring }}">{{ text_recurring }}</a></li>-->
       </ul>
       <h2>{{ text_my_newsletter }}</h2>
       <ul class="list-unstyled">
