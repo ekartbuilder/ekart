@@ -27,16 +27,18 @@
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-product" class="form-horizontal">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
-            <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
-            <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
-            <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
-            <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
-            <li><a href="#tab-recurring" data-toggle="tab"><?php echo $tab_recurring; ?></a></li>
+			 <li><a href="#tab-keyword" data-toggle="tab">SEO</a></li>
+			 <li><a href="#tab-category" data-toggle="tab">Category</a></li>
+			 <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
+			 <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li> 
+			 <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>                        
             <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
-            <li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
-            <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
-            <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
-            <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+            <!--<li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>--> 
+			<li><a href="#tab-dimension" data-toggle="tab">Shipping</a></li>
+			<li><a href="#tab-filter" data-toggle="tab">Filter</a></li>			
+			<li><a href="#tab-download" data-toggle="tab">Download</a></li>
+			 <li><a href="#tab-rel" data-toggle="tab">Related product</a></li>         	
+			
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -63,7 +65,78 @@
                       <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
                     </div>
                   </div>
-                  <div class="form-group required">
+                  
+              
+                </div>
+                <?php } ?>
+				<!--new change start  here -->
+				
+			   <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
+                </div>
+              </div>
+			  
+			   <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="quantity" value="<?php echo $quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
+                </div>
+              </div>
+			  
+			    <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-model"><?php echo $entry_model; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+                  <?php if ($error_model) { ?>
+                  <div class="text-danger"><?php echo $error_model; ?></div>
+                  <?php } ?>
+                </div>
+              </div>
+			  
+			  <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer" value="<?php echo $manufacturer ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
+                  <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
+                </div>
+              </div>
+			  <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
+                <div class="col-sm-10">
+                  <select name="status" id="input-status" class="form-control">
+                    <?php if ($status) { ?>
+                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                    <option value="0"><?php echo $text_disabled; ?></option>
+                    <?php } else { ?>
+                    <option value="1"><?php echo $text_enabled; ?></option>
+                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
+                </div>
+              </div>
+			  <!--new change end here  here -->
+			  
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-data">                   
+            
+             
+            
+              
+              
+            </div>
+			
+			<!--Seo start here-->
+			<div class="tab-pane" id="tab-keyword">
+         <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-meta-title<?php echo $language['language_id']; ?>"><?php echo $entry_meta_title; ?></label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title<?php echo $language['language_id']; ?>" class="form-control" />
@@ -84,34 +157,31 @@
                       <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                     </div>
                   </div>
-                  <div class="form-group">
+            
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
+                  <?php if ($error_keyword) { ?>
+                  <div class="text-danger"><?php echo $error_keyword; ?></div>
+                  <?php } ?>               
+                </div>
+              </div> 
+
+    <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="<?php echo $help_tag; ?>"><?php echo $entry_tag; ?></span></label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['tag'] : ''; ?>" placeholder="<?php echo $entry_tag; ?>" id="input-tag<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
-                  </div>
-                </div>
-                <?php } ?>
-              </div>
-            </div>
-            <div class="tab-pane" id="tab-data">
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
-                <div class="col-sm-10">
-                  <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                  <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
-                </div>
-              </div>            
-              <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-model"><?php echo $entry_model; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
-                  <?php if ($error_model) { ?>
-                  <div class="text-danger"><?php echo $error_model; ?></div>
-                  <?php } ?>
-                </div>
-              </div>
-              <div class="form-group">
+                  </div>			  
+            </div>		
+			
+			<!-- Seo end here-->
+			
+			<!--Dimension start here-->
+			<div class="tab-pane" id="tab-dimension">
+			
+			 <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="<?php echo $help_sku; ?>"><?php echo $entry_sku; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="sku" value="<?php echo $sku; ?>" placeholder="<?php echo $entry_sku; ?>" id="input-sku" class="form-control" />
@@ -153,12 +223,7 @@
                   <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="price" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
-                </div>
-              </div>
+             
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
                 <div class="col-sm-10">
@@ -174,12 +239,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="quantity" value="<?php echo $quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
-                </div>
-              </div>
+             
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-minimum"><span data-toggle="tooltip" title="<?php echo $help_minimum; ?>"><?php echo $entry_minimum; ?></span></label>
                 <div class="col-sm-10">
@@ -237,16 +297,8 @@
                   </label>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
-                  <?php if ($error_keyword) { ?>
-                  <div class="text-danger"><?php echo $error_keyword; ?></div>
-                  <?php } ?>               
-                </div>
-              </div>
-              <div class="form-group">
+			
+         <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-date-available"><?php echo $entry_date_available; ?></label>
                 <div class="col-sm-3">
                   <div class="input-group date">
@@ -305,37 +357,14 @@
                     <?php } ?>
                   </select>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
-                <div class="col-sm-10">
-                  <select name="status" id="input-status" class="form-control">
-                    <?php if ($status) { ?>
-                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                    <option value="0"><?php echo $text_disabled; ?></option>
-                    <?php } else { ?>
-                    <option value="1"><?php echo $text_enabled; ?></option>
-                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="tab-links">
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="manufacturer" value="<?php echo $manufacturer ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
-                  <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
-                </div>
-              </div>
-              <div class="form-group">
+              </div>         
+            </div>		
+			
+			<!-- Dimension end here-->
+			
+			<!-- product category start  here-->
+			<div class="tab-pane" id="tab-category">
+			    <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
@@ -348,7 +377,13 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+			</div>			
+			<!-- product category end here-->
+			
+			
+			<!-- product filter start  here-->
+			<div class="tab-pane" id="tab-filter">
+			    <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
@@ -361,6 +396,36 @@
                   </div>
                 </div>
               </div>
+			</div>
+			
+			<!-- product filter end here-->
+			<!-- product download start  here-->
+			<div class="tab-pane" id="tab-download">
+			
+			    <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-download"><span data-toggle="tooltip" title="<?php echo $help_download; ?>"><?php echo $entry_download; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="download" value="" placeholder="<?php echo $entry_download; ?>" id="input-download" class="form-control" />
+                  <div id="product-download" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($product_downloads as $product_download) { ?>
+                    <div id="product-download<?php echo $product_download['download_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_download['name']; ?>
+                      <input type="hidden" name="product_download[]" value="<?php echo $product_download['download_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+			
+			</div>
+			
+			<!-- product download end  here-->
+			
+			
+            <div class="tab-pane" id="tab-links">   
+			  
+			  
+          
+          
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
@@ -392,32 +457,8 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-download"><span data-toggle="tooltip" title="<?php echo $help_download; ?>"><?php echo $entry_download; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="download" value="" placeholder="<?php echo $entry_download; ?>" id="input-download" class="form-control" />
-                  <div id="product-download" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_downloads as $product_download) { ?>
-                    <div id="product-download<?php echo $product_download['download_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_download['name']; ?>
-                      <input type="hidden" name="product_download[]" value="<?php echo $product_download['download_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
-                  <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_relateds as $product_related) { ?>
-                    <div id="product-related<?php echo $product_related['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_related['name']; ?>
-                      <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
+          
+           
             </div>
             <div class="tab-pane" id="tab-attribute">
               <div class="table-responsive">
@@ -658,55 +699,24 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="tab-recurring">
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <td class="text-left"><?php echo $entry_recurring; ?></td>
-                      <td class="text-left"><?php echo $entry_customer_group; ?></td>
-                      <td class="text-left"></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $recurring_row = 0; ?>
-                    <?php foreach ($product_recurrings as $product_recurring) { ?>
-                    
-                    <tr id="recurring-row<?php echo $recurring_row; ?>">
-                      <td class="text-left"><select name="product_recurring[<?php echo $recurring_row; ?>][recurring_id]" class="form-control">
-                          <?php foreach ($recurrings as $recurring) { ?>
-                          <?php if ($recurring['recurring_id'] == $product_recurring['recurring_id']) { ?>
-                          <option value="<?php echo $recurring['recurring_id']; ?>" selected="selected"><?php echo $recurring['name']; ?></option>
-                          <?php } else { ?>
-                          <option value="<?php echo $recurring['recurring_id']; ?>"><?php echo $recurring['name']; ?></option>
-                          <?php } ?>
-                          <?php } ?>
-                        </select></td>
-                      <td class="text-left"><select name="product_recurring[<?php echo $recurring_row; ?>][customer_group_id]" class="form-control">
-                          <?php foreach ($customer_groups as $customer_group) { ?>
-                          <?php if ($customer_group['customer_group_id'] == $product_recurring['customer_group_id']) { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
-                          <?php } else { ?>
-                          <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>
-                          <?php } ?>
-                          <?php } ?>
-                        </select></td>
-                      <td class="text-left"><button type="button" onclick="$('#recurring-row<?php echo $recurring_row; ?>').remove()" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
-                    </tr>
-                    <?php $recurring_row++; ?>
-                    <?php } ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td class="text-left"><button type="button" onclick="addRecurring()" data-toggle="tooltip" title="<?php echo $button_recurring_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-            </div>
+          
             <div class="tab-pane" id="tab-discount">
-              <div class="table-responsive">
+
+<div id="w" class="clearfix">
+    <ul id="sidemenu">
+      <li>
+        <a href="#home-content" class="open"><strong>Discount</strong></a>
+      </li>
+
+      <li>
+        <a href="#about-content"><strong>Special product </strong></a>
+      </li>     
+      
+    </ul>
+    
+    <div id="content">
+        <div id="home-content" class="contentblock">
+           <div class="table-responsive">			  
                 <table id="discount" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -758,9 +768,10 @@
                   </tfoot>
                 </table>
               </div>
-            </div>
-            <div class="tab-pane" id="tab-special">
-              <div class="table-responsive">
+        </div><!-- @end #home-content -->        
+        
+        <div id="about-content" class="contentblock hidden">
+         			<div class="table-responsive">			
                 <table id="special" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -810,9 +821,33 @@
                   </tfoot>
                 </table>
               </div>
+        </div><!-- @end #about-content -->  
+    </div><!-- @end #content -->
+  </div>
+
+			
+						
+            
+			  <!--New code start here -->
+
+			<!--new code end here -->			  
+			  
+			  
             </div>
+            <!--<div class="tab-pane" id="tab-special">
+         
+            </div>-->
             <div class="tab-pane" id="tab-image">
+			
               <div class="table-responsive">
+			   <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+                </div>
+              </div> 
+			  
                 <table id="images" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -909,6 +944,29 @@
                 </table>
               </div>
             </div>
+			
+			<!--start for related product-->
+			<div class="tab-pane" id="tab-rel">
+              
+			  
+			     <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
+                  <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($product_relateds as $product_related) { ?>
+                    <div id="product-related<?php echo $product_related['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_related['name']; ?>
+                      <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+               
+              
+            </div>
+			<!--end for related product-->
+			
           </div>
         </form>
       </div>
@@ -1353,36 +1411,29 @@ function addImage() {
 	image_row++;
 }
 //--></script> 
-  <script type="text/javascript"><!--
-var recurring_row = <?php echo $recurring_row; ?>;
+  <script type="text/javascript">
+$(function(){
+  $('#sidemenu a').on('click', function(e){
+    e.preventDefault();
 
-function addRecurring() {
-	recurring_row++;
-	
-	html  = '';
-	html += '<tr id="recurring-row' + recurring_row + '">';
-	html += '  <td class="left">';
-	html += '    <select name="product_recurring[' + recurring_row + '][recurring_id]" class="form-control">>';
-	<?php foreach ($recurrings as $recurring) { ?>
-	html += '      <option value="<?php echo $recurring['recurring_id']; ?>"><?php echo $recurring['name']; ?></option>';
-	<?php } ?>
-	html += '    </select>';
-	html += '  </td>';
-	html += '  <td class="left">';
-	html += '    <select name="product_recurring[' + recurring_row + '][customer_group_id]" class="form-control">>';
-	<?php foreach ($customer_groups as $customer_group) { ?>
-	html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></option>';
-	<?php } ?>
-	html += '    <select>';
-	html += '  </td>';
-	html += '  <td class="left">';
-	html += '    <a onclick="$(\'#recurring-row' + recurring_row + '\').remove()" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></a>';
-	html += '  </td>';
-	html += '</tr>';
-	
-	$('#tab-recurring table tbody').append(html);
-}
-//--></script> 
+    if($(this).hasClass('open')) {
+      // do nothing because the link is already open
+    } else {
+      var oldcontent = $('#sidemenu a.open').attr('href');
+      var newcontent = $(this).attr('href');
+      
+      $(oldcontent).fadeOut('fast', function(){
+        $(newcontent).fadeIn().removeClass('hidden');
+        $(oldcontent).addClass('hidden');
+      });
+      
+     
+      $('#sidemenu a').removeClass('open');
+      $(this).addClass('open');
+    }
+  });
+});
+</script>
   <script type="text/javascript"><!--
 $('.date').datetimepicker({
 	pickTime: false
@@ -1397,6 +1448,16 @@ $('.datetime').datetimepicker({
 	pickTime: true
 });
 //--></script> 
+
+<style>
+ul#sidemenu li {
+    list-style: none;
+    display: inline-block;
+    border: 1px solid #1e91cf;
+}
+ul#sidemenu li a{padding: 7px 15px; display:block;}
+ul#sidemenu li a.open{background-color:#1e91cf; color:#fff;}
+</style>
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
