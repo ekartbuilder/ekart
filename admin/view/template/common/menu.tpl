@@ -3,7 +3,7 @@
   <li id="sale"><a class="parent"><i class="fa fa-shopping-cart fa-fw"></i> <span><?php echo $text_sale; ?></span></a>
     <ul>
       <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-      <li><a href="<?php echo $order_recurring; ?>"><?php echo $text_order_recurring; ?></a></li>
+      <!--<li><a href="<?php echo $order_recurring; ?>"><?php echo $text_order_recurring; ?></a></li>-->
       <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
       <li><a class="parent"><?php echo $text_customer; ?></a>
         <ul>
@@ -19,18 +19,31 @@
           <li><a href="<?php echo $voucher_theme; ?>"><?php echo $text_voucher_theme; ?></a></li>
         </ul>
       </li>
-      <li><a class="parent"><?php echo $text_paypal ?></a>
+      <!--<li><a class="parent"><?php echo $text_paypal ?></a>
         <ul>
           <li><a href="<?php echo $paypal_search ?>"><?php echo $text_paypal_search ?></a></li>
         </ul>
-      </li>
+      </li>-->
     </ul>
   </li>
   <li id="catalog"><a class="parent"><i class="fa fa-tags fa-fw"></i> <span><?php echo $text_catalog; ?></span></a>
     <ul>
-      <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
-      <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
-      <li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>
+	
+	 <li><a class="parent" ><?php echo $text_product; ?></a>
+	  <ul>
+          <li><a href="<?php echo $product; ?>">List Product</a></li>
+          <li><a href="<?php echo $addproduct; ?>">Add Product</a></li>
+        </ul>	  
+	  </li>
+	  
+      <li><a class="parent"><?php echo $text_category; ?></a>
+	   <ul>
+          <li><a href="<?php echo $category; ?>">List Category</a></li>
+          <li><a href="<?php echo $addcategory; ?>">Add Category</a></li>
+        </ul>	  
+	  </li>   
+	  
+      <!--<li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>-->
       <li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
       <li><a class="parent"><?php echo $text_attribute; ?></a>
         <ul>
@@ -54,7 +67,7 @@
       <li><a href="<?php echo $payment; ?>"><?php echo $text_payment; ?></a></li>
       <li><a href="<?php echo $total; ?>"><?php echo $text_total; ?></a></li>
       <li><a href="<?php echo $feed; ?>"><?php echo $text_feed; ?></a></li>
-      <li><a href="<?php echo $fraud; ?>"><?php echo $text_fraud; ?></a></li>
+      <!--<li><a href="<?php echo $fraud; ?>"><?php echo $text_fraud; ?></a></li>-->
       <?php if ($openbay_show_menu == 1) { ?>
       <li><a class="parent"><?php echo $text_openbay_extension; ?></a>
         <ul>
