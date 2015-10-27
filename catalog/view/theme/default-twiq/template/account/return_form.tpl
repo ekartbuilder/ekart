@@ -138,7 +138,8 @@
                 {% endif %}
                 {{ text_yes }}</label>
               <label class="radio-inline">
-                <?php if (!$opened) { ?>
+               
+				 {% if not opened %}
                 <input type="radio" name="opened" value="0" checked="checked" />
                 {% else %}
                 <input type="radio" name="opened" value="0" />
