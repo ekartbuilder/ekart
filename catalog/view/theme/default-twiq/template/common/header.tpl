@@ -85,9 +85,7 @@
     </div>
   </div>
 </header>
-<style>
-.navbar-collapse li:hover > .dropdown-menu{display:block;}
-</style>
+
 {% if categories %}
 <div class="container">
   <nav id="menu" class="navbar">
@@ -101,10 +99,14 @@
 		<div class="dropdown-menu">
             <div class="dropdown-inner">
 			  {% for children in chunk(category.children, category.column) %}
+		
               <ul class="list-unstyled">                
 				{% for child in children %}	
                 <li><a href="{{ child.href }}">{{ child.name }}</a></li>                
 				 {%endfor%}
+				 	  <style>
+.navbar-collapse li:hover > .dropdown-menu{display:block;}
+</style>
               </ul> 
 			  {%endfor%}
             </div>
