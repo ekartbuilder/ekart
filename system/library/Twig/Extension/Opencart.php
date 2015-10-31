@@ -88,16 +88,15 @@ class Twig_Extension_Opencart extends Twig_Extension
         return $language->get($key);
     }
 
-		public function chunkFunction($data_array=array(), $chunk = 0)
-		{
-	
-		if (!empty($chunk)) {
-				return array_chunk($data_array, ceil(count($data_array) / $chunk));
-			} else {
-		return $data_array;
-			}
+	public function chunkFunction($data_array=array(), $chunk = 0)
+	{
+
+	if (!empty($chunk)) {
+			return array_chunk($data_array, ceil(count($data_array) / $chunk));
+		} else {
+			return $data_array;
 		}
-	
+	}
 	
     /**
      * @param      $key
