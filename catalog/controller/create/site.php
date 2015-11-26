@@ -215,22 +215,22 @@ class ControllerCreateSite extends Controller {
 			
 			$owner_data['firstname'] = "";
 	      	$owner_data['lastname'] = "";
-	      	$owner_data['email'] = $this->request->post['email'];
-	      	$owner_data['password'] = base64_encode($this->request->post['password']);
-	      	$owner_data['mobile'] = $this->request->post['contact'];
+	      	$owner_data['email'] = $this->db->escape($this->request->post['email']);
+	      	$owner_data['password'] = $this->db->escape(base64_encode($this->request->post['password']));
+	      	$owner_data['mobile'] = $this->db->escape($this->request->post['contact']);
 	      	$owner_data['status'] = "Y";
 			
-			$owner_id = $this->model_create_site->getOwnerByEmail($this->request->post['email']);
+			$owner_id = $this->model_create_site->getOwnerByEmail($owner_data['email']);
 			if($owner_id == 0) {
 				$owner_id = $this->model_create_site->addOwner($owner_data);
 			}
 			
 			$site_data = array();
 			$site_data['owner_id'] = $owner_id;
-			$site_data['plan_id'] = $this->request->post['plan'];
-			$site_data['sub_domain'] = $this->request->post['site'];
+			$site_data['plan_id'] = $this->db->escape($this->request->post['plan']);
+			$site_data['sub_domain'] = $this->db->escape($this->request->post['site']);
 			$site_data['domain'] = "";
-			$site_data['site_type'] = $this->request->post['type'];
+			$site_data['site_type'] = $this->db->escape($this->request->post['type']);
 			$site_data['live_date'] = date("Y-m-d H:i:s");
 			$site_data['active_status'] = "Y";
 			$site_data['status'] = "Y";
@@ -244,6 +244,7 @@ class ControllerCreateSite extends Controller {
 				// Login Into Site
 				$token = urlencode(base64_encode($owner_id));
 				$login_url = str_replace('&amp;', '&', $this->url->link('common/login', 'token=' . $token, 'SSL'));
+				$login_url = str_replace('www.ekartbuilder.com', $site_data['sub_domain'].'.ekartbuilder.com', $login_url);
 				$login_url = str_replace('index.php?route=common/login', 'admin/index.php?route=common/login', $login_url);
 				$json['redirect'] = $login_url;
 			} else {
