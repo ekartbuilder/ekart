@@ -209,7 +209,7 @@ class ControllerCreateSite extends Controller {
 			$json['error']['contact'] = $this->language->get('error_contact');
 		}
 
-		if (!$json || 1) {
+		if (!$json) {
 			
 			$owner_data = array();
 			
@@ -235,16 +235,20 @@ class ControllerCreateSite extends Controller {
 			$site_data['active_status'] = "Y";
 			$site_data['status'] = "Y";
 			
-	      	//$site_id = $this->model_create_site->addSite($site_data);
+	      	$site_id = $this->model_create_site->addSite($site_data);
 
 			//Create DB
-			$this->createDB($site_data);
+			$db_details = $this->createDB($site_data);
 			
-			// Login Into Site
-			$token = urlencode(base64_encode($owner_id));
-			$login_url = str_replace('&amp;', '&', $this->url->link('common/login', 'token=' . $token, 'SSL'));
-			$login_url = str_replace('index.php?route=common/login', 'admin/index.php?route=common/login', $login_url);
-			$json['redirect'] = $login_url;
+			if(count($db_details)) {
+				// Login Into Site
+				$token = urlencode(base64_encode($owner_id));
+				$login_url = str_replace('&amp;', '&', $this->url->link('common/login', 'token=' . $token, 'SSL'));
+				$login_url = str_replace('index.php?route=common/login', 'admin/index.php?route=common/login', $login_url);
+				$json['redirect'] = $login_url;
+			} else {
+				$json['error']['warning'] = $this->language->get('error_create_db');
+			}
 /*
 			// Add to activity log
 			$this->load->model('account/activity');
@@ -266,9 +270,10 @@ class ControllerCreateSite extends Controller {
 
 	protected function createDB($site_data) {
 		if(!empty($site_data['sub_domain'])) {
-			$target_db = "ekart_".$site_data['sub_domain'];
-			$url = "http://localhost/ekart/trial/create_db.php?db_name=".$target_db;
-			file_get_contents($url);	
+			$target_db = "ekart_" . $site_data['sub_domain'];
+			$url = STORE_CREATE_HOST . "create_db.php?db_name=".$target_db;
+			$json = file_get_contents($url); 
+			return json_decode($json);	
 		}
 	}
 

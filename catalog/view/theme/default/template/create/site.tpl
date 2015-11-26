@@ -34,16 +34,16 @@
                 <input type="text" name="site" value="<?php echo $site; ?>" placeholder="<?php echo $entry_site; ?>" id="input-site-site" class="form-control" />
               </div>
               <div class="form-group">
-                <label class="control-label" for="input-contact"><?php echo $entry_contact; ?></label>
-                <input type="text" name="contact" value="<?php echo $contact; ?>" placeholder="<?php echo $entry_contact; ?>" id="input-site-contact" class="form-control" />
-              </div>            	
-              <div class="form-group">
                 <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
                 <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-site-email" class="form-control" />
               </div>
               <div class="form-group">
                 <label class="control-label" for="input-password"><?php echo $entry_password; ?></label>
                 <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-site-password" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="input-contact"><?php echo $entry_contact; ?></label>
+                <input type="text" name="contact" value="<?php echo $contact; ?>" placeholder="<?php echo $entry_contact; ?>" id="input-site-contact" class="form-control" />
               </div>
               <input type="button" value="<?php echo $button_continue; ?>" id="button-continue"  data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
               <input type="hidden" name="plan" value="5" />
