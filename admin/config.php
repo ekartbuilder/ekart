@@ -22,14 +22,15 @@ define('DIR_MODIFICATION', '/var/www/html/ekartbuilder/system/modification/');
 define('DIR_CATALOG', '/var/www/html/ekartbuilder/catalog/');
 
 // CACHE
-define('CACHE_DRIVER', 'red');
+define('CACHE_DRIVER', 'file');
+//define('CACHE_DRIVER', 'red');
 define('CACHE_HOSTNAME', 'localhost');
 define('CACHE_PORT', '6379');
 define('CACHE_EXPIRE', '3600');
 define('CACHE_PREFIX', 'testing');
 
 // TEMPLATE
-define('TWIG_PHP', false);
+define('TWIG_PHP', true);
 //define('TWIG_CACHE', DIR_CACHE . 'twig');
 
 // DB

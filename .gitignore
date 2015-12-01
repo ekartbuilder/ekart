@@ -9,3 +9,4 @@ admin/config_local.php
 tmp
 .project
 .settings
+.bash_history
