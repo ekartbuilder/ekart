@@ -28,15 +28,15 @@ if($window = 0) {
 
 $json['start-dump'] = microtime(true);
 if(!file_exists($temp_file)) {
-	$dump_cmd = $bin_path."mysqldump -u atul -patul ekart > $temp_file";
+	$dump_cmd = $bin_path."mysqldump -u $db_user -p$db_pass ekart > $temp_file";
 	echo `$dump_cmd`;
 }
 
 $json['start-copy'] = microtime(true);
 if(!empty($target_db)) {
-	$cmd = $bin_path.'mysql -u atul -patul -e "create database `' . $target_db . '`"';
+	$cmd = $bin_path.'mysql -u '.$db_user.' -p'.$db_pass.' -e "create database ' . $target_db . '"';
 	echo `$cmd`;
-	$cmd = $bin_path."mysql -u atul -patul $target_db < $temp_file";
+	$cmd = $bin_path."mysql -u $db_user -p$db_pass $target_db < $temp_file";
 	echo `$cmd`;
 }
 $json['end'] = microtime(true);
