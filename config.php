@@ -29,6 +29,9 @@ define('PAGECACHE_DEF_LANG', 'en');
 define('PAGECACHE_DEF_CUR', 'inr');
 define('PAGECACHE_DEF_DEVICE', 'W');
 
+// STORE CREATE
+define('STORE_CREATE_HOST', 'http://www.ekartbuilder.com/trial/');
+
 // TEMPLATE
 define('TWIG_PHP', false);
 //define('TWIG_CACHE', DIR_CACHE . 'twig');

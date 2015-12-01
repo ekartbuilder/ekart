@@ -13,8 +13,13 @@ if(!empty($_GET['db_name'])) {
 	$target_db = "ekart_test_".substr(md5(microtime(true)), 0, 5);	
 }
 
-$bin_path = "D:/wamp/bin/mysql/mysql5.6.17/bin/";
-$temp_file = "D:/wamp/www/ekart/tmp/base.sql";
+if($window = 0) {
+	$bin_path = "D:/wamp/bin/mysql/mysql5.6.17/bin/";
+	$temp_file = "D:/wamp/www/ekart/tmp/base.sql";	
+} else {
+	$bin_path = "";
+	$temp_file = "base.sql";
+}
 
 $json['start-dump'] = microtime(true);
 if(!file_exists($temp_file)) {
