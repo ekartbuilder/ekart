@@ -1,11 +1,6 @@
 <?php
 $json = array();
 $json['start'] = microtime(true);
-  
-$db_host = "localhost";
-$db_user = "atul";
-$db_pass = "atul";
-$db_name = "ekart";
 
 if(!empty($_GET['db_name'])) {
 	$target_db = $_GET['db_name'];	
@@ -14,9 +9,19 @@ if(!empty($_GET['db_name'])) {
 }
 
 if($window = 0) {
+	$db_host = "localhost";
+	$db_user = "atul";
+	$db_pass = "atul";
+	$db_name = "ekart";
+	
 	$bin_path = "D:/wamp/bin/mysql/mysql5.6.17/bin/";
 	$temp_file = "D:/wamp/www/ekart/tmp/base.sql";	
 } else {
+	$db_host = "localhost";
+	$db_user = "ekart_db";
+	$db_pass = "Ak4j62K3EK73sM44";
+	$db_name = "ekart";
+	
 	$bin_path = "";
 	$temp_file = "base.sql";
 }
