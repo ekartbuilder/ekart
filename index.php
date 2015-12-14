@@ -38,6 +38,7 @@ if(!isset($_COOKIE['pagecache']) || !is_string($_COOKIE['pagecache'])) {
 
 // Cache
 global $cache;
+global $site_info;
 $cache = new Cache(CACHE_DRIVER);
 
 // VirtualQMOD

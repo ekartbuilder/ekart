@@ -31,6 +31,10 @@ if(empty($_COOKIE['device']) || !is_string($_COOKIE['device'])) {
 	setcookie('device', $device, time() + 60 * 60 * 24 * 30, '/', $_SERVER['HTTP_HOST']);	
 }
 
+// Cache
+global $cache;
+global $site_info;
+$cache = new Cache(CACHE_DRIVER);
 
 // VirtualQMOD
 require_once('../vqmod/vqmod.php');
