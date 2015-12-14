@@ -5,12 +5,82 @@ class Cache {
 
 	public function __construct($driver, $expire = 3600) {
 		$class = 'Cache\\' . $driver;
-
+		
 		if (class_exists($class)) {
 			$this->cache = new $class($expire);
+			$this->loadSite();
 			$this->loadPage();
 		} else {
 			exit('Error: Could not load cache driver ' . $driver . ' cache!');
+		}
+	}
+	
+	public function loadSite() {
+		global $site_info;
+		
+		if(count($site_info))
+			return true;
+		
+		$domain = (empty($_SERVER['HTTP_HOST']) || !is_string($_SERVER['HTTP_HOST'])) ? 'unknown' : $_SERVER['HTTP_HOST'];
+		$domain = strtolower($domain);
+		
+		$site_key = 'SITE_INFO::'.$domain;
+		
+		if($site_info = $this->getGlobal($site_key)) {
+				
+			// Defining Database Constant
+			define('DB_DATABASE', EKARTBUILDER_DB_PREFIX.strtolower($site_info['sub_domain']));
+			
+			return $site_info;
+		} else {	
+			$ekartbuilder_host = explode(".", EKARTBUILDER_HOST);
+			$subdomain = $ekartbuilder_host['0'];
+			$subdomain = strtolower($subdomain);
+			
+			$ekartbuilder_host = $ekartbuilder_host['1'];
+			$ekartbuilder_host = strtolower($ekartbuilder_host);
+			
+			$db = new \mysqli(EKARTBUILDER_DB_HOSTNAME, EKARTBUILDER_DB_USERNAME, EKARTBUILDER_DB_PASSWORD, EKARTBUILDER_DATABASE, EKARTBUILDER_DB_PORT);
+			if ($db->connect_error) {
+				trigger_error('Error: Could not make a database link (' . $db->connect_errno . ') ' . $db->connect_error);
+				exit();
+			}
+			
+			if(strstr($domain, $ekartbuilder_host)) {
+				$sql = "SELECT * FROM site_master WHERE sub_domain = '" . $subdomain . "'";
+			} else {
+				$sql = "SELECT * FROM site_master WHERE domain = '" . $domain . "'";	
+			}
+
+			//echo $sql;
+			
+			$query = $db->query($sql);
+
+			if (!$db->errno) {
+				if ($query instanceof \mysqli_result) {
+	
+					$result = $query->fetch_assoc();
+					
+					$query->close();
+					
+					if(count($result)) {
+							
+						// Defining Database Constant
+						define('DB_DATABASE', EKARTBUILDER_DB_PREFIX.strtolower($site_info['sub_domain']));
+						
+						$this->setGlobal($site_key, $result);	
+						return $result;	
+					} else {
+						header('Location: '.EKARTBUILDER_HOST.'error/display?code=1');
+						exit();
+					}
+				} else {
+					return false;
+				}
+			} else {
+				trigger_error('Error: ' . $db->error  . '<br />Error No: ' . $db->errno . '<br />' . $sql);
+				exit();
+			}
 		}
 	}
 	

@@ -1,5 +1,6 @@
 <?php
 // HTTP
+define('EKARTBUILDER_HOST', 'http://www.ekartbuilder.com/');
 define('HTTP_SERVER', 'http://localhost/ekart/admin/');
 define('HTTP_CATALOG', 'http://localhost/ekart/');
 
@@ -37,6 +38,15 @@ define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'atul');
 define('DB_PASSWORD', 'atul');
-define('DB_DATABASE', 'ekart');
+//define('DB_DATABASE', 'ekart');
 define('DB_PORT', '3306');
 define('DB_PREFIX', '');
+
+
+// EKARTBUILDER DB
+define('EKARTBUILDER_DB_HOSTNAME', 'localhost');
+define('EKARTBUILDER_DB_USERNAME', 'ekart_db');
+define('EKARTBUILDER_DB_PASSWORD', 'Ak4j62K3EK73sM44');
+define('EKARTBUILDER_DATABASE', 'ekart_master');
+define('EKARTBUILDER_DB_PORT', '3306');
+define('EKARTBUILDER_DB_PREFIX', 'ekart_');
