@@ -1,10 +1,10 @@
 <?php
 // HTTP
 define('EKARTBUILDER_HOST', 'http://www.ekartbuilder.com/');
-define('HTTP_SERVER', 'http://www.ekartbuilder.com/');
+define('HTTP_SERVER', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://www.ekartbuilder.com/');
+define('HTTPS_SERVER', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/html/ekartbuilder/catalog/');

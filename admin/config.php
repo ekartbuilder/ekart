@@ -1,11 +1,12 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://www.ekartbuilder.com/admin/');
-define('HTTP_CATALOG', 'http://www.ekartbuilder.com/');
+define('EKARTBUILDER_HOST', 'http://www.ekartbuilder.com/');
+define('HTTP_SERVER', 'http://' . $_SERVER['HTTP_HOST'] . '/admin/');
+define('HTTP_CATALOG', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://www.ekartbuilder.com/admin/');
-define('HTTPS_CATALOG', 'http://www.ekartbuilder.com/');
+define('HTTPS_SERVER', 'http://' . $_SERVER['HTTP_HOST'] . '/admin/');
+define('HTTPS_CATALOG', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/html/ekartbuilder/admin/');
