@@ -756,9 +756,9 @@ $this->load->model('tool/image');
 		}
 
 		if (isset($this->request->post['auto_route'])) {
-			$data['auto_route']= $this->request->post['auto_route'];
+			$data['autoroute']= $this->request->post['auto_route'];
 		} elseif (isset($apps_info)) {
-			$data['auto_route'] = $apps_info['auto_route'];
+			$data['auto_route'] = $apps_info['route'];
 		} else {
 			$data['auto_route'] = '';
 		}
