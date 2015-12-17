@@ -74,4 +74,213 @@
             </add>
         </operation>
     </file>
+    <file name="admin/model/manage/themes.php">
+        <operation error="skip">
+            <search position="replace" offset="14">
+                <![CDATA[//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "category_table`");]]>
+            </search>
+            <add>
+                <![CDATA[
+		$query = $this->db->query("SELECT DISTINCT category FROM ekart_master.theme_master");
+		
+		if($query->num_rows) {
+			foreach($query->rows as $each_row) {
+				if (isset($data['display']) && !is_null($data['display'])) {
+					$categorys[$each_row['category']] = $each_row['category'];
+				} else {
+					$categorys[] = array(
+						'category_id' => $each_row['category'],
+						'name' => $each_row['category'],
+					);	
+				}								
+			}
+		}
+		
+		return $categorys;
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/apps.php">
+        <operation error="skip">
+            <search position="replace" offset="14">
+                <![CDATA[//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "type_table`");]]>
+            </search>
+            <add>
+                <![CDATA[ 
+		$types[] = array(
+			'type_id' => 'ST',
+			'name' => 'Setting',
+		);
+
+		$types[] = array(
+			'type_id' => 'MO',
+			'name' => 'Module',
+		);
+
+		$types[] = array(
+			'type_id' => 'PG',
+			'name' => 'Payment',
+		);
+
+		$types[] = array(
+			'type_id' => 'SP',
+			'name' => 'Shpping',
+		);
+
+		$types[] = array(
+			'type_id' => 'OT',
+			'name' => 'Order Total',
+		);
+
+		$types[] = array(
+			'type_id' => 'IN',
+			'name' => 'Info App',
+		);
+		
+		$types[] = array(
+			'type_id' => 'SC',
+			'name' => 'Section',
+		);
+
+		if (isset($data['display']) && !is_null($data['display'])) {
+			$new_types = array();
+			foreach($types as $key => $value) {
+				$new_types[$value['type_id']] = $value['name'];
+			}
+			$types = $new_types;
+		};
+
+
+		return $types;
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/apps.php">
+        <operation error="skip">
+            <search position="replace" offset="14">
+                <![CDATA[//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "category_table`");]]>
+            </search>
+            <add>
+                <![CDATA[
+		$query = $this->db->query("SELECT DISTINCT category FROM ekart_master.app_store");
+		
+		if($query->num_rows) {
+			foreach($query->rows as $each_row) {
+				if (isset($data['display']) && !is_null($data['display'])) {
+					$categorys[$each_row['category']] = $each_row['category'];
+				} else {
+					$categorys[] = array(
+						'category_id' => $each_row['category'],
+						'name' => $each_row['category'],
+					);	
+				}								
+			}
+		}
+		
+		return $categorys;
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/sites.php">
+        <operation error="skip">
+            <search position="replace" offset="14">
+                <![CDATA[//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "plan_table`");]]>
+            </search>
+            <add>
+                <![CDATA[
+		$query = $this->db->query("SELECT plan_id, name FROM ekart_master.plan_master");
+		
+		if($query->num_rows) {
+			foreach($query->rows as $each_row) {
+				if (isset($data['display']) && !is_null($data['display'])) {
+					$plans[$each_row['plan_id']] = $each_row['name'];
+				} else {
+					$plans[] = array(
+						'plan_id' => $each_row['plan_id'],
+						'name' => $each_row['name'],
+					);	
+				}								
+			}
+		}
+		
+		return $plans;
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/sites.php">
+        <operation error="skip">
+            <search position="replace" offset="14">
+                <![CDATA[//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "active_status_table`");]]>
+            </search>
+            <add>
+                <![CDATA[
+		$active_statuss[] = array(
+			'active_status_id' => 'Y',
+			'name' => 'Yes',
+		);
+
+		$active_statuss[] = array(
+			'active_status_id' => 'M',
+			'name' => 'Maintence',
+		);
+
+		$active_statuss[] = array(
+			'active_status_id' => 'N',
+			'name' => 'No',
+		);
+
+		if (isset($data['display']) && !is_null($data['display'])) {
+			$new_active_statuss = array();
+			foreach($active_statuss as $key => $value) {
+				$new_active_statuss[$value['active_status_id']] = $value['name'];
+			}
+			$active_statuss = $new_active_statuss;
+		};
+
+
+		return $active_statuss;
+                ]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/model/manage/sites.php">
+        <operation error="skip">
+            <search position="replace" offset="14">
+                <![CDATA[//		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "site_type_table`");]]>
+            </search>
+            <add>
+                <![CDATA[
+		$site_types[] = array(
+			'site_type_id' => 'W',
+			'name' => 'Web',
+		);
+
+		$site_types[] = array(
+			'site_type_id' => 'E',
+			'name' => 'Ecommerce',
+		);
+
+		$site_types[] = array(
+			'site_type_id' => 'R',
+			'name' => 'Reserve',
+		);
+		
+		if (isset($data['display']) && !is_null($data['display'])) {
+			$new_site_types = array();
+			foreach($site_types as $key => $value) {
+				$new_site_types[$value['site_type_id']] = $value['name'];
+			}
+			$site_types = $new_site_types;
+		};
+
+
+		return $site_types;
+                ]]>
+            </add>
+        </operation>
+    </file>
 </modification>
