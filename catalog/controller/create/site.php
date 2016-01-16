@@ -241,6 +241,10 @@ class ControllerCreateSite extends Controller {
 			$db_details = $this->createDB($site_data);
 			
 			if(count($db_details)) {
+				
+				// Copy Image Folder
+				$this->copyImages($site_data['sub_domain']);
+				
 				// Login Into Site
 				$token = urlencode(base64_encode($owner_id));
 				$login_url = str_replace('&amp;', '&', $this->url->link('common/login', 'token=' . $token, 'SSL'));
@@ -276,6 +280,10 @@ class ControllerCreateSite extends Controller {
 			$json = file_get_contents($url); 
 			return json_decode($json);	
 		}
+	}
+
+	protected function copyImages($subdomain) {
+		echo `cp -r image images/$subdomain`;
 	}
 
 	protected function validate() {
