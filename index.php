@@ -41,6 +41,15 @@ global $cache;
 global $site_info;
 $cache = new Cache(CACHE_DRIVER);
 
+$db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+global $template;
+
+$query = $db->query("SELECT * FROM `" . DB_PREFIX . "templates` WHERE status = '1'");
+foreach ($query->rows as $result) {
+	$template[$result['path']] = html_entity_decode($result['html'], ENT_QUOTES, 'UTF-8');
+}
+
+
 // VirtualQMOD
 require_once('./vqmod/vqmod.php');
 VQMod::bootup();
@@ -60,7 +69,6 @@ $config = new Config();
 $registry->set('config', $config);
 
 // Database
-$db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
 
 // Store
