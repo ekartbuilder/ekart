@@ -20,7 +20,7 @@ class ControllerCatalogInformation extends Controller {
 		$this->load->model('catalog/information');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_information->addInformation($this->request->post);
+			$this->request->get['information_id'] = $this->model_catalog_information->addInformation($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,7 +38,11 @@ class ControllerCatalogInformation extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/information', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			if (isset($this->request->get['information_id'])) {
+				$url .= '&information_id=' . $this->request->get['information_id'];
+			}
+
+			$this->response->redirect($this->url->link('catalog/information/edit', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
@@ -69,8 +73,12 @@ class ControllerCatalogInformation extends Controller {
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
+			
+			if (isset($this->request->get['information_id'])) {
+				$url .= '&information_id=' . $this->request->get['information_id'];
+			}
 
-			$this->response->redirect($this->url->link('catalog/information', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('catalog/information/edit', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
