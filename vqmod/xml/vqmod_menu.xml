@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>Core Modifications</name>
+    <version>1.0</version>
+    <author>Sunil Kumar</author>
+    <id>sunilkumar_core-mods_ocmod</id>	
+    <file name="admin/view/template/common/menu.tpl">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[<!--##vqmod-design-template##-->]]>
+            </search>
+            <add>
+                <![CDATA[<li><a href="{{ link('design/template', '', 'SSL') }}">Templates</a></li>]]>
+            </add>
+        </operation>
+    </file>
+    <file name="admin/view/template/common/menu.tpl">
+        <operation error="skip">
+            <search position="replace">
+                <![CDATA[<!--##vqmod-menu-pages##-->]]>
+            </search>
+            <add>
+                <![CDATA[<li><a class="parent"><i class="fa fa-file fa-fw"></i> <span>Web Pages</span></a>
+        <ul>
+          <li><a href="<?php echo $information; ?>">List Pages</a></li>
+          <li><a href="{{ link('catalog/information/add', '', 'SSL') }}">Add Page</a></li>
+        </ul>
+      </li>]]>
+            </add>
+        </operation>
+    </file>
+</modification>    
