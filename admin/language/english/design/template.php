@@ -100,6 +100,7 @@ $_['entry_template_id']	= 'Template ID';
 $_['entry_theme']	= 'Theme';
 $_['entry_path']	= 'File Path';
 $_['entry_html']	= 'Template';
+$_['entry_html_source']	= 'Orignal Template';
 $_['entry_date_added']	= 'Date Added';
 $_['entry_date_modified']	= 'Date Modified';
 $_['entry_status']	= 'Status';

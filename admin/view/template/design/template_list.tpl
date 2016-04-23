@@ -105,7 +105,16 @@
 	 <td class="text-left"><?php echo $template['theme']; ?></td>
 	 <td class="text-left"><?php echo $template['path']; ?></td>
 	 <td class="text-left"><?php echo $template['date_modified']; ?></td>
-	 <td class="text-left"><?php echo $template['status']; ?></td>
+	 <td class="text-left"><select name="status" class="form-control select_on_off"  id="input-status-<?php echo $template['template_id']; ?>" data-template_id="<?php echo $template['template_id']; ?>">
+					<option value=""></option>
+					<?php foreach ($statuss as $each_status) { ?>
+					<?php if ($each_status['status_id'] == $template['status']) { ?>
+						<option value="<?php echo $each_status['status_id']; ?>" selected="selected"><?php echo $each_status['name']; ?></option>
+					<?php } else { ?>
+						<option value="<?php echo $each_status['status_id']; ?>"><?php echo $each_status['name']; ?></option>
+					<?php } ?>
+					<?php } ?>
+					</select></td>
               <td class="text-right"><a href="<?php echo $template['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <?php } ?>
@@ -161,6 +170,32 @@ function filter() {
 //--></script>
 
 <script type="text/javascript"><!--
+$(document).ready(function() {
+	$('.toggle').on('toggle', function (e, active) {
+		
+		if(active) {
+			var status = 1;	
+		} else {
+			var status = 0;
+		}
+		
+		var template_id = $(this).next('.combo-select').find('select').data("template_id");
+		
+		if(template_id) {
+			$.ajax({
+		  		method: "POST",
+		  		url: 'index.php?route=design/template/status',
+		  		data: { template_id: template_id, status : status },
+		  		dataType: 'json',
+			})
+		  	.done(function( json ) {
+		  		
+			    // alert(json);
+		    
+	  		});	
+		}
+	});
+});
 //--></script>
 
 <?php echo $footer; ?>

@@ -20,7 +20,7 @@ class ControllerDesignTemplate extends Controller {
 		$this->load->model('design/template');
 		
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_design_template->addTemplate($this->request->post);
+			$this->request->get['template_id'] = $this->model_design_template->addTemplate($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -49,8 +49,12 @@ class ControllerDesignTemplate extends Controller {
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
+			
+			if (isset($this->request->get['template_id'])) {
+				$url .= '&template_id=' . $this->request->get['template_id'];
+			}
 						
-			$this->response->redirect($this->url->link('design/template', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('design/template/edit', 'token=' . $this->session->data['token'] . $url, 'SSL'));
     	}
     
     	$this->getForm();
@@ -93,8 +97,12 @@ class ControllerDesignTemplate extends Controller {
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
-						
-			$this->response->redirect($this->url->link('design/template', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			
+			if (isset($this->request->get['template_id'])) {
+				$url .= '&template_id=' . $this->request->get['template_id'];
+			}
+
+			$this->response->redirect($this->url->link('design/template/edit', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
     
     	$this->getForm();
@@ -264,7 +272,7 @@ class ControllerDesignTemplate extends Controller {
 				'theme' => $result['theme'],
 				'path' => $display_paths[$result['path']],
 				'date_modified' => date($this->language->get('date_format_short'), strtotime($result['date_modified'])),
-				'status' => $display_statuss[$result['status']],
+				'status' => $result['status'],
 				'selected'   => isset($this->request->post['selected']) && in_array($result['template_id'], $this->request->post['selected']),
 				'edit'     => $this->url->link('design/template/edit', 'token=' . $this->session->data['token'] . '&template_id=' . $result['template_id'] . $url, 'SSL')
 				
@@ -404,8 +412,10 @@ class ControllerDesignTemplate extends Controller {
 		
 		
 		$data['entry_theme'] = $this->language->get('entry_theme');
+		$data['entry_path_source'] = $this->language->get('entry_path');
 		$data['entry_path'] = $this->language->get('entry_path');
 		$data['entry_html'] = $this->language->get('entry_html');
+		$data['entry_html_source'] = $this->language->get('entry_html_source');
 		$data['entry_status'] = $this->language->get('entry_status');
 
     	$data['button_save'] = $this->language->get('button_save');
@@ -504,35 +514,43 @@ class ControllerDesignTemplate extends Controller {
 		} elseif (isset($template_info)) {
 			$data['theme'] = $template_info['theme'];
 		} else {
-			$data['theme'] = '';
+			$data['theme'] = $this->config->get('config_template');
 		}
 
 		if (isset($this->request->post['path'])) {
 			$data['path'] = $this->request->post['path'];
 		} elseif (isset($template_info)) {
 			$data['path'] = $template_info['path'];
-		} elseif (isset($this->request->get['path'])) {
-			$data['path'] = $this->request->get['path'];
 		} else {
 			$data['path'] = '';
+		}
+
+		if (isset($this->request->post['path_source'])) {
+			$data['path_source'] = $this->request->post['path_source'];
+		} elseif (isset($template_info)) {
+			$data['path_source'] = $template_info['path'];
+		} else {
+			$data['path_source'] = '';
 		}
 
 		if (isset($this->request->post['html'])) {
 			$data['html'] = $this->request->post['html'];
 		} elseif (isset($template_info)) {
-			$data['html'] = $template_info['html'];
-		} elseif (isset($this->request->get['path'])) {
-				
-			$filename = DIR_CATALOG . 'view/theme/' . $this->request->get['path'];
-		
-			if (file_exists($filename)) {
-				$data['html'] = file_get_contents($filename);
-			} else {
-				$data['html'] = "<h1>Oops! File not found.</h1>";
-			}
 			
+			$this->request->post['path'] = $template_info['path'];
+			$load_template = $this->load_template(true);
+			
+			$data['html'] = $load_template['html'];
 		} else {
 			$data['html'] = '';
+		}
+		
+		if (isset($this->request->post['html_source'])) {
+			$data['html_source'] = $this->request->post['html_source'];
+		} elseif (isset($template_info)) {
+			$data['html_source'] = $load_template['html_source'];
+		} else {
+			$data['html_source'] = '';
 		}
 
 		if (isset($this->request->post['status'])) {
@@ -589,22 +607,76 @@ class ControllerDesignTemplate extends Controller {
 		return !$this->error;
   	}
 	
-	public function load_template() {
+	public function save_template() {
+			
+		$json = array();
+		
+		$this->load->model('design/template');
+		
+		$template_info = $this->model_design_template->getTemplateByPath($this->request->post['path']);
+		
+		if(!empty($template_info['template_id'])) {
+				
+			$this->request->post['template_id'] = $template_info['template_id'];
+			$this->model_design_template->editTemplate($this->request->post['template_id'], $this->request->post);
+						
+		} else {
+			$this->request->get['template_id'] = $this->model_design_template->addTemplate($this->request->post);	
+		}
+		
+		$json['success'] = "1";
+		
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+	
+	public function status() {
+		$json = array();
+		
+		$this->load->model('design/template');
+		
+		$this->model_design_template->updateStatus($this->request->post['template_id'], $this->request->post);
+		
+		$json['success'] = "1";
+		
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+	
+	public function load_template($return_mode = false) {
+			
+		$json = array();
 		
 		if(empty($this->request->post['path'])) {
-			$this->response->setOutput("");
-			exit;
+			$json['error'] = "Oops! File not found.";
 		}
+		
+		$this->load->model('design/template');
+		
+		$template_info = $this->model_design_template->getTemplateByPath($this->request->post['path']);
 		
 		$filename = DIR_CATALOG . 'view/theme/' . $this->request->post['path'];
 		
-		if (file_exists($filename)) {
-			$output = file_get_contents($filename);
+		if (empty($json['error']) && file_exists($filename)) {
+			$file_data = file_get_contents($filename);
+			$json['html_source'] = $file_data;
+				
+	      	if(!empty($template_info['html'])) {
+				$file_data = html_entity_decode($template_info['html'], ENT_QUOTES, 'UTF-8');
+	    	}
+				
+			$json['html'] = $file_data;
 		} else {
-			$output = "<h1>Oops! File not found.</h1>";
+			$json['html'] = "<h1>Oops! File not found.</h1>";
+			$json['html_source'] = "<h1>Oops! File not found.</h1>";
 		}
 		
-		$this->response->setOutput($output);
+		if($return_mode) {
+			return $json;
+		}
+		
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 	}
 
 

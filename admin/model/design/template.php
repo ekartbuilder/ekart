@@ -44,6 +44,22 @@ class ModelDesignTemplate extends Model {
 		$this->event->trigger('post.admin.delete.template', $template_id);
 	}
 	
+	public function updateStatus($template_id, $data) {
+      	$this->event->trigger('pre.admin.edit.status.template', $data);	
+			
+      	$this->db->query("UPDATE `" . DB_PREFIX . "templates` SET status = '" . $this->db->escape($data['status']) .				 
+				"' WHERE `template_id` = '" . (int)$template_id . "'");
+				
+		$this->event->trigger('post.admin.edit.status.template', $template_id);
+	}
+
+	public function getTemplateByPath($path) {
+		
+      	$query = $this->db->query("SELECT DISTINCT * FROM `" . DB_PREFIX . "templates` WHERE `path` = '" . $this->db->escape($path) . "'");
+		
+		return $query->row;
+	}
+	
 	public function getTemplate($template_id) {
 		
       	$query = $this->db->query("SELECT DISTINCT * FROM `" . DB_PREFIX . "templates` WHERE `template_id` = '" . (int)$template_id . "'");
