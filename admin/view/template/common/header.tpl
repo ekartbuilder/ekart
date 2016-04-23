@@ -16,6 +16,14 @@
 <link href="view/javascript/bootstrap/ekart/ekart.css" type="text/css" rel="stylesheet" />
 <link href="view/stylesheet/common.css" type="text/css" rel="stylesheet" />
 <link href="view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+<!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
+<link rel="stylesheet" type="text/css" href="view/javascript/codemirror/codemirror.css">
+<link rel="stylesheet" type="text/css" href="view/javascript/codemirror/theme/monokai.css">
+<script type="text/javascript" src="view/javascript/codemirror/codemirror.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/mode/xml/xml.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/formatting.js"></script>
+
 <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
 <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
 <script src="view/javascript/jquery/datetimepicker/moment.js" type="text/javascript"></script>
