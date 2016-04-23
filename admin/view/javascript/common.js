@@ -59,8 +59,13 @@ $(document).ready(function() {
     	return $(a).text().match("^" + m[3] + "$");
 	};
 
-	$('label:textEquals("Status")').each(function(index) {
-		var each_select = $(this).parent('div.form-group').find('select');
+	$('label:textEquals("Status"), .select_on_off').each(function(index) {
+		if($(this).hasClass('select_on_off')) {
+			var each_select = $(this);
+		} else {
+			var each_select = $(this).parent('div.form-group').find('select');	
+		}
+		
 		var each_select_val = $(each_select).find(":selected").val();
 		
 		if(each_select_val == "1" || each_select_val == "Y") {
