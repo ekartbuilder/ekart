@@ -2,6 +2,8 @@
 class ModelExtensionModule extends Model {
 	public function addModule($code, $data) {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "module` SET `name` = '" . $this->db->escape($data['name']) . "', `code` = '" . $this->db->escape($code) . "', `setting` = '" . $this->db->escape(serialize($data)) . "'");
+		$module_id = $this->db->getLastId();
+		return $module_id;
 	}
 	
 	public function editModule($module_id, $data) {
