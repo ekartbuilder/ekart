@@ -61,7 +61,7 @@
             </search>
             <add>
                 <![CDATA[
-                <li id="manage"><a class="parent"><i class="fa fa-cog fa-fw"></i> <span>Manage</span></a>
+                <li id="manage"><a class="parent"><i class="fa fa-question fa-fw"></i> <span>Manage</span></a>
 				    <ul>
 				      <li><a href="{{ link('manage/sites', '', 'SSL') }}">Sites</a></li>
 				      <li><a href="{{ link('manage/owners', '', 'SSL') }}">Owners</a></li>				      
