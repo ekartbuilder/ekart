@@ -76,11 +76,17 @@ $(document).ready(function() {
 	$('.toggle').toggles();
 	$('.toggle').on('toggle', function (e, active) {
 	  if (active) {
-		$(this).next('.combo-select').find('select').val("1");
-		$(this).next('.combo-select').find('select').val("Y");
+	  	if($(this).next('.combo-select').find("select option[value='Y']").length > 0) {
+	  		$(this).next('.combo-select').find('select').val("Y");	
+	  	} else {
+	  		$(this).next('.combo-select').find('select').val("1");	
+	  	}
 	  } else {
-		$(this).next('.combo-select').find('select').val("0");
-		$(this).next('.combo-select').find('select').val("N");
+	  	if($(this).next('.combo-select').find("select option[value='Y']").length > 0) {
+	  		$(this).next('.combo-select').find('select').val("N");	
+	  	} else {
+	  		$(this).next('.combo-select').find('select').val("0");	
+	  	}
 	  }
 	});
 
