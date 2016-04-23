@@ -11,14 +11,20 @@ class ControllerModuleHTML extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			if (!isset($this->request->get['module_id'])) {
-				$this->model_extension_module->addModule('html', $this->request->post);
+				$this->request->get['module_id'] = $this->model_extension_module->addModule('html', $this->request->post);
 			} else {
 				$this->model_extension_module->editModule($this->request->get['module_id'], $this->request->post);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
+			
+			$url = '';
+			
+			if (isset($this->request->get['module_id'])) {
+				$url .= '&module_id=' . $this->request->get['module_id'];
+			}
 
-			$this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->response->redirect($this->url->link('module/html', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -32,6 +38,7 @@ class ControllerModuleHTML extends Controller {
 		$data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_status'] = $this->language->get('entry_status');
 
+		$data['button_new'] = $this->language->get('button_new');
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 
