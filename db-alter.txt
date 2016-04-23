@@ -1,0 +1,12 @@
+CREATE TABLE `templates` (
+	`template_id` INT(11) NOT NULL AUTO_INCREMENT,
+	`theme` VARCHAR(50) NULL DEFAULT NULL,
+	`path` VARCHAR(250) NULL DEFAULT NULL,
+	`html` TEXT NULL,
+	`date_added` DATETIME NOT NULL,
+	`date_modified` DATETIME NOT NULL,
+	`status` TINYINT(1) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`template_id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB;
