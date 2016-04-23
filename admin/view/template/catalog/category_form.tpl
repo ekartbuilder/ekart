@@ -29,7 +29,7 @@
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab">SEO</a></li>
 			<li><a href="#tab-filter" data-toggle="tab">Filter</a></li>
-            <li><a href="#tab-iamge" data-toggle="tab">Image</a></li>
+            <li><a href="#tab-image" data-toggle="tab">Image</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active in" id="tab-general">
@@ -199,7 +199,7 @@
 			<!-- filter tab end -->
 			
 			<!-- image tab  start-->
-			 <div class="tab-pane fade" id="tab-iamge">
+			 <div class="tab-pane fade" id="tab-image">
 			   
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_image; ?></label>
